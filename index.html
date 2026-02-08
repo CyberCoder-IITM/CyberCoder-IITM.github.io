@@ -2,127 +2,124 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Adnan Syed | Cybersecurity Analyst</title>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-            background-color: #020617; /* Deep Cyber Black */
-            font-family: 'Courier New', monospace;
+        body, html { 
+            margin: 0; 
+            padding: 0; 
+            height: 100%; 
+            width: 100%;
+            overflow: hidden; 
+            background-color: #020617; 
+            font-family: 'Courier New', monospace; 
         }
 
         /* Matrix Rain Canvas */
-        #matrixCanvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
-            opacity: 0.25; 
+        #matrixCanvas { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            z-index: 1; 
+            opacity: 0.3; 
         }
 
         /* Main Content Layer */
-        .content {
-            position: relative;
-            z-index: 10;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: #e2e8f0;
-            text-align: center;
-            padding: 20px;
+        .content { 
+            position: relative; 
+            z-index: 10; 
+            height: 100%; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            color: #e2e8f0; 
+            text-align: center; 
+            padding: 0 20px;
+            box-sizing: border-box;
         }
 
-        h1 {
-            font-size: 5rem;
-            margin: 0;
-            letter-spacing: 5px;
-            font-weight: 700;
-            color: #e2e8f0;
-            text-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
-            animation: glitch 1s linear infinite;
+        h1 { 
+            font-size: clamp(2.5rem, 8vw, 5rem); 
+            margin: 0; 
+            letter-spacing: 5px; 
+            font-weight: 700; 
+            color: #e2e8f0; 
+            text-shadow: 0 0 15px rgba(56, 189, 248, 0.6); 
             text-transform: uppercase;
+            line-height: 1.2;
         }
 
-        p {
-            font-size: 1.4rem;
-            color: #94a3b8;
-            margin-top: 15px;
-            border-right: 2px solid #38bdf8;
-            white-space: nowrap;
-            overflow: hidden;
+        .status-line { 
+            font-size: clamp(0.9rem, 3vw, 1.4rem); 
+            color: #94a3b8; 
+            margin-top: 15px; 
+            border-right: 2px solid #38bdf8; 
+            white-space: nowrap; 
+            overflow: hidden; 
+            display: inline-block;
             animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
         }
 
-        /* Buttons */
-        .btn-container {
-            margin-top: 50px;
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
+        /* Buttons Container */
+        .btn-container { 
+            margin-top: 40px; 
+            display: flex; 
+            gap: 15px; 
+            flex-direction: row; /* Default for Desktop */
+            flex-wrap: wrap; 
+            justify-content: center; 
+            width: 100%;
+            max-width: 600px;
         }
 
-        .btn {
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.1);
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        .btn { 
+            padding: 12px 30px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 0.9rem; 
+            transition: all 0.3s ease; 
+            border: 1px solid rgba(255,255,255,0.1); 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            min-width: 140px;
         }
 
-        .btn-primary {
-            background-color: #e2e8f0;
-            color: #020617;
-        }
-        
-        .btn-primary:hover {
-            background-color: #38bdf8;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
-            transform: translateY(-2px);
+        .btn-primary { background-color: #e2e8f0; color: #020617; }
+        .btn-primary:hover { 
+            background-color: #38bdf8; 
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.6); 
+            transform: translateY(-2px); 
         }
 
-        .btn-outline {
-            background-color: transparent;
-            color: #94a3b8;
+        .btn-outline { background-color: transparent; color: #94a3b8; }
+        .btn-outline:hover { 
+            border-color: #e2e8f0; 
+            color: #e2e8f0; 
+            background-color: rgba(255,255,255,0.05); 
         }
 
-        .btn-outline:hover {
-            border-color: #e2e8f0;
-            color: #e2e8f0;
-            background-color: rgba(255,255,255,0.05);
+        /* MOBILE ADJUSTMENTS */
+        @media (max-width: 600px) {
+            .btn-container { 
+                flex-direction: column; /* Stack buttons vertically on phones */
+                align-items: center;
+                gap: 12px;
+            }
+            .btn { 
+                width: 80%; /* Wider buttons on phone */
+                padding: 15px 0;
+            }
+            .status-line {
+                white-space: normal; /* Allow text to wrap if it's too long */
+                border-right: none;
+                animation: none;
+            }
         }
 
-        /* Glitch Animation */
-        @keyframes glitch {
-            2%, 64% { transform: translate(2px,0) skew(0deg); }
-            4%, 60% { transform: translate(-2px,0) skew(0deg); }
-            62% { transform: translate(0,0) skew(5deg); }
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: #38bdf8; }
-        }
-
-        /* Responsive Text for Mobile */
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            p { font-size: 1rem; white-space: normal; border: none; }
-        }
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: #38bdf8; } }
     </style>
 </head>
 <body>
@@ -131,7 +128,7 @@
 
     <div class="content">
         <h1>ADNAN SYED</h1>
-        <p>> System Status: Online // Cybersecurity Analyst</p>
+        <div class="status-line">> System Status: Online // Cybersecurity Analyst</div>
         
         <div class="btn-container">
             <a href="https://github.com/CybCoder-IITM" target="_blank" class="btn btn-primary">Projects</a>
@@ -144,24 +141,33 @@
         const canvas = document.getElementById('matrixCanvas');
         const ctx = canvas.getContext('2d');
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
 
-        // The "Rain" characters - Mix of Hex and Security Terms
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
         const chars = '0123456789ABCDEF_ROOT_ACCESS_GRANTED_SYSTEM_SECURE_ENCRYPTION_KEY_XXXXXXXXXXXXXXXX';
         const fontSize = 14;
-        const columns = canvas.width / fontSize;
+        let columns = canvas.width / fontSize;
+        let drops = [];
 
-        const drops = [];
-        for (let i = 0; i < columns; i++) {
-            drops[i] = 1;
+        function initDrops() {
+            columns = canvas.width / fontSize;
+            drops = [];
+            for (let i = 0; i < columns; i++) drops[i] = 1;
         }
+
+        initDrops();
+        window.addEventListener('resize', initDrops);
 
         function draw() {
             ctx.fillStyle = 'rgba(2, 6, 23, 0.1)'; 
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            ctx.fillStyle = '#0ea5e9'; // Cyber Blue
+            ctx.fillStyle = '#0ea5e9'; 
             ctx.font = fontSize + 'px Courier New';
 
             for (let i = 0; i < drops.length; i++) {
@@ -176,11 +182,6 @@
         }
 
         setInterval(draw, 35);
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
     </script>
 </body>
 </html>

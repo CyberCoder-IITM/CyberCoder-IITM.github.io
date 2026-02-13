@@ -3,185 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Adnan Syed | Cybersecurity Analyst</title>
+    <title>Adnan Syed | Cybersecurity</title>
     <style>
-        body, html { 
-            margin: 0; 
-            padding: 0; 
-            height: 100%; 
+        :root {
+            --bg-color: #020617;
+            --text-color: #e2e8f0;
+            --accent-blue: #38bdf8;
+            --btn-teal: #0f766e;
+            --btn-orange: #c2410c;
+            --btn-pink: #be185d;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
             width: 100%;
-            overflow: hidden; 
-            background-color: #020617; 
-            font-family: 'Courier New', monospace; 
+            height: 100%;
+            background-color: var(--bg-color);
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--text-color);
+            overflow-x: hidden;
         }
 
-        /* Matrix Rain Canvas */
-        #matrixCanvas { 
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            z-index: 1; 
-            opacity: 0.3; 
+        /* The Wave Background */
+        canvas {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            opacity: 0.5;
         }
 
-        /* Main Content Layer */
-        .content { 
-            position: relative; 
-            z-index: 10; 
-            height: 100%; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            color: #e2e8f0; 
-            text-align: center; 
-            padding: 0 20px;
-            box-sizing: border-box;
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: center;
         }
 
-        h1 { 
-            font-size: clamp(2.5rem, 8vw, 5rem); 
-            margin: 0; 
-            letter-spacing: 5px; 
-            font-weight: 700; 
-            color: #e2e8f0; 
-            text-shadow: 0 0 15px rgba(56, 189, 248, 0.6); 
+        /* Hollow Logo Style */
+        .logo {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
             text-transform: uppercase;
-            line-height: 1.2;
+            letter-spacing: 4px;
+            color: transparent;
+            -webkit-text-stroke: 1.5px var(--text-color);
+            margin-bottom: 10px;
+            position: relative;
+            animation: pulse 3s infinite;
+        }
+        
+        .role-text {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            color: var(--accent-blue);
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        .status-line { 
-            font-size: clamp(0.9rem, 3vw, 1.4rem); 
-            color: #94a3b8; 
-            margin-top: 15px; 
-            border-right: 2px solid #38bdf8; 
-            white-space: nowrap; 
-            overflow: hidden; 
-            display: inline-block;
-            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        /* The "Pill" Navigation Bar */
+        .pill-nav {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: flex;
+            gap: 15px;
+            backdrop-filter: blur(12px);
+            margin-bottom: 50px;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.6);
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
-        /* Buttons Container */
-        .btn-container { 
-            margin-top: 40px; 
-            display: flex; 
-            gap: 15px; 
-            flex-direction: row; /* Default for Desktop */
-            flex-wrap: wrap; 
-            justify-content: center; 
-            width: 100%;
+        .btn {
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Midjourney-inspired Button Colors */
+        .btn-projects { background-color: var(--btn-teal); }
+        .btn-resume { background-color: var(--btn-orange); }
+        .btn-linkedin { background-color: var(--btn-pink); }
+        
+        .btn:hover {
+            filter: brightness(1.2);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Content Section */
+        .content-section {
+            text-align: left;
             max-width: 600px;
+            margin-top: 20px;
+            border-left: 3px solid var(--accent-blue);
+            padding-left: 25px;
+            background: linear-gradient(90deg, rgba(2, 6, 23, 0.8) 0%, rgba(2, 6, 23, 0) 100%);
         }
 
-        .btn { 
-            padding: 12px 30px; 
-            border-radius: 50px; 
-            text-decoration: none; 
-            font-weight: bold; 
-            font-size: 0.9rem; 
-            transition: all 0.3s ease; 
-            border: 1px solid rgba(255,255,255,0.1); 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            min-width: 140px;
+        .section-title {
+            color: var(--accent-blue);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .btn-primary { background-color: #e2e8f0; color: #020617; }
-        .btn-primary:hover { 
-            background-color: #38bdf8; 
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.6); 
-            transform: translateY(-2px); 
+        p {
+            line-height: 1.7;
+            color: #94a3b8;
+            margin-bottom: 25px;
+            font-size: 1rem;
         }
 
-        .btn-outline { background-color: transparent; color: #94a3b8; }
-        .btn-outline:hover { 
-            border-color: #e2e8f0; 
-            color: #e2e8f0; 
-            background-color: rgba(255,255,255,0.05); 
+        a.text-link {
+            color: var(--text-color);
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent-blue);
+            padding-bottom: 2px;
+            transition: color 0.3s;
         }
+        
+        a.text-link:hover { color: var(--accent-blue); }
 
-        /* MOBILE ADJUSTMENTS */
+        @keyframes pulse { 50% { opacity: 0.8; } }
+
+        /* Mobile Adjustments */
         @media (max-width: 600px) {
-            .btn-container { 
-                flex-direction: column; /* Stack buttons vertically on phones */
-                align-items: center;
-                gap: 12px;
+            .pill-nav {
+                flex-direction: column;
+                width: 100%;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                padding: 0;
+                backdrop-filter: none;
             }
-            .btn { 
-                width: 80%; /* Wider buttons on phone */
-                padding: 15px 0;
-            }
-            .status-line {
-                white-space: normal; /* Allow text to wrap if it's too long */
-                border-right: none;
-                animation: none;
-            }
+            .btn { width: 100%; text-align: center; display: block; box-sizing: border-box; }
+            .content-section { margin-left: 10px; margin-right: 10px; }
         }
-
-        @keyframes typing { from { width: 0 } to { width: 100% } }
-        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: #38bdf8; } }
     </style>
 </head>
 <body>
 
-    <canvas id="matrixCanvas"></canvas>
+    <canvas id="waveCanvas"></canvas>
 
-    <div class="content">
-        <h1>ADNAN SYED</h1>
-        <div class="status-line">> System Status: Online // Cybersecurity Analyst</div>
-        
-        <div class="btn-container">
-            <a href="https://github.com/CybCoder-IITM" target="_blank" class="btn btn-primary">Projects</a>
-            <a href="#" class="btn btn-outline">Resume</a>
-            <a href="mailto:saleeq1269@gmail.com" class="btn btn-outline">Contact</a>
+    <div class="container">
+        <div class="logo">Adnan Syed</div>
+        <div class="role-text">Cybersecurity Analyst</div>
+
+        <div class="pill-nav">
+            <a href="https://github.com/CybCoder-IITM" target="_blank" class="btn btn-projects">Projects</a>
+            <a href="resume.pdf" target="_blank" class="btn btn-resume">Resume</a>
+            <a href="https://www.linkedin.com/in/syedsq" target="_blank" class="btn btn-linkedin">LinkedIn</a>
+        </div>
+
+        <div class="content-section">
+            <div class="section-title">/// SYSTEM STATUS</div>
+            <p>
+                I am a Cybersecurity Analyst focused on infrastructure defense, Red Teaming, and penetration testing. 
+                My goal is to understand systems better than the attackers do.
+            </p>
+            
+            <div class="section-title">/// CONNECT</div>
+            <p>
+                For inquiries, security audits, or collaboration:<br>
+                <a href="mailto:saleeq1269@gmail.com" class="text-link">saleeq1269@gmail.com</a>
+            </p>
         </div>
     </div>
 
     <script>
-        const canvas = document.getElementById('matrixCanvas');
+        const canvas = document.getElementById('waveCanvas');
         const ctx = canvas.getContext('2d');
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
+        let width, height;
+        let lines = [];
+        const gap = 20; // Distance between lines
 
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        const chars = '0123456789ABCDEF_ROOT_ACCESS_GRANTED_SYSTEM_SECURE_ENCRYPTION_KEY_XXXXXXXXXXXXXXXX';
-        const fontSize = 14;
-        let columns = canvas.width / fontSize;
-        let drops = [];
-
-        function initDrops() {
-            columns = canvas.width / fontSize;
-            drops = [];
-            for (let i = 0; i < columns; i++) drops[i] = 1;
-        }
-
-        initDrops();
-        window.addEventListener('resize', initDrops);
-
-        function draw() {
-            ctx.fillStyle = 'rgba(2, 6, 23, 0.1)'; 
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            ctx.fillStyle = '#0ea5e9'; 
-            ctx.font = fontSize + 'px Courier New';
-
-            for (let i = 0; i < drops.length; i++) {
-                const text = chars.charAt(Math.floor(Math.random() * chars.length));
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
+        function resize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            lines = [];
+            
+            // Generate lines for wave effect
+            for (let y = 0; y < height; y += gap) {
+                lines.push({
+                    y: y,
+                    amplitude: Math.random() * 25 + 10,
+                    speed: Math.random() * 0.002 + 0.001,
+                    phase: Math.random() * Math.PI * 2
+                });
             }
         }
 
-        setInterval(draw, 35);
+        window.addEventListener('resize', resize);
+        resize();
+
+        function animate(t) {
+            ctx.fillStyle = '#020617'; // Clear with background color
+            ctx.fillRect(0, 0, width, height);
+            
+            ctx.lineWidth = 1.5;
+
+            lines.forEach((line, i) => {
+                ctx.beginPath();
+                
+                // Calculate distance from center to create glowing effect
+                let distanceFromCenter = Math.abs((line.y - height/2) / (height/2));
+                
+                if (distanceFromCenter < 0.35) {
+                    ctx.strokeStyle = `rgba(56, 189, 248, ${0.6 - distanceFromCenter})`; // Bright Blue center
+                } else {
+                    ctx.strokeStyle = 'rgba(30, 41, 59, 0.2)'; // Faded background lines
+                }
+
+                for (let x = 0; x < width; x += 15) {
+                    // Wave Math: modulated sine wave
+                    let y = line.y + Math.sin(x * 0.003 + t * line.speed + line.phase) * line.amplitude 
+                                   * Math.sin(x * 0.001); 
+                    
+                    if (x === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate(0);
     </script>
 </body>
 </html>

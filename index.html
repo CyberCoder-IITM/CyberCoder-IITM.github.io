@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Adnan Syed | Cybersecurity</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
             --bg-color: #020617;
             --text-color: #e2e8f0;
-            --accent-green: #4ade80;  /* For Projects */
-            --accent-yellow: #facc15; /* For Resume */
-            --accent-pink: #f43f5e;   /* For Contact */
+            --accent-green: #2dd4bf;  /* Teal for Projects */
+            --accent-yellow: #fbbf24; /* Amber for Resume */
+            --accent-pink: #f472b6;   /* Pink for LinkedIn */
         }
 
         body, html {
@@ -69,17 +71,17 @@
             text-transform: uppercase;
         }
 
-        /* --- THE NEW FLOATING DOCK (Matches your Screenshot) --- */
+        /* --- THE FLOATING DOCK --- */
         .dock-container {
-            background: rgba(30, 41, 59, 0.4); /* Dark semi-transparent */
+            background: rgba(15, 23, 42, 0.6); 
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 8px;
-            border-radius: 60px; /* Fully rounded pill */
+            padding: 10px;
+            border-radius: 60px; 
             display: inline-flex;
-            gap: 8px;
+            gap: 12px;
             backdrop-filter: blur(15px);
             margin-bottom: 50px;
-            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.6);
             flex-wrap: wrap;
             justify-content: center;
         }
@@ -88,36 +90,47 @@
             padding: 12px 28px;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 0.95rem;
+            font-weight: 600;
+            font-size: 0.9rem;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
-            gap: 8px;
-            background-color: rgba(2, 6, 23, 0.5); /* Very dark button bg */
+            gap: 10px;
+            background-color: rgba(2, 6, 23, 0.5); 
             border: 1px solid transparent;
+            letter-spacing: 0.5px;
         }
 
-        /* Specific Colors for each button */
+        /* Icon Styling */
+        .dock-btn i {
+            font-size: 1.1rem;
+        }
+
+        /* Projects (Teal) */
         .btn-projects { color: var(--accent-green); }
         .btn-projects:hover { 
-            background-color: rgba(74, 222, 128, 0.1); 
+            background-color: rgba(45, 212, 191, 0.1); 
             border-color: var(--accent-green);
-            box-shadow: 0 0 15px rgba(74, 222, 128, 0.3);
+            box-shadow: 0 0 15px rgba(45, 212, 191, 0.2);
+            transform: translateY(-2px);
         }
 
+        /* Resume (Amber) */
         .btn-resume { color: var(--accent-yellow); }
         .btn-resume:hover { 
-            background-color: rgba(250, 204, 21, 0.1); 
+            background-color: rgba(251, 191, 36, 0.1); 
             border-color: var(--accent-yellow);
-            box-shadow: 0 0 15px rgba(250, 204, 21, 0.3);
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.2);
+            transform: translateY(-2px);
         }
 
+        /* LinkedIn (Pink) */
         .btn-contact { color: var(--accent-pink); }
         .btn-contact:hover { 
-            background-color: rgba(244, 63, 94, 0.1); 
+            background-color: rgba(244, 114, 182, 0.1); 
             border-color: var(--accent-pink);
-            box-shadow: 0 0 15px rgba(244, 63, 94, 0.3);
+            box-shadow: 0 0 15px rgba(244, 114, 182, 0.2);
+            transform: translateY(-2px);
         }
 
         /* Content Section */
@@ -125,23 +138,25 @@
             text-align: left;
             max-width: 600px;
             margin-top: 20px;
-            border-left: 3px solid #334155;
+            border-left: 2px solid #334155;
             padding-left: 25px;
         }
 
         .section-title {
             color: #cbd5e1;
-            font-size: 1.1rem;
+            font-size: 1rem;
             margin-bottom: 12px;
             font-weight: bold;
             letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.8;
         }
 
         p {
-            line-height: 1.7;
+            line-height: 1.6;
             color: #64748b;
             margin-bottom: 25px;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         a.text-link {
@@ -169,8 +184,9 @@
             .dock-btn { 
                 width: 100%; 
                 justify-content: center; 
-                background-color: rgba(30, 41, 59, 0.4);
+                background-color: rgba(30, 41, 59, 0.5);
                 margin-bottom: 10px;
+                padding: 15px;
             }
         }
     </style>
@@ -184,25 +200,25 @@
         <div class="role-text">Cybersecurity Analyst</div>
 
         <div class="dock-container">
-            <a href="https://github.com/CyberCoder-IITM" target="_blank" class="dock-btn btn-projects">
-                <span>&#128187;</span> Projects
+            <a href="https://github.com/CybCoder-IITM" target="_blank" class="dock-btn btn-projects">
+                <i class="fa-solid fa-terminal"></i> Projects
             </a>
             <a href="resume.pdf" target="_blank" class="dock-btn btn-resume">
-                <span>&#128196;</span> Resume
+                <i class="fa-solid fa-file-arrow-down"></i> Resume
             </a>
             <a href="https://www.linkedin.com/in/syedsq" target="_blank" class="dock-btn btn-contact">
-                <span>&#128279;</span> LinkedIn
+                <i class="fa-brands fa-linkedin"></i> LinkedIn
             </a>
         </div>
 
         <div class="content-section">
-            <div class="section-title">/// SYSTEM STATUS</div>
+            <div class="section-title">/// System Status</div>
             <p>
                 I am a Cybersecurity Analyst focused on infrastructure defense, Red Teaming, and penetration testing. 
                 My goal is to understand systems better than the attackers do.
             </p>
             
-            <div class="section-title">/// CONNECT</div>
+            <div class="section-title">/// Connect</div>
             <p>
                 For inquiries, security audits, or collaboration:<br>
                 <a href="mailto:saleeq1269@gmail.com" class="text-link">saleeq1269@gmail.com</a>
@@ -228,7 +244,7 @@
             for (let y = 0; y < height; y += gap) {
                 lines.push({
                     y: y,
-                    amplitude: Math.random() * 25 + 10,
+                    amplitude: Math.random() * 20 + 10,
                     speed: Math.random() * 0.002 + 0.001,
                     phase: Math.random() * Math.PI * 2
                 });
@@ -251,7 +267,7 @@
                 
                 // Subtle Blue-Grey Waves
                 if (distanceFromCenter < 0.35) {
-                    ctx.strokeStyle = `rgba(148, 163, 184, ${0.5 - distanceFromCenter})`; 
+                    ctx.strokeStyle = `rgba(148, 163, 184, ${0.4 - distanceFromCenter})`; 
                 } else {
                     ctx.strokeStyle = 'rgba(30, 41, 59, 0.2)'; 
                 }

@@ -3,63 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Adnan Syed | Cybersecurity</title>
+    <title>Adnan Syed | Cybersecurity Analyst</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
             --bg-color: #020617;
             --text-color: #e2e8f0;
-            --accent-green: #2dd4bf;  /* Teal for Projects */
-            --accent-yellow: #fbbf24; /* Amber for Resume */
-            --accent-pink: #f472b6;   /* Pink for LinkedIn */
+            --accent-green: #2dd4bf;  /* Teal */
+            --accent-yellow: #fbbf24; /* Amber */
+            --accent-pink: #f472b6;   /* Pink */
+            --glass-bg: rgba(15, 23, 42, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
 
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
-            height: 100%;
             background-color: var(--bg-color);
             font-family: 'Courier New', Courier, monospace;
             color: var(--text-color);
-            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        /* The Wave Background */
+        /* Fixed Background Wave */
         canvas {
             display: block;
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             z-index: 0;
             opacity: 0.4;
         }
 
-        .container {
-            position: relative;
-            z-index: 10;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            text-align: center;
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
             justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 20px;
         }
 
-        /* Hollow Logo Style */
         .logo {
-            font-size: clamp(3rem, 8vw, 5rem);
+            font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 4px;
             color: transparent;
             -webkit-text-stroke: 1.5px var(--text-color);
             margin-bottom: 10px;
-            position: relative;
             animation: pulse 3s infinite;
         }
         
@@ -71,16 +69,16 @@
             text-transform: uppercase;
         }
 
-        /* --- THE FLOATING DOCK --- */
+        /* Floating Dock */
         .dock-container {
-            background: rgba(15, 23, 42, 0.6); 
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 10px;
+            background: var(--glass-bg); 
+            border: 1px solid var(--glass-border);
+            padding: 12px;
             border-radius: 60px; 
             display: inline-flex;
-            gap: 12px;
+            gap: 15px;
             backdrop-filter: blur(15px);
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             box-shadow: 0 20px 40px -10px rgba(0,0,0,0.6);
             flex-wrap: wrap;
             justify-content: center;
@@ -98,96 +96,96 @@
             gap: 10px;
             background-color: rgba(2, 6, 23, 0.5); 
             border: 1px solid transparent;
-            letter-spacing: 0.5px;
+            color: var(--text-color);
         }
 
-        /* Icon Styling */
-        .dock-btn i {
-            font-size: 1.1rem;
+        .dock-btn i { font-size: 1.1rem; }
+        .dock-btn:hover { transform: translateY(-3px); }
+
+        .btn-projects:hover { color: var(--accent-green); border-color: var(--accent-green); box-shadow: 0 0 15px rgba(45, 212, 191, 0.2); }
+        .btn-resume:hover { color: var(--accent-yellow); border-color: var(--accent-yellow); box-shadow: 0 0 15px rgba(251, 191, 36, 0.2); }
+        .btn-contact:hover { color: var(--accent-pink); border-color: var(--accent-pink); box-shadow: 0 0 15px rgba(244, 114, 182, 0.2); }
+
+        /* Scroll Arrow */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            animation: bounce 2s infinite;
+            color: var(--accent-green);
+            font-size: 1.5rem;
+            opacity: 0.7;
         }
 
-        /* Projects (Teal) */
-        .btn-projects { color: var(--accent-green); }
-        .btn-projects:hover { 
-            background-color: rgba(45, 212, 191, 0.1); 
-            border-color: var(--accent-green);
-            box-shadow: 0 0 15px rgba(45, 212, 191, 0.2);
-            transform: translateY(-2px);
+        /* --- DOSSIER SECTIONS --- */
+        .section-container {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 20px;
         }
 
-        /* Resume (Amber) */
-        .btn-resume { color: var(--accent-yellow); }
-        .btn-resume:hover { 
-            background-color: rgba(251, 191, 36, 0.1); 
-            border-color: var(--accent-yellow);
-            box-shadow: 0 0 15px rgba(251, 191, 36, 0.2);
-            transform: translateY(-2px);
-        }
-
-        /* LinkedIn (Pink) */
-        .btn-contact { color: var(--accent-pink); }
-        .btn-contact:hover { 
-            background-color: rgba(244, 114, 182, 0.1); 
-            border-color: var(--accent-pink);
-            box-shadow: 0 0 15px rgba(244, 114, 182, 0.2);
-            transform: translateY(-2px);
-        }
-
-        /* Content Section */
-        .content-section {
-            text-align: left;
-            max-width: 600px;
-            margin-top: 20px;
-            border-left: 2px solid #334155;
-            padding-left: 25px;
-        }
-
-        .section-title {
-            color: #cbd5e1;
-            font-size: 1rem;
-            margin-bottom: 12px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            opacity: 0.8;
-        }
-
-        p {
-            line-height: 1.6;
-            color: #64748b;
-            margin-bottom: 25px;
-            font-size: 0.95rem;
-        }
-
-        a.text-link {
-            color: #94a3b8;
-            text-decoration: none;
-            border-bottom: 1px solid #475569;
-            transition: color 0.3s;
+        .section-header {
+            font-size: 1.8rem;
+            color: var(--text-color);
+            margin-bottom: 40px;
+            border-bottom: 2px solid #334155;
+            padding-bottom: 10px;
+            display: inline-block;
+            letter-spacing: 2px;
         }
         
-        a.text-link:hover { color: var(--text-color); border-color: var(--text-color); }
+        .section-header span { color: var(--accent-green); margin-right: 10px; }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover { transform: translateY(-5px); border-color: var(--accent-green); }
+        .card h3 { margin-top: 0; color: var(--accent-green); font-size: 1.2rem; }
+        .card-subtitle { display: block; color: #94a3b8; font-size: 0.85rem; margin-bottom: 15px; font-weight: bold; text-transform: uppercase;}
+        .card p { color: #cbd5e1; line-height: 1.6; font-size: 0.95rem; margin-bottom: 15px; }
+
+        .skill-tag {
+            display: inline-block;
+            background: rgba(45, 212, 191, 0.1);
+            color: var(--accent-green);
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin: 0 5px 8px 0;
+            border: 1px solid rgba(45, 212, 191, 0.2);
+        }
+
+        .card-link {
+            color: var(--accent-yellow);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .card-link:hover { text-decoration: underline; }
 
         @keyframes pulse { 50% { opacity: 0.7; } }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
 
-        /* Mobile Adjustments */
         @media (max-width: 600px) {
-            .dock-container {
-                flex-direction: column;
-                width: 100%;
-                background: transparent;
-                border: none;
-                box-shadow: none;
-                padding: 0;
-                backdrop-filter: none;
-            }
-            .dock-btn { 
-                width: 100%; 
-                justify-content: center; 
-                background-color: rgba(30, 41, 59, 0.5);
-                margin-bottom: 10px;
-                padding: 15px;
-            }
+            .dock-container { flex-direction: column; width: 100%; background: transparent; border: none; box-shadow: none; padding: 0; backdrop-filter: none; }
+            .dock-btn { width: 100%; justify-content: center; background-color: rgba(30, 41, 59, 0.7); margin-bottom: 10px; }
+            .logo { font-size: 3rem; }
         }
     </style>
 </head>
@@ -195,12 +193,12 @@
 
     <canvas id="waveCanvas"></canvas>
 
-    <div class="container">
+    <div class="hero">
         <div class="logo">Adnan Syed</div>
         <div class="role-text">Cybersecurity Analyst</div>
 
         <div class="dock-container">
-            <a href="https://github.com/CybCoder-IITM" target="_blank" class="dock-btn btn-projects">
+            <a href="#projects" class="dock-btn btn-projects">
                 <i class="fa-solid fa-terminal"></i> Projects
             </a>
             <a href="resume.pdf" target="_blank" class="dock-btn btn-resume">
@@ -210,20 +208,90 @@
                 <i class="fa-brands fa-linkedin"></i> LinkedIn
             </a>
         </div>
-
-        <div class="content-section">
-            <div class="section-title">/// System Status</div>
-            <p>
-                I am a Cybersecurity Analyst focused on infrastructure defense, Red Teaming, and penetration testing. 
-                My goal is to understand systems better than the attackers do.
-            </p>
-            
-            <div class="section-title">/// Connect</div>
-            <p>
-                For inquiries, security audits, or collaboration:<br>
-                <a href="mailto:saleeq1269@gmail.com" class="text-link">saleeq1269@gmail.com</a>
-            </p>
+        
+        <div class="scroll-indicator">
+            <i class="fa-solid fa-angles-down"></i>
         </div>
+    </div>
+
+    <div class="section-container">
+        <h2 class="section-header"><span>///</span> ARSENAL</h2>
+        <div class="grid-cards">
+            <div class="card">
+                <h3><i class="fa-solid fa-shield-halved"></i> Cyber Defense</h3>
+                <p>Specialized in offensive security and network defense protocols.</p>
+                <div>
+                    <span class="skill-tag">Burp Suite</span>
+                    <span class="skill-tag">Nmap</span>
+                    <span class="skill-tag">Wireshark</span>
+                    <span class="skill-tag">Metasploit</span>
+                    <span class="skill-tag">SIEM</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3><i class="fa-solid fa-code"></i> Development</h3>
+                <p>Building secure infrastructure and automating security tasks.</p>
+                <div>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Firebase</span>
+                    <span class="skill-tag">Bash Scripting</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3><i class="fa-solid fa-microchip"></i> Future Tech</h3>
+                <p>Researching the intersection of AI and system vulnerability.</p>
+                <div>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">AI Safety</span>
+                    <span class="skill-tag">Threat Intel</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-container" id="projects">
+        <h2 class="section-header"><span>///</span> MISSION LOGS</h2>
+        <div class="grid-cards">
+            <div class="card">
+                <h3>Peer Dorm</h3>
+                <span class="card-subtitle">Research Paper (ASIANCON 2024)</span>
+                <p>Co-authored "Building 'Peer Dorm' - A Next-Generation Social Networking Experience." Accepted for oral presentation.</p>
+            </div>
+            <div class="card">
+                <h3>Java & Firebase Apps</h3>
+                <span class="card-subtitle">Software Development</span>
+                <p>Architected robust applications utilizing Google Firebase for backend infrastructure and Java for core logic.</p>
+                <a href="https://github.com/CyberCoder-IITM" target="_blank" class="card-link">
+                    View Code <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-container">
+        <h2 class="section-header"><span>///</span> CLEARANCE LEVEL</h2>
+        <div class="grid-cards">
+            <div class="card">
+                <h3>Boston University</h3>
+                <span class="card-subtitle">M.S. Computer Science | 2026</span>
+                <p>Specialized in Cybersecurity. Graduated Jan 2026.</p>
+            </div>
+            <div class="card">
+                <h3>IIT Madras</h3>
+                <span class="card-subtitle">B.S. Program</span>
+                <p>Data Science and Applications.</p>
+            </div>
+            <div class="card">
+                <h3>LPU</h3>
+                <span class="card-subtitle">Alumnus</span>
+                <p>Computer Science Engineering.</p>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align:center; padding: 40px; color:#64748b; font-size:0.8rem;">
+        <p>SECURE CONNECTION ESTABLISHED // ADNAN SYED 2026</p>
     </div>
 
     <script>
@@ -240,7 +308,6 @@
             canvas.width = width;
             canvas.height = height;
             lines = [];
-            
             for (let y = 0; y < height; y += gap) {
                 lines.push({
                     y: y,
@@ -255,36 +322,24 @@
         resize();
 
         function animate(t) {
-            ctx.fillStyle = '#020617';
-            ctx.fillRect(0, 0, width, height);
-            
+            ctx.clearRect(0, 0, width, height); 
             ctx.lineWidth = 1.5;
-
             lines.forEach((line, i) => {
                 ctx.beginPath();
-                
                 let distanceFromCenter = Math.abs((line.y - height/2) / (height/2));
-                
-                // Subtle Blue-Grey Waves
-                if (distanceFromCenter < 0.35) {
+                if (distanceFromCenter < 0.4) {
                     ctx.strokeStyle = `rgba(148, 163, 184, ${0.4 - distanceFromCenter})`; 
                 } else {
-                    ctx.strokeStyle = 'rgba(30, 41, 59, 0.2)'; 
+                    ctx.strokeStyle = 'rgba(30, 41, 59, 0.1)'; 
                 }
-
                 for (let x = 0; x < width; x += 15) {
-                    let y = line.y + Math.sin(x * 0.003 + t * line.speed + line.phase) * line.amplitude 
-                                   * Math.sin(x * 0.001); 
-                    
-                    if (x === 0) ctx.moveTo(x, y);
-                    else ctx.lineTo(x, y);
+                    let y = line.y + Math.sin(x * 0.003 + t * line.speed + line.phase) * line.amplitude * Math.sin(x * 0.001); 
+                    if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
                 }
                 ctx.stroke();
             });
-
             requestAnimationFrame(animate);
         }
-
         animate(0);
     </script>
 </body>

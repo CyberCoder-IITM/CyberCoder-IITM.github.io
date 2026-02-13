@@ -8,10 +8,9 @@
         :root {
             --bg-color: #020617;
             --text-color: #e2e8f0;
-            --accent-blue: #38bdf8;
-            --btn-teal: #0f766e;
-            --btn-orange: #c2410c;
-            --btn-pink: #be185d;
+            --accent-green: #4ade80;  /* For Projects */
+            --accent-yellow: #facc15; /* For Resume */
+            --accent-pink: #f43f5e;   /* For Contact */
         }
 
         body, html {
@@ -32,7 +31,7 @@
             top: 0;
             left: 0;
             z-index: 0;
-            opacity: 0.5;
+            opacity: 0.4;
         }
 
         .container {
@@ -64,49 +63,61 @@
         
         .role-text {
             font-size: clamp(1rem, 3vw, 1.2rem);
-            color: var(--accent-blue);
-            margin-bottom: 40px;
+            color: #94a3b8;
+            margin-bottom: 50px;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
 
-        /* The "Pill" Navigation Bar */
-        .pill-nav {
-            background: rgba(15, 23, 42, 0.6);
+        /* --- THE NEW FLOATING DOCK (Matches your Screenshot) --- */
+        .dock-container {
+            background: rgba(30, 41, 59, 0.4); /* Dark semi-transparent */
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 10px 20px;
-            border-radius: 50px;
-            display: flex;
-            gap: 15px;
-            backdrop-filter: blur(12px);
+            padding: 8px;
+            border-radius: 60px; /* Fully rounded pill */
+            display: inline-flex;
+            gap: 8px;
+            backdrop-filter: blur(15px);
             margin-bottom: 50px;
-            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.6);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
             flex-wrap: wrap;
             justify-content: center;
         }
 
-        .btn {
+        .dock-btn {
             padding: 12px 28px;
-            border-radius: 40px;
+            border-radius: 50px;
             text-decoration: none;
-            color: white;
             font-weight: bold;
             font-size: 0.95rem;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(2, 6, 23, 0.5); /* Very dark button bg */
+            border: 1px solid transparent;
         }
 
-        /* Midjourney-inspired Button Colors */
-        .btn-projects { background-color: var(--btn-teal); }
-        .btn-resume { background-color: var(--btn-orange); }
-        .btn-linkedin { background-color: var(--btn-pink); }
-        
-        .btn:hover {
-            filter: brightness(1.2);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        /* Specific Colors for each button */
+        .btn-projects { color: var(--accent-green); }
+        .btn-projects:hover { 
+            background-color: rgba(74, 222, 128, 0.1); 
+            border-color: var(--accent-green);
+            box-shadow: 0 0 15px rgba(74, 222, 128, 0.3);
+        }
+
+        .btn-resume { color: var(--accent-yellow); }
+        .btn-resume:hover { 
+            background-color: rgba(250, 204, 21, 0.1); 
+            border-color: var(--accent-yellow);
+            box-shadow: 0 0 15px rgba(250, 204, 21, 0.3);
+        }
+
+        .btn-contact { color: var(--accent-pink); }
+        .btn-contact:hover { 
+            background-color: rgba(244, 63, 94, 0.1); 
+            border-color: var(--accent-pink);
+            box-shadow: 0 0 15px rgba(244, 63, 94, 0.3);
         }
 
         /* Content Section */
@@ -114,43 +125,39 @@
             text-align: left;
             max-width: 600px;
             margin-top: 20px;
-            border-left: 3px solid var(--accent-blue);
+            border-left: 3px solid #334155;
             padding-left: 25px;
-            background: linear-gradient(90deg, rgba(2, 6, 23, 0.8) 0%, rgba(2, 6, 23, 0) 100%);
         }
 
         .section-title {
-            color: var(--accent-blue);
+            color: #cbd5e1;
             font-size: 1.1rem;
             margin-bottom: 12px;
             font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            letter-spacing: 1px;
         }
 
         p {
             line-height: 1.7;
-            color: #94a3b8;
+            color: #64748b;
             margin-bottom: 25px;
             font-size: 1rem;
         }
 
         a.text-link {
-            color: var(--text-color);
+            color: #94a3b8;
             text-decoration: none;
-            border-bottom: 1px solid var(--accent-blue);
-            padding-bottom: 2px;
+            border-bottom: 1px solid #475569;
             transition: color 0.3s;
         }
         
-        a.text-link:hover { color: var(--accent-blue); }
+        a.text-link:hover { color: var(--text-color); border-color: var(--text-color); }
 
-        @keyframes pulse { 50% { opacity: 0.8; } }
+        @keyframes pulse { 50% { opacity: 0.7; } }
 
         /* Mobile Adjustments */
         @media (max-width: 600px) {
-            .pill-nav {
+            .dock-container {
                 flex-direction: column;
                 width: 100%;
                 background: transparent;
@@ -159,8 +166,12 @@
                 padding: 0;
                 backdrop-filter: none;
             }
-            .btn { width: 100%; text-align: center; display: block; box-sizing: border-box; }
-            .content-section { margin-left: 10px; margin-right: 10px; }
+            .dock-btn { 
+                width: 100%; 
+                justify-content: center; 
+                background-color: rgba(30, 41, 59, 0.4);
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
@@ -172,10 +183,16 @@
         <div class="logo">Adnan Syed</div>
         <div class="role-text">Cybersecurity Analyst</div>
 
-        <div class="pill-nav">
-            <a href="https://github.com/CyberCoder-IITM" target="_blank" class="btn btn-projects">Projects</a>
-            <a href="resume.pdf" target="_blank" class="btn btn-resume">Resume</a>
-            <a href="https://www.linkedin.com/in/syedsq" target="_blank" class="btn btn-linkedin">LinkedIn</a>
+        <div class="dock-container">
+            <a href="https://github.com/CyberCoder-IITM" target="_blank" class="dock-btn btn-projects">
+                <span>&#128187;</span> Projects
+            </a>
+            <a href="resume.pdf" target="_blank" class="dock-btn btn-resume">
+                <span>&#128196;</span> Resume
+            </a>
+            <a href="https://www.linkedin.com/in/syedsq" target="_blank" class="dock-btn btn-contact">
+                <span>&#128279;</span> LinkedIn
+            </a>
         </div>
 
         <div class="content-section">
@@ -199,7 +216,7 @@
 
         let width, height;
         let lines = [];
-        const gap = 20; // Distance between lines
+        const gap = 20;
 
         function resize() {
             width = window.innerWidth;
@@ -208,7 +225,6 @@
             canvas.height = height;
             lines = [];
             
-            // Generate lines for wave effect
             for (let y = 0; y < height; y += gap) {
                 lines.push({
                     y: y,
@@ -223,7 +239,7 @@
         resize();
 
         function animate(t) {
-            ctx.fillStyle = '#020617'; // Clear with background color
+            ctx.fillStyle = '#020617';
             ctx.fillRect(0, 0, width, height);
             
             ctx.lineWidth = 1.5;
@@ -231,17 +247,16 @@
             lines.forEach((line, i) => {
                 ctx.beginPath();
                 
-                // Calculate distance from center to create glowing effect
                 let distanceFromCenter = Math.abs((line.y - height/2) / (height/2));
                 
+                // Subtle Blue-Grey Waves
                 if (distanceFromCenter < 0.35) {
-                    ctx.strokeStyle = `rgba(56, 189, 248, ${0.6 - distanceFromCenter})`; // Bright Blue center
+                    ctx.strokeStyle = `rgba(148, 163, 184, ${0.5 - distanceFromCenter})`; 
                 } else {
-                    ctx.strokeStyle = 'rgba(30, 41, 59, 0.2)'; // Faded background lines
+                    ctx.strokeStyle = 'rgba(30, 41, 59, 0.2)'; 
                 }
 
                 for (let x = 0; x < width; x += 15) {
-                    // Wave Math: modulated sine wave
                     let y = line.y + Math.sin(x * 0.003 + t * line.speed + line.phase) * line.amplitude 
                                    * Math.sin(x * 0.001); 
                     

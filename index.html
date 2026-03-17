@@ -1,468 +1,649 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Adnan Syed | Cybersecurity</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
     <style>
-        :root {
-            --bg-color: #020617;
-            --text-color: #e2e8f0;
-            --accent-green: #2dd4bf;  /* Teal for Projects */
-            --accent-yellow: #fbbf24; /* Amber for Resume */
-            --accent-pink: #f472b6;   /* Pink for LinkedIn */
-        }
+      :root {
+        --bg-color: #020617;
+        --text-color: #e2e8f0;
+        --accent-green: #2dd4bf; /* Teal for Projects */
+        --accent-yellow: #fbbf24; /* Amber for Resume */
+        --accent-pink: #f472b6; /* Pink for LinkedIn */
+      }
 
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--bg-color);
-            font-family: 'Courier New', Courier, monospace;
-            color: var(--text-color);
-            overflow-x: hidden;
-        }
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--bg-color);
+        font-family: "Courier New", Courier, monospace;
+        color: var(--text-color);
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
 
-        /* The Wave Background */
-        canvas {
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 0;
-            opacity: 0.4;
-        }
+      /* The Wave Background */
+      canvas {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        opacity: 0.4;
+      }
 
-        .container {
-            position: relative;
-            z-index: 10;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            justify-content: center;
-        }
+      .container {
+        position: relative;
+        z-index: 10;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        justify-content: center;
+      }
 
-        /* --- NEW HOLOGRAPHIC GLITCH LOGO --- */
-        .logo {
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: var(--text-color); /* Filled color for better visibility */
-            position: relative;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 0px rgba(45, 212, 191, 0.3), -2px -2px 0px rgba(244, 114, 182, 0.3);
-            transition: all 0.3s ease;
-            cursor: default;
-        }
+      /* --- NEW HOLOGRAPHIC GLITCH LOGO --- */
+      .logo {
+        font-size: clamp(3rem, 8vw, 5rem);
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        color: var(--text-color); /* Filled color for better visibility */
+        position: relative;
+        margin-bottom: 10px;
+        text-shadow:
+          2px 2px 0px rgba(45, 212, 191, 0.3),
+          -2px -2px 0px rgba(244, 114, 182, 0.3);
+        transition: all 0.3s ease;
+        cursor: default;
+      }
 
-        .logo:hover {
-            animation: glitch 0.4s cubic-bezier(.25, .46, .45, .94) both infinite;
-            color: var(--accent-green);
-        }
+      .logo:hover {
+        animation: glitch 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both
+          infinite;
+        color: var(--accent-green);
+      }
 
-        @keyframes glitch {
-            0% { transform: translate(0) }
-            20% { transform: translate(-3px, 3px) }
-            40% { transform: translate(-3px, -3px) }
-            60% { transform: translate(3px, 3px) }
-            80% { transform: translate(3px, -3px) }
-            100% { transform: translate(0) }
+      @keyframes glitch {
+        0% {
+          transform: translate(0);
         }
-        
-        .role-text {
-            font-size: clamp(1rem, 3vw, 1.2rem);
-            color: #94a3b8;
-            margin-bottom: 50px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        20% {
+          transform: translate(-3px, 3px);
         }
+        40% {
+          transform: translate(-3px, -3px);
+        }
+        60% {
+          transform: translate(3px, 3px);
+        }
+        80% {
+          transform: translate(3px, -3px);
+        }
+        100% {
+          transform: translate(0);
+        }
+      }
 
-        /* --- THE FLOATING DOCK --- */
+      .role-text {
+        font-size: clamp(1rem, 3vw, 1.2rem);
+        color: #94a3b8;
+        margin-bottom: 50px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      /* --- THE FLOATING DOCK --- */
+      .dock-container {
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 10px;
+        border-radius: 60px;
+        display: inline-flex;
+        gap: 12px;
+        backdrop-filter: blur(15px);
+        margin-bottom: 50px;
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .dock-btn {
+        padding: 12px 28px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background-color: rgba(2, 6, 23, 0.5);
+        border: 1px solid transparent;
+        letter-spacing: 0.5px;
+      }
+
+      /* Icon Styling */
+      .dock-btn i {
+        font-size: 1.1rem;
+      }
+
+      /* Projects (Teal) */
+      .btn-projects {
+        color: var(--accent-green);
+      }
+      .btn-projects:hover {
+        background-color: rgba(45, 212, 191, 0.1);
+        border-color: var(--accent-green);
+        box-shadow: 0 0 15px rgba(45, 212, 191, 0.2);
+        transform: translateY(-2px);
+      }
+
+      /* Resume (Amber) */
+      .btn-resume {
+        color: var(--accent-yellow);
+      }
+      .btn-resume:hover {
+        background-color: rgba(251, 191, 36, 0.1);
+        border-color: var(--accent-yellow);
+        box-shadow: 0 0 15px rgba(251, 191, 36, 0.2);
+        transform: translateY(-2px);
+      }
+
+      /* LinkedIn (Pink) */
+      .btn-contact {
+        color: var(--accent-pink);
+      }
+      .btn-contact:hover {
+        background-color: rgba(244, 114, 182, 0.1);
+        border-color: var(--accent-pink);
+        box-shadow: 0 0 15px rgba(244, 114, 182, 0.2);
+        transform: translateY(-2px);
+      }
+
+      /* Content Section */
+      .content-section {
+        text-align: left;
+        max-width: 600px;
+        margin-top: 20px;
+        border-left: 2px solid #334155;
+        padding-left: 25px;
+      }
+
+      .section-title {
+        color: #cbd5e1;
+        font-size: 1rem;
+        margin-bottom: 12px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        opacity: 0.8;
+      }
+
+      p {
+        line-height: 1.6;
+        color: #64748b;
+        margin-bottom: 25px;
+        font-size: 0.95rem;
+      }
+
+      a.text-link {
+        color: #94a3b8;
+        text-decoration: none;
+        border-bottom: 1px solid #475569;
+        transition: color 0.3s;
+      }
+
+      a.text-link:hover {
+        color: var(--text-color);
+        border-color: var(--text-color);
+      }
+
+      @keyframes pulse {
+        50% {
+          opacity: 0.7;
+        }
+      }
+
+      /* Mobile Adjustments */
+      @media (max-width: 600px) {
         .dock-container {
-            background: rgba(15, 23, 42, 0.6); 
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 10px;
-            border-radius: 60px; 
-            display: inline-flex;
-            gap: 12px;
-            backdrop-filter: blur(15px);
-            margin-bottom: 50px;
-            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.6);
-            flex-wrap: wrap;
-            justify-content: center;
+          flex-direction: column;
+          width: 100%;
+          background: transparent;
+          border: none;
+          box-shadow: none;
+          padding: 0;
+          backdrop-filter: none;
         }
-
         .dock-btn {
-            padding: 12px 28px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background-color: rgba(2, 6, 23, 0.5); 
-            border: 1px solid transparent;
-            letter-spacing: 0.5px;
+          width: 100%;
+          justify-content: center;
+          background-color: rgba(30, 41, 59, 0.5);
+          margin-bottom: 10px;
+          padding: 15px;
         }
+      }
 
-        /* Icon Styling */
-        .dock-btn i {
-            font-size: 1.1rem;
-        }
+      /* --- NEW SECTION STYLES --- */
+      .section-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 80px 20px;
+        position: relative;
+        z-index: 10;
+      }
 
-        /* Projects (Teal) */
-        .btn-projects { color: var(--accent-green); }
-        .btn-projects:hover { 
-            background-color: rgba(45, 212, 191, 0.1); 
-            border-color: var(--accent-green);
-            box-shadow: 0 0 15px rgba(45, 212, 191, 0.2);
-            transform: translateY(-2px);
-        }
+      .section-header {
+        font-size: 2rem;
+        color: var(--text-color);
+        margin-bottom: 30px;
+        border-bottom: 1px solid #334155;
+        padding-bottom: 10px;
+        text-align: left;
+      }
 
-        /* Resume (Amber) */
-        .btn-resume { color: var(--accent-yellow); }
-        .btn-resume:hover { 
-            background-color: rgba(251, 191, 36, 0.1); 
-            border-color: var(--accent-yellow);
-            box-shadow: 0 0 15px rgba(251, 191, 36, 0.2);
-            transform: translateY(-2px);
-        }
+      .section-header span {
+        color: var(--accent-green);
+        margin-right: 10px;
+      }
 
-        /* LinkedIn (Pink) */
-        .btn-contact { color: var(--accent-pink); }
-        .btn-contact:hover { 
-            background-color: rgba(244, 114, 182, 0.1); 
-            border-color: var(--accent-pink);
-            box-shadow: 0 0 15px rgba(244, 114, 182, 0.2);
-            transform: translateY(-2px);
-        }
+      .grid-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        text-align: left;
+      }
 
-        /* Content Section */
-        .content-section {
-            text-align: left;
-            max-width: 600px;
-            margin-top: 20px;
-            border-left: 2px solid #334155;
-            padding-left: 25px;
-        }
+      .card {
+        background: rgba(15, 23, 42, 0.6); /* Dark Glass */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 25px;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        transition: transform 0.3s ease;
+      }
 
-        .section-title {
-            color: #cbd5e1;
-            font-size: 1rem;
-            margin-bottom: 12px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            opacity: 0.8;
-        }
+      .card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-green);
+      }
 
-        p {
-            line-height: 1.6;
-            color: #64748b;
-            margin-bottom: 25px;
-            font-size: 0.95rem;
-        }
+      .card h3 {
+        color: var(--accent-green);
+        margin-top: 0;
+        font-size: 1.2rem;
+      }
+      .card p {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+      }
 
-        a.text-link {
-            color: #94a3b8;
-            text-decoration: none;
-            border-bottom: 1px solid #475569;
-            transition: color 0.3s;
-        }
-        
-        a.text-link:hover { color: var(--text-color); border-color: var(--text-color); }
+      .skill-tag {
+        display: inline-block;
+        background: rgba(45, 212, 191, 0.1);
+        color: var(--accent-green);
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        margin: 0 5px 5px 0;
+        border: 1px solid rgba(45, 212, 191, 0.2);
+      }
 
-        @keyframes pulse { 50% { opacity: 0.7; } }
+      /* Project Card Specific Styles */
+      .project-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
 
-        /* Mobile Adjustments */
-        @media (max-width: 600px) {
-            .dock-container {
-                flex-direction: column;
-                width: 100%;
-                background: transparent;
-                border: none;
-                box-shadow: none;
-                padding: 0;
-                backdrop-filter: none;
-            }
-            .dock-btn { 
-                width: 100%; 
-                justify-content: center; 
-                background-color: rgba(30, 41, 59, 0.5);
-                margin-bottom: 10px;
-                padding: 15px;
-            }
-        }
+      .project-card p {
+        flex-grow: 1;
+        margin-bottom: 20px;
+      }
 
-        /* --- NEW SECTION STYLES --- */
-        .section-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 80px 20px;
-            position: relative;
-            z-index: 10;
-        }
+      .project-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--accent-green);
+        text-decoration: none;
+        font-weight: 600;
+        padding: 10px 16px;
+        border: 1px solid rgba(45, 212, 191, 0.3);
+        border-radius: 8px;
+        background: rgba(45, 212, 191, 0.05);
+        transition: all 0.3s ease;
+        width: fit-content;
+      }
 
-        .section-header {
-            font-size: 2rem;
-            color: var(--text-color);
-            margin-bottom: 30px;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 10px;
-            text-align: left;
-        }
-        
-        .section-header span { color: var(--accent-green); margin-right: 10px; }
+      .project-link:hover {
+        background: rgba(45, 212, 191, 0.15);
+        border-color: var(--accent-green);
+        box-shadow: 0 0 10px rgba(45, 212, 191, 0.2);
+        transform: translateX(3px);
+      }
 
-        .grid-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            text-align: left;
-        }
+      .project-link i {
+        font-size: 0.9rem;
+      }
 
-        .card {
-            background: rgba(15, 23, 42, 0.6); /* Dark Glass */
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 25px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease;
-        }
+      /* --- THEME TOGGLE BUTTON STYLE --- */
+      .theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--accent-yellow);
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+      }
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-green);
-        }
+      .theme-toggle:hover {
+        transform: scale(1.1);
+      }
 
-        .card h3 { color: var(--accent-green); margin-top: 0; font-size: 1.2rem; }
-        .card p { font-size: 0.9rem; margin-bottom: 15px; }
+      /* --- LIGHT MODE VARIABLES --- */
+      body.light-mode {
+        --bg-color: #f8fafc; /* Light grey/white background */
+        --text-color: #0f172a; /* Dark text */
+        --accent-green: #0d9488; /* Darker teal for readability */
+      }
 
-        .skill-tag {
-            display: inline-block;
-            background: rgba(45, 212, 191, 0.1);
-            color: var(--accent-green);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin: 0 5px 5px 0;
-            border: 1px solid rgba(45, 212, 191, 0.2);
-        }
+      /* Adjust glass cards for light mode */
+      body.light-mode .dock-container,
+      body.light-mode .card,
+      body.light-mode .theme-toggle {
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+      }
 
+      body.light-mode .dock-btn {
+        background: rgba(255, 255, 255, 0.5);
+      }
 
+      body.light-mode .project-link {
+        background: rgba(13, 148, 136, 0.05);
+        border-color: rgba(13, 148, 136, 0.3);
+      }
 
-
-        /* --- THEME TOGGLE BUTTON STYLE --- */
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--accent-yellow);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 100;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.2rem;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        /* --- LIGHT MODE VARIABLES --- */
-        body.light-mode {
-            --bg-color: #f8fafc; /* Light grey/white background */
-            --text-color: #0f172a; /* Dark text */
-            --accent-green: #0d9488; /* Darker teal for readability */
-        }
-
-        /* Adjust glass cards for light mode */
-        body.light-mode .dock-container,
-        body.light-mode .card,
-        body.light-mode .theme-toggle {
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
-        }
-        
-        body.light-mode .dock-btn {
-            background: rgba(255, 255, 255, 0.5);
-        }
-        
+      body.light-mode .project-link:hover {
+        background: rgba(13, 148, 136, 0.15);
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <button id="theme-btn" class="theme-toggle">
-        <i class="fa-solid fa-sun"></i>
+      <i class="fa-solid fa-sun"></i>
     </button>
 
     <canvas id="waveCanvas"></canvas>
 
     <div class="container">
-        <div class="logo">Adnan Syed</div>
-        <div class="role-text">Cybersecurity Analyst</div>
+      <div class="logo">Adnan Syed</div>
+      <div class="role-text">Cybersecurity Analyst</div>
 
-        <div class="dock-container">
-            <a href="https://github.com/CyberCoder-IITM" target="_blank" class="dock-btn btn-projects">
-                <i class="fa-solid fa-terminal"></i> Projects
-            </a>
-            <a href="resume.pdf" target="_blank" class="dock-btn btn-resume">
-                <i class="fa-solid fa-file-arrow-down"></i> Resume
-            </a>
-            <a href="https://www.linkedin.com/in/syedsq" target="_blank" class="dock-btn btn-contact">
-                <i class="fa-brands fa-linkedin"></i> LinkedIn
-            </a>
-        </div>
+      <div class="dock-container">
+        <a href="#projects-section" class="dock-btn btn-projects">
+          <i class="fa-solid fa-terminal"></i> Projects
+        </a>
+        <a href="resume.pdf" target="_blank" class="dock-btn btn-resume">
+          <i class="fa-solid fa-file-arrow-down"></i> Resume
+        </a>
+        <a
+          href="https://www.linkedin.com/in/syedsq"
+          target="_blank"
+          class="dock-btn btn-contact"
+        >
+          <i class="fa-brands fa-linkedin"></i> LinkedIn
+        </a>
+      </div>
 
-        <div class="content-section">
-            <div class="section-title">/// System Status</div>
+      <div class="content-section">
+        <div class="section-title">/// System Status</div>
+        <p>
+          I am a Cybersecurity Analyst focused on infrastructure defense, Red
+          Teaming, and penetration testing. My goal is to understand systems
+          better than the attackers do.
+        </p>
+
+        <div class="section-title">/// Connect</div>
+        <p>
+          For inquiries, security audits, or collaboration:<br />
+          <a href="mailto:saleeq1269@gmail.com" class="text-link"
+            >saleeq1269@gmail.com</a
+          >
+        </p>
+      </div>
+
+      <div class="section-container">
+        <h2 class="section-header"><span>///</span> ARSENAL</h2>
+        <div class="grid-cards">
+          <div class="card">
+            <h3><i class="fa-solid fa-shield-halved"></i> Cyber Defense</h3>
             <p>
-                I am a Cybersecurity Analyst focused on infrastructure defense, Red Teaming, and penetration testing. 
-                My goal is to understand systems better than the attackers do.
+              Specialized in offensive security and network defense protocols.
             </p>
-            
-            <div class="section-title">/// Connect</div>
-            <p>
-                For inquiries, security audits, or collaboration:<br>
-                <a href="mailto:saleeq1269@gmail.com" class="text-link">saleeq1269@gmail.com</a>
-            </p>
-        </div>
-
-        <div class="section-container">
-            <h2 class="section-header"><span>///</span> ARSENAL</h2>
-            <div class="grid-cards">
-                
-                <div class="card">
-                    <h3><i class="fa-solid fa-shield-halved"></i> Cyber Defense</h3>
-                    <p>Specialized in offensive security and network defense protocols.</p>
-                    <div>
-                        <span class="skill-tag">Burp Suite</span>
-                        <span class="skill-tag">Nmap</span>
-                        <span class="skill-tag">Wireshark</span>
-                        <span class="skill-tag">Metasploit</span>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3><i class="fa-solid fa-code"></i> Development</h3>
-                    <p>Building secure infrastructure and automating security tasks.</p>
-                    <div>
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Firebase</span>
-                        <span class="skill-tag">Bash</span>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3><i class="fa-solid fa-microchip"></i> Future Tech</h3>
-                    <p>Researching AI safety and system vulnerabilities.</p>
-                    <div>
-                        <span class="skill-tag">Machine Learning</span>
-                        <span class="skill-tag">AI Safety</span>
-                        <span class="skill-tag">Threat Intel</span>
-                    </div>
-                </div>
-
+            <div>
+              <span class="skill-tag">Burp Suite</span>
+              <span class="skill-tag">Nmap</span>
+              <span class="skill-tag">Wireshark</span>
+              <span class="skill-tag">Metasploit</span>
             </div>
+          </div>
+
+          <div class="card">
+            <h3><i class="fa-solid fa-code"></i> Development</h3>
+            <p>Building secure infrastructure and automating security tasks.</p>
+            <div>
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Firebase</span>
+              <span class="skill-tag">Bash</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3><i class="fa-solid fa-microchip"></i> Future Tech</h3>
+            <p>Researching AI safety and system vulnerabilities.</p>
+            <div>
+              <span class="skill-tag">Machine Learning</span>
+              <span class="skill-tag">AI Safety</span>
+              <span class="skill-tag">Threat Intel</span>
+            </div>
+          </div>
         </div>
-        
+      </div>
+
+      <!-- Projects Section -->
+      <div class="section-container" id="projects-section">
+        <h2 class="section-header"><span>///</span> TOP PROJECTS</h2>
+        <div class="grid-cards">
+          <div class="card project-card">
+            <h3>
+              <i class="fa-solid fa-virus"></i> Epidemic Surveillance Engine
+            </h3>
+            <p>
+              Cloud-native epidemic intelligence platform with real-time health
+              event ingestion, streaming analytics, anomaly detection, and
+              outbreak forecasting using NiFi, Kafka, and Spark.
+            </p>
+            <div style="margin-bottom: 15px">
+              <span class="skill-tag">Apache Kafka</span>
+              <span class="skill-tag">Apache Spark</span>
+              <span class="skill-tag">Apache NiFi</span>
+              <span class="skill-tag">MongoDB</span>
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">Kubernetes</span>
+            </div>
+            <a
+              href="https://github.com/CyberCoder-IITM/epidemic-surveillance-engine"
+              target="_blank"
+              class="project-link"
+            >
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> View
+              Repository
+            </a>
+          </div>
+
+          <div class="card project-card">
+            <h3><i class="fa-solid fa-gauge-high"></i> HaloSpec</h3>
+            <p>
+              High-performance Rust benchmark harness for speculative decoding
+              with adaptive draft_length strategies. Measures latency/throughput
+              tradeoffs and stability under CPU load contention.
+            </p>
+            <div style="margin-bottom: 15px">
+              <span class="skill-tag">Rust</span>
+              <span class="skill-tag">Performance Benchmarking</span>
+              <span class="skill-tag">Load Injection</span>
+              <span class="skill-tag">Statistics</span>
+            </div>
+            <a
+              href="https://github.com/CyberCoder-IITM/HaloSpec"
+              target="_blank"
+              class="project-link"
+            >
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> View
+              Repository
+            </a>
+          </div>
+
+          <div class="card project-card">
+            <h3>
+              <i class="fa-solid fa-wand-magic-sparkles"></i> Monsters & Heroes
+              Battle Game
+            </h3>
+            <p>
+              Turn-based RPG battle system featuring multiple hero classes,
+              dynamic monster types, strategic item management, and complex
+              combat mechanics built entirely in Java.
+            </p>
+            <div style="margin-bottom: 15px">
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">OOP</span>
+              <span class="skill-tag">Game Logic</span>
+              <span class="skill-tag">RPG</span>
+            </div>
+            <a
+              href="https://github.com/CyberCoder-IITM/monsters-and-heroes-battle-game"
+              target="_blank"
+              class="project-link"
+            >
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> View
+              Repository
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
     <script>
+      // --- THEME TOGGLE LOGIC ---
+      const themeBtn = document.getElementById("theme-btn");
+      themeBtn.addEventListener("click", () => {
+        document.body.classList.toggle("light-mode");
 
-        // --- THEME TOGGLE LOGIC ---
-        const themeBtn = document.getElementById('theme-btn');
-        themeBtn.addEventListener('click', () => {
-            document.body.classList.toggle('light-mode');
-            
-            // Switch the icon between Sun and Moon
-            if(document.body.classList.contains('light-mode')) {
-                themeBtn.innerHTML = '<i class="fa-solid fa-moon" style="color: #64748b;"></i>';
-            } else {
-                themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-            }
+        // Switch the icon between Sun and Moon
+        if (document.body.classList.contains("light-mode")) {
+          themeBtn.innerHTML =
+            '<i class="fa-solid fa-moon" style="color: #64748b;"></i>';
+        } else {
+          themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+        }
+      });
+
+      const canvas = document.getElementById("waveCanvas");
+      const ctx = canvas.getContext("2d");
+
+      let width, height;
+      let lines = [];
+      const gap = 20;
+
+      function resize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+        lines = [];
+
+        for (let y = 0; y < height; y += gap) {
+          lines.push({
+            y: y,
+            amplitude: Math.random() * 20 + 10,
+            speed: Math.random() * 0.002 + 0.001,
+            phase: Math.random() * Math.PI * 2,
+          });
+        }
+      }
+
+      window.addEventListener("resize", resize);
+      resize();
+
+      function animate(t) {
+        // ctx.fillStyle = '#020617';
+        // ctx.fillRect(0, 0, width, height);
+        ctx.clearRect(0, 0, width, height); // This makes the canvas transparent
+
+        ctx.lineWidth = 1.5;
+
+        lines.forEach((line, i) => {
+          ctx.beginPath();
+
+          let distanceFromCenter = Math.abs(
+            (line.y - height / 2) / (height / 2),
+          );
+
+          // Subtle Blue-Grey Waves
+          if (distanceFromCenter < 0.35) {
+            ctx.strokeStyle = `rgba(148, 163, 184, ${0.4 - distanceFromCenter})`;
+          } else {
+            ctx.strokeStyle = "rgba(30, 41, 59, 0.2)";
+          }
+
+          for (let x = 0; x < width; x += 15) {
+            let y =
+              line.y +
+              Math.sin(x * 0.003 + t * line.speed + line.phase) *
+                line.amplitude *
+                Math.sin(x * 0.001);
+
+            if (x === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
         });
-        
-        const canvas = document.getElementById('waveCanvas');
-        const ctx = canvas.getContext('2d');
 
-        let width, height;
-        let lines = [];
-        const gap = 20;
+        requestAnimationFrame(animate);
+      }
 
-        function resize() {
-            width = window.innerWidth;
-            height = window.innerHeight;
-            canvas.width = width;
-            canvas.height = height;
-            lines = [];
-            
-            for (let y = 0; y < height; y += gap) {
-                lines.push({
-                    y: y,
-                    amplitude: Math.random() * 20 + 10,
-                    speed: Math.random() * 0.002 + 0.001,
-                    phase: Math.random() * Math.PI * 2
-                });
-            }
-        }
-
-        window.addEventListener('resize', resize);
-        resize();
-
-        function animate(t) {
-            // ctx.fillStyle = '#020617';
-            // ctx.fillRect(0, 0, width, height);
-            ctx.clearRect(0, 0, width, height); // This makes the canvas transparent
-            
-            ctx.lineWidth = 1.5;
-
-            lines.forEach((line, i) => {
-                ctx.beginPath();
-                
-                let distanceFromCenter = Math.abs((line.y - height/2) / (height/2));
-                
-                // Subtle Blue-Grey Waves
-                if (distanceFromCenter < 0.35) {
-                    ctx.strokeStyle = `rgba(148, 163, 184, ${0.4 - distanceFromCenter})`; 
-                } else {
-                    ctx.strokeStyle = 'rgba(30, 41, 59, 0.2)'; 
-                }
-
-                for (let x = 0; x < width; x += 15) {
-                    let y = line.y + Math.sin(x * 0.003 + t * line.speed + line.phase) * line.amplitude 
-                                   * Math.sin(x * 0.001); 
-                    
-                    if (x === 0) ctx.moveTo(x, y);
-                    else ctx.lineTo(x, y);
-                }
-                ctx.stroke();
-            });
-
-            requestAnimationFrame(animate);
-        }
-
-        animate(0);
+      animate(0);
     </script>
-</body>
+  </body>
 </html>

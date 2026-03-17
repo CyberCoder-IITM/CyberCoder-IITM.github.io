@@ -259,9 +259,62 @@
             margin: 0 5px 5px 0;
             border: 1px solid rgba(45, 212, 191, 0.2);
         }
+
+
+
+
+        /* --- THEME TOGGLE BUTTON STYLE --- */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--accent-yellow);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- LIGHT MODE VARIABLES --- */
+        body.light-mode {
+            --bg-color: #f8fafc; /* Light grey/white background */
+            --text-color: #0f172a; /* Dark text */
+            --accent-green: #0d9488; /* Darker teal for readability */
+        }
+
+        /* Adjust glass cards for light mode */
+        body.light-mode .dock-container,
+        body.light-mode .card,
+        body.light-mode .theme-toggle {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+        }
+        
+        body.light-mode .dock-btn {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        
     </style>
 </head>
 <body>
+
+    <button id="theme-btn" class="theme-toggle">
+        <i class="fa-solid fa-sun"></i>
+    </button>
 
     <canvas id="waveCanvas"></canvas>
 
@@ -336,6 +389,21 @@
         
     </div>
     <script>
+
+        <script>
+        // --- THEME TOGGLE LOGIC ---
+        const themeBtn = document.getElementById('theme-btn');
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            
+            // Switch the icon between Sun and Moon
+            if(document.body.classList.contains('light-mode')) {
+                themeBtn.innerHTML = '<i class="fa-solid fa-moon" style="color: #64748b;"></i>';
+            } else {
+                themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+            }
+        });
+        
         const canvas = document.getElementById('waveCanvas');
         const ctx = canvas.getContext('2d');
 
@@ -364,8 +432,9 @@
         resize();
 
         function animate(t) {
-            ctx.fillStyle = '#020617';
-            ctx.fillRect(0, 0, width, height);
+            // ctx.fillStyle = '#020617';
+            // ctx.fillRect(0, 0, width, height);
+            ctx.clearRect(0, 0, width, height); // This makes the canvas transparent
             
             ctx.lineWidth = 1.5;
 

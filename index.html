@@ -1,649 +1,1400 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <title>Adnan Syed | Cybersecurity</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Adnan Syed</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;700;800;900&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-    <style>
-      :root {
-        --bg-color: #020617;
-        --text-color: #e2e8f0;
-        --accent-green: #2dd4bf; /* Teal for Projects */
-        --accent-yellow: #fbbf24; /* Amber for Resume */
-        --accent-pink: #f472b6; /* Pink for LinkedIn */
-      }
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-      body,
-      html {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        background-color: var(--bg-color);
-        font-family: "Courier New", Courier, monospace;
-        color: var(--text-color);
-        overflow-x: hidden;
-        scroll-behavior: smooth;
-      }
+    :root {
+      /* CYBER MODE (default) */
+      --bg: #050a0e;
+      --bg2: #0a1628;
+      --surface: rgba(10, 22, 40, 0.7);
+      --border: rgba(0, 255, 153, 0.12);
+      --text: #e8f4f8;
+      --muted: #4a6580;
+      --accent: #00ff99;
+      --accent2: #ff2d5b;
+      --accent3: #00d4ff;
+      --glow: 0 0 20px rgba(0,255,153,0.25);
+      --glow2: 0 0 20px rgba(255,45,91,0.25);
+      --font-display: 'Syne', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --mode: 'cyber';
+    }
 
-      /* The Wave Background */
-      canvas {
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 0;
-        opacity: 0.4;
-      }
+    body.sde-mode {
+      --bg: #06050f;
+      --bg2: #0e0a1f;
+      --surface: rgba(14, 10, 31, 0.7);
+      --border: rgba(120, 80, 255, 0.15);
+      --text: #ede8ff;
+      --muted: #5a4a7a;
+      --accent: #7c4dff;
+      --accent2: #00d4ff;
+      --accent3: #ff6b9d;
+      --glow: 0 0 20px rgba(124,77,255,0.3);
+      --glow2: 0 0 20px rgba(0,212,255,0.25);
+    }
 
-      .container {
-        position: relative;
-        z-index: 10;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 40px 20px;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-height: 100vh;
-        justify-content: center;
-      }
+    html { scroll-behavior: smooth; }
 
-      /* --- NEW HOLOGRAPHIC GLITCH LOGO --- */
-      .logo {
-        font-size: clamp(3rem, 8vw, 5rem);
-        font-weight: 900;
-        text-transform: uppercase;
-        letter-spacing: 4px;
-        color: var(--text-color); /* Filled color for better visibility */
-        position: relative;
-        margin-bottom: 10px;
-        text-shadow:
-          2px 2px 0px rgba(45, 212, 191, 0.3),
-          -2px -2px 0px rgba(244, 114, 182, 0.3);
-        transition: all 0.3s ease;
-        cursor: default;
-      }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-mono);
+      overflow-x: hidden;
+      transition: background 0.6s ease, color 0.4s ease;
+    }
 
-      .logo:hover {
-        animation: glitch 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both
-          infinite;
-        color: var(--accent-green);
-      }
+    /* ─── NOISE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.6;
+    }
 
-      @keyframes glitch {
-        0% {
-          transform: translate(0);
-        }
-        20% {
-          transform: translate(-3px, 3px);
-        }
-        40% {
-          transform: translate(-3px, -3px);
-        }
-        60% {
-          transform: translate(3px, 3px);
-        }
-        80% {
-          transform: translate(3px, -3px);
-        }
-        100% {
-          transform: translate(0);
-        }
-      }
+    /* ─── CANVAS ─── */
+    #bg-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.35;
+      transition: opacity 0.6s;
+    }
 
-      .role-text {
-        font-size: clamp(1rem, 3vw, 1.2rem);
-        color: #94a3b8;
-        margin-bottom: 50px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-      }
+    /* ─── MODE SWITCHER ─── */
+    .mode-switcher {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 5px;
+      backdrop-filter: blur(20px);
+      box-shadow: var(--glow);
+      transition: box-shadow 0.4s;
+    }
 
-      /* --- THE FLOATING DOCK --- */
-      .dock-container {
-        background: rgba(15, 23, 42, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 10px;
-        border-radius: 60px;
-        display: inline-flex;
-        gap: 12px;
-        backdrop-filter: blur(15px);
-        margin-bottom: 50px;
-        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
-        flex-wrap: wrap;
-        justify-content: center;
-      }
+    .mode-btn {
+      padding: 8px 18px;
+      border-radius: 40px;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      background: transparent;
+      color: var(--muted);
+    }
 
-      .dock-btn {
-        padding: 12px 28px;
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 0.9rem;
-        transition: all 0.2s ease;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        background-color: rgba(2, 6, 23, 0.5);
-        border: 1px solid transparent;
-        letter-spacing: 0.5px;
-      }
+    .mode-btn.active {
+      background: var(--accent);
+      color: var(--bg);
+    }
 
-      /* Icon Styling */
-      .dock-btn i {
-        font-size: 1.1rem;
-      }
+    body.sde-mode .mode-btn.active { color: #fff; }
 
-      /* Projects (Teal) */
-      .btn-projects {
-        color: var(--accent-green);
-      }
-      .btn-projects:hover {
-        background-color: rgba(45, 212, 191, 0.1);
-        border-color: var(--accent-green);
-        box-shadow: 0 0 15px rgba(45, 212, 191, 0.2);
-        transform: translateY(-2px);
-      }
+    /* ─── LAYOUT ─── */
+    main {
+      position: relative;
+      z-index: 10;
+    }
 
-      /* Resume (Amber) */
-      .btn-resume {
-        color: var(--accent-yellow);
-      }
-      .btn-resume:hover {
-        background-color: rgba(251, 191, 36, 0.1);
-        border-color: var(--accent-yellow);
-        box-shadow: 0 0 15px rgba(251, 191, 36, 0.2);
-        transform: translateY(-2px);
-      }
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px 40px;
+      text-align: center;
+      position: relative;
+    }
 
-      /* LinkedIn (Pink) */
-      .btn-contact {
-        color: var(--accent-pink);
-      }
-      .btn-contact:hover {
-        background-color: rgba(244, 114, 182, 0.1);
-        border-color: var(--accent-pink);
-        box-shadow: 0 0 15px rgba(244, 114, 182, 0.2);
-        transform: translateY(-2px);
-      }
+    /* mode badge */
+    .mode-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 6px 16px;
+      border-radius: 40px;
+      margin-bottom: 32px;
+      background: rgba(0,0,0,0.3);
+      transition: all 0.4s ease;
+    }
 
-      /* Content Section */
-      .content-section {
-        text-align: left;
-        max-width: 600px;
-        margin-top: 20px;
-        border-left: 2px solid #334155;
-        padding-left: 25px;
-      }
+    .mode-badge .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: blink 1.4s infinite;
+    }
 
-      .section-title {
-        color: #cbd5e1;
-        font-size: 1rem;
-        margin-bottom: 12px;
-        font-weight: bold;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        opacity: 0.8;
-      }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
 
-      p {
-        line-height: 1.6;
-        color: #64748b;
-        margin-bottom: 25px;
-        font-size: 0.95rem;
-      }
+    /* name */
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 10vw, 8rem);
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -2px;
+      color: var(--text);
+      margin-bottom: 16px;
+      position: relative;
+    }
 
-      a.text-link {
-        color: #94a3b8;
-        text-decoration: none;
-        border-bottom: 1px solid #475569;
-        transition: color 0.3s;
-      }
+    .hero-name .first { display: block; }
+    .hero-name .last {
+      display: block;
+      -webkit-text-stroke: 2px var(--accent);
+      color: transparent;
+      transition: -webkit-text-stroke-color 0.5s, color 0.5s;
+    }
 
-      a.text-link:hover {
-        color: var(--text-color);
-        border-color: var(--text-color);
-      }
+    /* role */
+    .hero-roles {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
 
-      @keyframes pulse {
-        50% {
-          opacity: 0.7;
-        }
-      }
+    .role-pill {
+      font-size: 0.78rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 4px;
+      transition: all 0.4s;
+    }
 
-      /* Mobile Adjustments */
-      @media (max-width: 600px) {
-        .dock-container {
-          flex-direction: column;
-          width: 100%;
-          background: transparent;
-          border: none;
-          box-shadow: none;
-          padding: 0;
-          backdrop-filter: none;
-        }
-        .dock-btn {
-          width: 100%;
-          justify-content: center;
-          background-color: rgba(30, 41, 59, 0.5);
-          margin-bottom: 10px;
-          padding: 15px;
-        }
-      }
+    .pill-cyber { background: rgba(0,255,153,0.08); color: var(--accent); border: 1px solid rgba(0,255,153,0.2); }
+    .pill-sde   { background: rgba(0,212,255,0.08); color: var(--accent3); border: 1px solid rgba(0,212,255,0.2); }
 
-      /* --- NEW SECTION STYLES --- */
-      .section-container {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 80px 20px;
-        position: relative;
-        z-index: 10;
-      }
+    body.sde-mode .pill-cyber { background: rgba(124,77,255,0.08); color: var(--accent); border-color: rgba(124,77,255,0.2); }
+    body.sde-mode .pill-sde   { background: rgba(0,212,255,0.08); color: var(--accent2); border-color: rgba(0,212,255,0.2); }
 
-      .section-header {
-        font-size: 2rem;
-        color: var(--text-color);
-        margin-bottom: 30px;
-        border-bottom: 1px solid #334155;
-        padding-bottom: 10px;
-        text-align: left;
-      }
+    .role-divider { color: var(--muted); font-size: 0.7rem; }
 
-      .section-header span {
-        color: var(--accent-green);
-        margin-right: 10px;
-      }
+    /* bio */
+    .hero-bio {
+      max-width: 540px;
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 48px;
+      transition: all 0.4s;
+    }
 
-      .grid-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-        text-align: left;
-      }
+    .hero-bio.cyber-bio { display: block; }
+    .hero-bio.sde-bio   { display: none; }
+    body.sde-mode .hero-bio.cyber-bio { display: none; }
+    body.sde-mode .hero-bio.sde-bio   { display: block; }
 
-      .card {
-        background: rgba(15, 23, 42, 0.6); /* Dark Glass */
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 25px;
-        border-radius: 15px;
-        backdrop-filter: blur(10px);
-        transition: transform 0.3s ease;
-      }
+    /* CTA row */
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 60px;
+    }
 
-      .card:hover {
-        transform: translateY(-5px);
-        border-color: var(--accent-green);
-      }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 28px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-decoration: none;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
 
-      .card h3 {
-        color: var(--accent-green);
-        margin-top: 0;
-        font-size: 1.2rem;
-      }
-      .card p {
-        font-size: 0.9rem;
-        margin-bottom: 15px;
-      }
+    .cta-primary {
+      background: var(--accent);
+      color: var(--bg);
+      border-color: var(--accent);
+    }
+    .cta-primary:hover { box-shadow: var(--glow); transform: translateY(-2px); }
 
-      .skill-tag {
-        display: inline-block;
-        background: rgba(45, 212, 191, 0.1);
-        color: var(--accent-green);
-        padding: 5px 12px;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        margin: 0 5px 5px 0;
-        border: 1px solid rgba(45, 212, 191, 0.2);
-      }
+    .cta-ghost {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .cta-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 
-      /* Project Card Specific Styles */
-      .project-card {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-      }
+    .cta-ghost2 {
+      background: transparent;
+      color: var(--accent3);
+      border-color: rgba(0,212,255,0.2);
+    }
+    .cta-ghost2:hover { border-color: var(--accent3); box-shadow: var(--glow2); transform: translateY(-2px); }
 
-      .project-card p {
-        flex-grow: 1;
-        margin-bottom: 20px;
-      }
+    body.sde-mode .cta-ghost2 { color: var(--accent2); border-color: rgba(0,212,255,0.2); }
 
-      .project-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        color: var(--accent-green);
-        text-decoration: none;
-        font-weight: 600;
-        padding: 10px 16px;
-        border: 1px solid rgba(45, 212, 191, 0.3);
-        border-radius: 8px;
-        background: rgba(45, 212, 191, 0.05);
-        transition: all 0.3s ease;
-        width: fit-content;
-      }
+    /* scroll cue */
+    .scroll-cue {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: float 2.5s ease-in-out infinite;
+    }
 
-      .project-link:hover {
-        background: rgba(45, 212, 191, 0.15);
-        border-color: var(--accent-green);
-        box-shadow: 0 0 10px rgba(45, 212, 191, 0.2);
-        transform: translateX(3px);
-      }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
 
-      .project-link i {
-        font-size: 0.9rem;
-      }
+    /* ─── STAT BAR ─── */
+    .stat-bar {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+      overflow: hidden;
+    }
 
-      /* --- THEME TOGGLE BUTTON STYLE --- */
-      .theme-toggle {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: rgba(15, 23, 42, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: var(--accent-yellow);
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        cursor: pointer;
-        z-index: 100;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.2rem;
-        backdrop-filter: blur(10px);
-        transition: all 0.3s ease;
-      }
+    .stat-track {
+      display: flex;
+      gap: 60px;
+      animation: scroll-track 20s linear infinite;
+      white-space: nowrap;
+      width: max-content;
+    }
 
-      .theme-toggle:hover {
-        transform: scale(1.1);
-      }
+    @keyframes scroll-track { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-      /* --- LIGHT MODE VARIABLES --- */
-      body.light-mode {
-        --bg-color: #f8fafc; /* Light grey/white background */
-        --text-color: #0f172a; /* Dark text */
-        --accent-green: #0d9488; /* Darker teal for readability */
-      }
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
 
-      /* Adjust glass cards for light mode */
-      body.light-mode .dock-container,
-      body.light-mode .card,
-      body.light-mode .theme-toggle {
-        background: rgba(255, 255, 255, 0.7);
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
-      }
+    .stat-item strong { color: var(--accent); font-family: var(--font-display); font-size: 1.1rem; }
+    .stat-sep { color: var(--border); }
 
-      body.light-mode .dock-btn {
-        background: rgba(255, 255, 255, 0.5);
-      }
+    /* ─── SECTIONS ─── */
+    section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 100px 24px;
+    }
 
-      body.light-mode .project-link {
-        background: rgba(13, 148, 136, 0.05);
-        border-color: rgba(13, 148, 136, 0.3);
-      }
+    .section-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-      body.light-mode .project-link:hover {
-        background: rgba(13, 148, 136, 0.15);
-      }
-    </style>
-  </head>
-  <body>
-    <button id="theme-btn" class="theme-toggle">
-      <i class="fa-solid fa-sun"></i>
-    </button>
+    .section-eyebrow::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      max-width: 60px;
+    }
 
-    <canvas id="waveCanvas"></canvas>
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 60px;
+      line-height: 1.1;
+    }
 
-    <div class="container">
-      <div class="logo">Adnan Syed</div>
-      <div class="role-text">Cybersecurity Analyst</div>
+    /* ─── DUAL PROJECTS ─── */
+    .dual-projects {
+      display: none; /* shown per mode */
+    }
 
-      <div class="dock-container">
-        <a href="#projects-section" class="dock-btn btn-projects">
-          <i class="fa-solid fa-terminal"></i> Projects
-        </a>
-        <a href="resume.pdf" target="_blank" class="dock-btn btn-resume">
-          <i class="fa-solid fa-file-arrow-down"></i> Resume
-        </a>
-        <a
-          href="https://www.linkedin.com/in/syedsq"
-          target="_blank"
-          class="dock-btn btn-contact"
-        >
-          <i class="fa-brands fa-linkedin"></i> LinkedIn
-        </a>
-      </div>
+    .projects-cyber { display: block; }
+    .projects-sde   { display: none; }
+    body.sde-mode .projects-cyber { display: none; }
+    body.sde-mode .projects-sde   { display: block; }
 
-      <div class="content-section">
-        <div class="section-title">/// System Status</div>
-        <p>
-          I am a Cybersecurity Analyst focused on infrastructure defense, Red
-          Teaming, and penetration testing. My goal is to understand systems
-          better than the attackers do.
-        </p>
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 20px;
+    }
 
-        <div class="section-title">/// Connect</div>
-        <p>
-          For inquiries, security audits, or collaboration:<br />
-          <a href="mailto:saleeq1269@gmail.com" class="text-link"
-            >saleeq1269@gmail.com</a
-          >
-        </p>
-      </div>
+    /* card */
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      backdrop-filter: blur(15px);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
 
-      <div class="section-container">
-        <h2 class="section-header"><span>///</span> ARSENAL</h2>
-        <div class="grid-cards">
-          <div class="card">
-            <h3><i class="fa-solid fa-shield-halved"></i> Cyber Defense</h3>
-            <p>
-              Specialized in offensive security and network defense protocols.
-            </p>
-            <div>
-              <span class="skill-tag">Burp Suite</span>
-              <span class="skill-tag">Nmap</span>
-              <span class="skill-tag">Wireshark</span>
-              <span class="skill-tag">Metasploit</span>
-            </div>
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: var(--glow);
+    }
+
+    .project-card:hover::before { opacity: 1; }
+
+    .card-number {
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .card-icon {
+      font-size: 1.4rem;
+      margin-bottom: 14px;
+      color: var(--accent);
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .card-desc {
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: var(--muted);
+      flex-grow: 1;
+      margin-bottom: 20px;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: rgba(0,255,153,0.06);
+      color: var(--accent);
+      border: 1px solid rgba(0,255,153,0.15);
+    }
+
+    body.sde-mode .tag {
+      background: rgba(124,77,255,0.06);
+      color: var(--accent);
+      border-color: rgba(124,77,255,0.15);
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      padding: 9px 16px;
+      border-radius: 6px;
+      transition: all 0.25s;
+      width: fit-content;
+    }
+
+    .card-link:hover {
+      border-color: var(--accent);
+      background: rgba(0,255,153,0.06);
+      transform: translateX(4px);
+    }
+
+    body.sde-mode .card-link:hover { background: rgba(124,77,255,0.06); }
+
+    /* ─── ARSENAL / SKILLS ─── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      backdrop-filter: blur(15px);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .skill-block:hover {
+      border-color: var(--accent);
+      box-shadow: var(--glow);
+    }
+
+    .skill-block-icon {
+      font-size: 1.6rem;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .skill-block h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .skill-block p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .skill-pill {
+      font-size: 0.7rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(0,255,153,0.05);
+      color: var(--accent);
+      border: 1px solid rgba(0,255,153,0.15);
+    }
+
+    body.sde-mode .skill-pill {
+      background: rgba(124,77,255,0.05);
+      color: var(--accent);
+      border-color: rgba(124,77,255,0.15);
+    }
+
+    /* ─── ABOUT STRIP ─── */
+    .about-strip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 50px;
+      backdrop-filter: blur(15px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    @media (max-width: 640px) { .about-strip { grid-template-columns: 1fr; padding: 30px; gap: 30px; } }
+
+    .about-text h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .about-text p {
+      font-size: 0.83rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .about-links { display: flex; flex-direction: column; gap: 14px; }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.82rem;
+      transition: all 0.25s ease;
+    }
+
+    .social-link:hover {
+      border-color: var(--accent);
+      background: rgba(0,255,153,0.04);
+      transform: translateX(5px);
+    }
+
+    body.sde-mode .social-link:hover { background: rgba(124,77,255,0.04); }
+
+    .social-link .s-icon {
+      width: 38px; height: 38px;
+      border-radius: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .social-link .s-info { display: flex; flex-direction: column; gap: 2px; }
+    .social-link .s-name { font-weight: 600; color: var(--text); }
+    .social-link .s-handle { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.5px; }
+    .social-link .s-arrow { margin-left: auto; color: var(--muted); font-size: 0.8rem; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 24px;
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 10;
+    }
+
+    footer span { color: var(--accent); }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 600px) {
+      .mode-switcher { top: 16px; right: 16px; }
+      .mode-btn { padding: 7px 14px; font-size: 0.65rem; }
+      .hero { padding: 80px 20px 40px; }
+      .cta-row { gap: 10px; }
+      .cta-btn { padding: 12px 20px; font-size: 0.72rem; }
+      section { padding: 70px 20px; }
+    }
+
+    /* ─── TRANSITION OVERLAY ─── */
+    .mode-flash {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+
+    .mode-flash.flash { opacity: 0.06; }
+
+    /* terminal cursor blink on name */
+    .cursor {
+      display: inline-block;
+      width: 3px;
+      height: 0.85em;
+      background: var(--accent);
+      margin-left: 4px;
+      vertical-align: middle;
+      animation: blink 1s infinite;
+    }
+
+    /* ─── CERTIFICATIONS ─── */
+    .cert-filters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+
+    .cert-filter-btn {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 7px 16px;
+      border-radius: 40px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .cert-filter-btn:hover,
+    .cert-filter-btn.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(0,255,153,0.05);
+    }
+
+    body.sde-mode .cert-filter-btn:hover,
+    body.sde-mode .cert-filter-btn.active {
+      background: rgba(124,77,255,0.05);
+    }
+
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .cert-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 22px;
+      backdrop-filter: blur(15px);
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, opacity 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .cert-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cert-card.hidden {
+      display: none;
+    }
+
+    .cert-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: var(--glow);
+    }
+
+    .cert-icon-wrap {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--accent);
+      flex-shrink: 0;
+      transition: background 0.3s;
+    }
+
+    .cert-card:hover .cert-icon-wrap {
+      background: rgba(0,255,153,0.08);
+    }
+
+    body.sde-mode .cert-card:hover .cert-icon-wrap {
+      background: rgba(124,77,255,0.08);
+    }
+
+    .cert-body { flex: 1; min-width: 0; }
+
+    .cert-issuer {
+      font-size: 0.62rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .cert-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .cert-type-badge {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.6rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 3px;
+    }
+
+    .badge-cyber { background: rgba(0,255,153,0.08); color: var(--accent); border: 1px solid rgba(0,255,153,0.2); }
+    .badge-sde   { background: rgba(0,212,255,0.08); color: #00d4ff; border: 1px solid rgba(0,212,255,0.2); }
+    .badge-ai    { background: rgba(255,107,157,0.08); color: #ff6b9d; border: 1px solid rgba(255,107,157,0.2); }
+    .badge-other { background: rgba(251,191,36,0.08); color: #fbbf24; border: 1px solid rgba(251,191,36,0.2); }
+
+    body.sde-mode .badge-cyber { background: rgba(124,77,255,0.08); color: var(--accent); border-color: rgba(124,77,255,0.2); }
+  </style>
+</head>
+<body>
+
+<div class="mode-flash" id="flash"></div>
+
+<!-- MODE SWITCHER -->
+<div class="mode-switcher">
+  <button class="mode-btn active" id="btn-cyber" onclick="setMode('cyber')">
+    <i class="fa-solid fa-shield-halved"></i>&nbsp; Cyber
+  </button>
+  <button class="mode-btn" id="btn-sde" onclick="setMode('sde')">
+    <i class="fa-solid fa-code"></i>&nbsp; SDE
+  </button>
+</div>
+
+<canvas id="bg-canvas"></canvas>
+
+<main>
+
+  <!-- ─── HERO ─── -->
+  <div class="hero">
+
+    <div class="mode-badge" id="mode-badge">
+      <span class="dot"></span>
+      <span id="badge-text">Red Team / Cyber</span>
+    </div>
+
+    <h1 class="hero-name">
+      <span class="first">Adnan</span>
+      <span class="last">Syed<span class="cursor"></span></span>
+    </h1>
+
+    <div class="hero-roles">
+      <span class="role-pill pill-cyber">Cybersecurity Analyst</span>
+      <span class="role-divider">×</span>
+      <span class="role-pill pill-sde">Software Engineer</span>
+    </div>
+
+    <p class="hero-bio cyber-bio">
+      I break systems so defenders can protect them. Focused on offensive security,
+      red teaming, and penetration testing — I understand infrastructure better than
+      the attackers do. Based in the intersection of code and chaos.
+    </p>
+    <p class="hero-bio sde-bio">
+      I build resilient, performant systems from the ground up. From distributed
+      streaming pipelines to high-throughput Rust benchmarking tools — I write code
+      that scales, survives, and ships.
+    </p>
+
+    <div class="cta-row">
+      <a href="#projects" class="cta-btn cta-primary">
+        <i class="fa-solid fa-terminal"></i> View Projects
+      </a>
+      <a href="resume.pdf" target="_blank" class="cta-btn cta-ghost">
+        <i class="fa-solid fa-file-arrow-down"></i> Resume
+      </a>
+      <a href="mailto:saleeq1269@gmail.com" class="cta-btn cta-ghost2">
+        <i class="fa-solid fa-envelope"></i> Contact
+      </a>
+    </div>
+
+    <div class="scroll-cue">
+      <i class="fa-solid fa-chevron-down"></i>
+      <span>Scroll</span>
+    </div>
+  </div>
+
+  <!-- ─── STAT BAR ─── -->
+  <div class="stat-bar">
+    <div class="stat-track">
+      <div class="stat-item"><strong>3+</strong> <span>Years Experience</span></div>
+      <div class="stat-sep">///</div>
+      <div class="stat-item"><strong>5+</strong> <span>Major Projects</span></div>
+      <div class="stat-sep">///</div>
+      <div class="stat-item"><strong>10+</strong> <span>Technologies</span></div>
+      <div class="stat-sep">///</div>
+      <div class="stat-item"><strong>CTF</strong> <span>Competitor</span></div>
+      <div class="stat-sep">///</div>
+      <div class="stat-item"><strong>Open</strong> <span>to Opportunities</span></div>
+      <div class="stat-sep">///</div>
+      <!-- duplicate for infinite scroll -->
+      <div class="stat-item"><strong>3+</strong> <span>Years Experience</span></div>
+      <div class="stat-sep">///</div>
+      <div class="stat-item"><strong>5+</strong> <span>Major Projects</span></div>
+      <div class="stat-sep">///</div>
+      <div class="stat-item"><strong>10+</strong> <span>Technologies</span></div>
+      <div class="stat-sep">///</div>
+      <div class="stat-item"><strong>CTF</strong> <span>Competitor</span></div>
+      <div class="stat-sep">///</div>
+      <div class="stat-item"><strong>Open</strong> <span>to Opportunities</span></div>
+      <div class="stat-sep">///</div>
+    </div>
+  </div>
+
+  <!-- ─── PROJECTS ─── -->
+  <section id="projects">
+
+    <!-- CYBER PROJECTS -->
+    <div class="projects-cyber">
+      <div class="section-eyebrow">01 — Operations</div>
+      <h2 class="section-title">Cyber Projects</h2>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="card-number">// 001</div>
+          <div class="card-icon"><i class="fa-solid fa-virus"></i></div>
+          <div class="card-title">Epidemic Surveillance Engine</div>
+          <p class="card-desc">Cloud-native epidemic intelligence platform with real-time health event ingestion, streaming analytics, anomaly detection, and outbreak forecasting.</p>
+          <div class="card-tags">
+            <span class="tag">Apache Kafka</span>
+            <span class="tag">Apache Spark</span>
+            <span class="tag">NiFi</span>
+            <span class="tag">Kubernetes</span>
+            <span class="tag">MongoDB</span>
           </div>
-
-          <div class="card">
-            <h3><i class="fa-solid fa-code"></i> Development</h3>
-            <p>Building secure infrastructure and automating security tasks.</p>
-            <div>
-              <span class="skill-tag">Java</span>
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">Firebase</span>
-              <span class="skill-tag">Bash</span>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3><i class="fa-solid fa-microchip"></i> Future Tech</h3>
-            <p>Researching AI safety and system vulnerabilities.</p>
-            <div>
-              <span class="skill-tag">Machine Learning</span>
-              <span class="skill-tag">AI Safety</span>
-              <span class="skill-tag">Threat Intel</span>
-            </div>
-          </div>
+          <a href="https://github.com/CyberCoder-IITM/epidemic-surveillance-engine" target="_blank" class="card-link">
+            <i class="fa-brands fa-github"></i> Repository
+          </a>
         </div>
-      </div>
 
-      <!-- Projects Section -->
-      <div class="section-container" id="projects-section">
-        <h2 class="section-header"><span>///</span> TOP PROJECTS</h2>
-        <div class="grid-cards">
-          <div class="card project-card">
-            <h3>
-              <i class="fa-solid fa-virus"></i> Epidemic Surveillance Engine
-            </h3>
-            <p>
-              Cloud-native epidemic intelligence platform with real-time health
-              event ingestion, streaming analytics, anomaly detection, and
-              outbreak forecasting using NiFi, Kafka, and Spark.
-            </p>
-            <div style="margin-bottom: 15px">
-              <span class="skill-tag">Apache Kafka</span>
-              <span class="skill-tag">Apache Spark</span>
-              <span class="skill-tag">Apache NiFi</span>
-              <span class="skill-tag">MongoDB</span>
-              <span class="skill-tag">PostgreSQL</span>
-              <span class="skill-tag">Kubernetes</span>
-            </div>
-            <a
-              href="https://github.com/CyberCoder-IITM/epidemic-surveillance-engine"
-              target="_blank"
-              class="project-link"
-            >
-              <i class="fa-solid fa-arrow-up-right-from-square"></i> View
-              Repository
-            </a>
+        <div class="project-card">
+          <div class="card-number">// 002</div>
+          <div class="card-icon"><i class="fa-solid fa-gauge-high"></i></div>
+          <div class="card-title">HaloSpec</div>
+          <p class="card-desc">High-performance Rust benchmark harness for speculative decoding. Measures latency/throughput tradeoffs and stability under CPU load contention with adaptive draft_length strategies.</p>
+          <div class="card-tags">
+            <span class="tag">Rust</span>
+            <span class="tag">Benchmarking</span>
+            <span class="tag">Load Testing</span>
+            <span class="tag">Statistics</span>
           </div>
-
-          <div class="card project-card">
-            <h3><i class="fa-solid fa-gauge-high"></i> HaloSpec</h3>
-            <p>
-              High-performance Rust benchmark harness for speculative decoding
-              with adaptive draft_length strategies. Measures latency/throughput
-              tradeoffs and stability under CPU load contention.
-            </p>
-            <div style="margin-bottom: 15px">
-              <span class="skill-tag">Rust</span>
-              <span class="skill-tag">Performance Benchmarking</span>
-              <span class="skill-tag">Load Injection</span>
-              <span class="skill-tag">Statistics</span>
-            </div>
-            <a
-              href="https://github.com/CyberCoder-IITM/HaloSpec"
-              target="_blank"
-              class="project-link"
-            >
-              <i class="fa-solid fa-arrow-up-right-from-square"></i> View
-              Repository
-            </a>
-          </div>
-
-          <div class="card project-card">
-            <h3>
-              <i class="fa-solid fa-wand-magic-sparkles"></i> Monsters & Heroes
-              Battle Game
-            </h3>
-            <p>
-              Turn-based RPG battle system featuring multiple hero classes,
-              dynamic monster types, strategic item management, and complex
-              combat mechanics built entirely in Java.
-            </p>
-            <div style="margin-bottom: 15px">
-              <span class="skill-tag">Java</span>
-              <span class="skill-tag">OOP</span>
-              <span class="skill-tag">Game Logic</span>
-              <span class="skill-tag">RPG</span>
-            </div>
-            <a
-              href="https://github.com/CyberCoder-IITM/monsters-and-heroes-battle-game"
-              target="_blank"
-              class="project-link"
-            >
-              <i class="fa-solid fa-arrow-up-right-from-square"></i> View
-              Repository
-            </a>
-          </div>
+          <a href="https://github.com/CyberCoder-IITM/HaloSpec" target="_blank" class="card-link">
+            <i class="fa-brands fa-github"></i> Repository
+          </a>
         </div>
+
+        <div class="project-card">
+          <div class="card-number">// 003</div>
+          <div class="card-icon"><i class="fa-solid fa-network-wired"></i></div>
+          <div class="card-title">Network Recon Suite</div>
+          <p class="card-desc">Automated reconnaissance and vulnerability scanning pipeline integrating Nmap, custom scripts, and report generation for penetration testing engagements.</p>
+          <div class="card-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Nmap</span>
+            <span class="tag">Bash</span>
+            <span class="tag">Pentest</span>
+          </div>
+          <a href="https://github.com/CyberCoder-IITM" target="_blank" class="card-link">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+
       </div>
     </div>
-    <script>
-      // --- THEME TOGGLE LOGIC ---
-      const themeBtn = document.getElementById("theme-btn");
-      themeBtn.addEventListener("click", () => {
-        document.body.classList.toggle("light-mode");
 
-        // Switch the icon between Sun and Moon
-        if (document.body.classList.contains("light-mode")) {
-          themeBtn.innerHTML =
-            '<i class="fa-solid fa-moon" style="color: #64748b;"></i>';
-        } else {
-          themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-        }
+    <!-- SDE PROJECTS -->
+    <div class="projects-sde">
+      <div class="section-eyebrow">01 — Builds</div>
+      <h2 class="section-title">Engineering Projects</h2>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="card-number">// 001</div>
+          <div class="card-icon"><i class="fa-solid fa-database"></i></div>
+          <div class="card-title">Epidemic Surveillance Engine</div>
+          <p class="card-desc">Distributed cloud-native data pipeline ingesting real-time health events, streaming analytics with Kafka + Spark, and ML-powered outbreak forecasting at scale.</p>
+          <div class="card-tags">
+            <span class="tag">Kafka</span>
+            <span class="tag">Spark</span>
+            <span class="tag">NiFi</span>
+            <span class="tag">Kubernetes</span>
+            <span class="tag">PostgreSQL</span>
+          </div>
+          <a href="https://github.com/CyberCoder-IITM/epidemic-surveillance-engine" target="_blank" class="card-link">
+            <i class="fa-brands fa-github"></i> Repository
+          </a>
+        </div>
+
+        <div class="project-card">
+          <div class="card-number">// 002</div>
+          <div class="card-icon"><i class="fa-brands fa-rust"></i></div>
+          <div class="card-title">HaloSpec</div>
+          <p class="card-desc">Systems-level Rust benchmark harness measuring speculative decoding performance. Rigorous statistical analysis of latency/throughput under real CPU load contention scenarios.</p>
+          <div class="card-tags">
+            <span class="tag">Rust</span>
+            <span class="tag">Systems</span>
+            <span class="tag">Performance</span>
+            <span class="tag">Statistics</span>
+          </div>
+          <a href="https://github.com/CyberCoder-IITM/HaloSpec" target="_blank" class="card-link">
+            <i class="fa-brands fa-github"></i> Repository
+          </a>
+        </div>
+
+        <div class="project-card">
+          <div class="card-number">// 003</div>
+          <div class="card-icon"><i class="fa-solid fa-dice-d20"></i></div>
+          <div class="card-title">Monsters & Heroes RPG</div>
+          <p class="card-desc">Full-featured turn-based RPG battle system in Java. Multiple hero classes, dynamic monster AI, strategic item management, and complex OOP combat mechanics.</p>
+          <div class="card-tags">
+            <span class="tag">Java</span>
+            <span class="tag">OOP</span>
+            <span class="tag">Game Logic</span>
+            <span class="tag">Design Patterns</span>
+          </div>
+          <a href="https://github.com/CyberCoder-IITM/monsters-and-heroes-battle-game" target="_blank" class="card-link">
+            <i class="fa-brands fa-github"></i> Repository
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ─── ARSENAL ─── -->
+  <section>
+    <div class="section-eyebrow">02 — Toolkit</div><!-- unchanged -->
+    <h2 class="section-title">Arsenal</h2>
+    <div class="skills-grid">
+
+      <div class="skill-block">
+        <div class="skill-block-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3>Offense & Defense</h3>
+        <p>Offensive security, red teaming, and infrastructure defense protocols.</p>
+        <div class="skill-pills">
+          <span class="skill-pill">Burp Suite</span>
+          <span class="skill-pill">Metasploit</span>
+          <span class="skill-pill">Nmap</span>
+          <span class="skill-pill">Wireshark</span>
+        </div>
+      </div>
+
+      <div class="skill-block">
+        <div class="skill-block-icon"><i class="fa-solid fa-code"></i></div>
+        <h3>Engineering</h3>
+        <p>Building secure, performant systems and automating complex workflows.</p>
+        <div class="skill-pills">
+          <span class="skill-pill">Rust</span>
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">Java</span>
+          <span class="skill-pill">Bash</span>
+        </div>
+      </div>
+
+      <div class="skill-block">
+        <div class="skill-block-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <h3>Infrastructure</h3>
+        <p>Distributed systems, cloud-native tooling, and data pipelines at scale.</p>
+        <div class="skill-pills">
+          <span class="skill-pill">Kafka</span>
+          <span class="skill-pill">Kubernetes</span>
+          <span class="skill-pill">Spark</span>
+          <span class="skill-pill">Firebase</span>
+        </div>
+      </div>
+
+      <div class="skill-block">
+        <div class="skill-block-icon"><i class="fa-solid fa-brain"></i></div>
+        <h3>Research</h3>
+        <p>AI safety, threat intelligence, and machine learning system vulnerabilities.</p>
+        <div class="skill-pills">
+          <span class="skill-pill">ML / AI</span>
+          <span class="skill-pill">AI Safety</span>
+          <span class="skill-pill">Threat Intel</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── CERTIFICATIONS ─── -->
+  <section>
+    <div class="section-eyebrow">03 — Credentials</div>
+    <h2 class="section-title">Certifications</h2>
+
+    <div class="cert-filters">
+      <button class="cert-filter-btn active" onclick="filterCerts('all', this)">All</button>
+      <button class="cert-filter-btn" onclick="filterCerts('cyber', this)">Cyber</button>
+      <button class="cert-filter-btn" onclick="filterCerts('sde', this)">Dev / Engineering</button>
+      <button class="cert-filter-btn" onclick="filterCerts('ai', this)">AI / ML</button>
+      <button class="cert-filter-btn" onclick="filterCerts('other', this)">Other</button>
+    </div>
+
+    <div class="certs-grid" id="certs-grid">
+
+      <div class="cert-card" data-cat="cyber">
+        <div class="cert-icon-wrap"><i class="fa-solid fa-user-secret"></i></div>
+        <div class="cert-body">
+          <div class="cert-issuer">Cybrary</div>
+          <div class="cert-name">Penetration Testing &amp; Ethical Hacking</div>
+          <span class="cert-type-badge badge-cyber">Cyber</span>
+        </div>
+      </div>
+
+      <div class="cert-card" data-cat="cyber">
+        <div class="cert-icon-wrap"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <div class="cert-body">
+          <div class="cert-issuer">Cybrary</div>
+          <div class="cert-name">Computer Hacking &amp; Forensics</div>
+          <span class="cert-type-badge badge-cyber">Cyber</span>
+        </div>
+      </div>
+
+      <div class="cert-card" data-cat="cyber">
+        <div class="cert-icon-wrap"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="cert-body">
+          <div class="cert-issuer">Cybrary</div>
+          <div class="cert-name">CompTIA Security+</div>
+          <span class="cert-type-badge badge-cyber">Cyber</span>
+        </div>
+      </div>
+
+      <div class="cert-card" data-cat="cyber">
+        <div class="cert-icon-wrap"><i class="fa-solid fa-lock"></i></div>
+        <div class="cert-body">
+          <div class="cert-issuer">Coursera</div>
+          <div class="cert-name">Ethical Hacking Essentials</div>
+          <span class="cert-type-badge badge-cyber">Cyber</span>
+        </div>
+      </div>
+
+      <div class="cert-card" data-cat="cyber">
+        <div class="cert-icon-wrap"><i class="fa-solid fa-robot"></i></div>
+        <div class="cert-body">
+          <div class="cert-issuer">Internshala</div>
+          <div class="cert-name">Ethical Hacking with AI Training</div>
+          <span class="cert-type-badge badge-cyber">Cyber</span>
+        </div>
+      </div>
+
+      <div class="cert-card" data-cat="cyber">
+        <div class="cert-icon-wrap"><i class="fa-solid fa-building-columns"></i></div>
+        <div class="cert-body">
+          <div class="cert-issuer">Deloitte Australia · Forage</div>
+          <div class="cert-name">Cyber Job Simulation</div>
+          <span class="cert-type-badge badge-cyber">Cyber</span>
+        </div>
+      </div>
+
+      <div class="cert-card" data-cat="cyber">
+        <div class="cert-icon-wrap"><i class="fa-solid fa-id-card"></i></div>
+        <div class="cert-body">
+          <div class="cert-issuer">MasterCard · Forage</div>
+          <div class="cert-name">Cybersecurity Job Simulation</div>
+          <span class="cert-type-badge badge-cyber">Cyber</span>
+        </div>
+      </div>
+
+      <div class="cert-card" data-cat="cyber">
+        <div class="cert-icon-wrap"><i class="fa-solid fa-flag"></i></div>
+        <div class="cert-body">
+          <div class="cert-issuer">Snyk</div>
+          <div class="cert-name">CTF Hackathon Completion</div>
+          <span class="cert-type-badge badge-cyber">Cyber</span>
+        </div>
+      </div>
+
+      <div class="cert-card" data-cat="sde">
+        <div class="cert-icon-wrap"><i class="fa-brands fa-java"></i></div>
+        <div class="cert-body">
+          <div class="cert-issuer">HackerRank</div>
+          <div class="cert-name">Java Basic Certificate</div>
+          <span class="cert-type-badge badge-sde">Dev</span>
+        </div>
+      </div>
+
+      <div class="cert-card" data-cat="sde">
+        <div class="cert-icon-wrap"><i class="fa-solid fa-mug-hot"></i></div>
+        <div class="cert-body">
+          <div class="cert-issuer">Short-Term Training</div>
+          <div class="cert-name">Java Programming</div>
+          <span class="cert-type-badge badge-sde">Dev</span>
+        </div>
+      </div>
+
+      <div class="cert-card" data-cat="sde">
+        <div class="cert-icon-wrap"><i class="fa-solid fa-database"></i></div>
+        <div class="cert-body">
+          <div class="cert-issuer">Infosys Springboard</div>
+          <div class="cert-name">Database Management Systems</div>
+          <span class="cert-type-badge badge-sde">Dev</span>
+        </div>
+      </div>
+
+      <div class="cert-card" data-cat="ai">
+        <div class="cert-icon-wrap"><i class="fa-brands fa-microsoft"></i></div>
+        <div class="cert-body">
+          <div class="cert-issuer">Microsoft x LinkedIn</div>
+          <div class="cert-name">Career Essentials in Generative AI</div>
+          <span class="cert-type-badge badge-ai">AI / ML</span>
+        </div>
+      </div>
+
+      <div class="cert-card" data-cat="other">
+        <div class="cert-icon-wrap"><i class="fa-solid fa-award"></i></div>
+        <div class="cert-body">
+          <div class="cert-issuer">Devtown</div>
+          <div class="cert-name">Certificate of Appreciation</div>
+          <span class="cert-type-badge badge-other">Achievement</span>
+        </div>
+      </div>
+
+      <div class="cert-card" data-cat="other">
+        <div class="cert-icon-wrap"><i class="fa-solid fa-circle-check"></i></div>
+        <div class="cert-body">
+          <div class="cert-issuer">Devtown</div>
+          <div class="cert-name">Certificate of Completion</div>
+          <span class="cert-type-badge badge-other">Achievement</span>
+        </div>
+      </div>
+
+      <div class="cert-card" data-cat="other">
+        <div class="cert-icon-wrap"><i class="fa-solid fa-store"></i></div>
+        <div class="cert-body">
+          <div class="cert-issuer">Rakuten</div>
+          <div class="cert-name">Product Conference 2024</div>
+          <span class="cert-type-badge badge-other">Conference</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── ABOUT / CONNECT ─── -->
+  <section>
+    <div class="section-eyebrow">04 — Identity</div>
+    <h2 class="section-title">Connect</h2>
+    <div class="about-strip">
+      <div class="about-text">
+        <h2>Let's build<br/>or break something.</h2>
+        <p style="margin-top:14px;">
+          I'm a Cybersecurity Analyst and Software Engineer who lives in the
+          intersection of attack and defense. Whether it's auditing infrastructure,
+          writing high-performance systems code, or researching AI safety — I'm
+          always shipping.<br/><br/>
+          Open to security audits, engineering collaborations, and full-time roles.
+          <br/><br/>
+          <a href="mailto:saleeq1269@gmail.com" style="color:var(--accent);text-decoration:none;font-weight:600;">saleeq1269@gmail.com</a>
+        </p>
+      </div>
+      <div class="about-links">
+        <a href="https://github.com/CyberCoder-IITM" target="_blank" class="social-link">
+          <span class="s-icon"><i class="fa-brands fa-github"></i></span>
+          <span class="s-info">
+            <span class="s-name">GitHub</span>
+            <span class="s-handle">@CyberCoder-IITM</span>
+          </span>
+          <span class="s-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
+        </a>
+        <a href="https://www.linkedin.com/in/syedsq/" target="_blank" class="social-link">
+          <span class="s-icon"><i class="fa-brands fa-linkedin"></i></span>
+          <span class="s-info">
+            <span class="s-name">LinkedIn</span>
+            <span class="s-handle">syedsq</span>
+          </span>
+          <span class="s-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
+        </a>
+        <a href="mailto:saleeq1269@gmail.com" class="social-link">
+          <span class="s-icon"><i class="fa-solid fa-envelope"></i></span>
+          <span class="s-info">
+            <span class="s-name">Email</span>
+            <span class="s-handle">saleeq1269@gmail.com</span>
+          </span>
+          <span class="s-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
+        </a>
+        <a href="resume.pdf" target="_blank" class="social-link">
+          <span class="s-icon"><i class="fa-solid fa-file"></i></span>
+          <span class="s-info">
+            <span class="s-name">Resume</span>
+            <span class="s-handle">Download PDF</span>
+          </span>
+          <span class="s-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>Adnan Syed</span> &nbsp;—&nbsp; Built with intent. &nbsp;///&nbsp; adnansyed.me
+</footer>
+
+<script>
+  // ─── MODE SWITCHING ───
+  function setMode(mode) {
+    const flash = document.getElementById('flash');
+    const body = document.body;
+    const badge = document.getElementById('badge-text');
+    const btnCyber = document.getElementById('btn-cyber');
+    const btnSde = document.getElementById('btn-sde');
+
+    flash.classList.add('flash');
+    setTimeout(() => flash.classList.remove('flash'), 200);
+
+    if (mode === 'sde') {
+      body.classList.add('sde-mode');
+      badge.textContent = 'Software Engineer / Builder';
+      btnSde.classList.add('active');
+      btnCyber.classList.remove('active');
+    } else {
+      body.classList.remove('sde-mode');
+      badge.textContent = 'Red Team / Cyber';
+      btnCyber.classList.add('active');
+      btnSde.classList.remove('active');
+    }
+
+    updateCanvas();
+  }
+
+  // ─── CANVAS WAVES ───
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, lines = [];
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    initLines();
+  }
+
+  function initLines() {
+    lines = [];
+    const gap = 22;
+    for (let y = 0; y < H; y += gap) {
+      lines.push({
+        y, amp: Math.random() * 22 + 8,
+        speed: Math.random() * 0.0015 + 0.0005,
+        phase: Math.random() * Math.PI * 2
       });
+    }
+  }
 
-      const canvas = document.getElementById("waveCanvas");
-      const ctx = canvas.getContext("2d");
+  let accentColor = [0, 255, 153];
 
-      let width, height;
-      let lines = [];
-      const gap = 20;
+  function updateCanvas() {
+    const isSDE = document.body.classList.contains('sde-mode');
+    accentColor = isSDE ? [124, 77, 255] : [0, 255, 153];
+  }
 
-      function resize() {
-        width = window.innerWidth;
-        height = window.innerHeight;
-        canvas.width = width;
-        canvas.height = height;
-        lines = [];
+  function animate(t) {
+    ctx.clearRect(0, 0, W, H);
+    const [r, g, b] = accentColor;
 
-        for (let y = 0; y < height; y += gap) {
-          lines.push({
-            y: y,
-            amplitude: Math.random() * 20 + 10,
-            speed: Math.random() * 0.002 + 0.001,
-            phase: Math.random() * Math.PI * 2,
-          });
-        }
+    lines.forEach(line => {
+      const dist = Math.abs((line.y - H / 2) / (H / 2));
+      ctx.beginPath();
+      ctx.lineWidth = 1;
+
+      if (dist < 0.4) {
+        ctx.strokeStyle = `rgba(${r},${g},${b},${0.3 - dist * 0.6})`;
+      } else {
+        ctx.strokeStyle = `rgba(30,41,59,0.15)`;
       }
 
-      window.addEventListener("resize", resize);
-      resize();
-
-      function animate(t) {
-        // ctx.fillStyle = '#020617';
-        // ctx.fillRect(0, 0, width, height);
-        ctx.clearRect(0, 0, width, height); // This makes the canvas transparent
-
-        ctx.lineWidth = 1.5;
-
-        lines.forEach((line, i) => {
-          ctx.beginPath();
-
-          let distanceFromCenter = Math.abs(
-            (line.y - height / 2) / (height / 2),
-          );
-
-          // Subtle Blue-Grey Waves
-          if (distanceFromCenter < 0.35) {
-            ctx.strokeStyle = `rgba(148, 163, 184, ${0.4 - distanceFromCenter})`;
-          } else {
-            ctx.strokeStyle = "rgba(30, 41, 59, 0.2)";
-          }
-
-          for (let x = 0; x < width; x += 15) {
-            let y =
-              line.y +
-              Math.sin(x * 0.003 + t * line.speed + line.phase) *
-                line.amplitude *
-                Math.sin(x * 0.001);
-
-            if (x === 0) ctx.moveTo(x, y);
-            else ctx.lineTo(x, y);
-          }
-          ctx.stroke();
-        });
-
-        requestAnimationFrame(animate);
+      for (let x = 0; x <= W; x += 14) {
+        const y = line.y + Math.sin(x * 0.0025 + t * line.speed + line.phase) * line.amp;
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
       }
+      ctx.stroke();
+    });
 
-      animate(0);
-    </script>
-  </body>
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  animate(0);
+
+  // ─── CERT FILTER ───
+  function filterCerts(cat, btn) {
+    document.querySelectorAll('.cert-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    document.querySelectorAll('.cert-card').forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.classList.remove('hidden');
+        // re-trigger animation
+        card.classList.remove('visible');
+        void card.offsetWidth;
+        setTimeout(() => card.classList.add('visible'), 30);
+      } else {
+        card.classList.add('hidden');
+        card.classList.remove('visible');
+      }
+    });
+  }
+
+  // ─── CERT CARDS OBSERVER ───
+  const certObserver = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 50);
+      }
+    });
+  }, { threshold: 0.05 });
+
+  document.querySelectorAll('.cert-card').forEach(el => certObserver.observe(el));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.project-card, .skill-block').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease, border-color 0.3s, box-shadow 0.3s';
+    observer.observe(el);
+  });
+</script>
+</body>
 </html>

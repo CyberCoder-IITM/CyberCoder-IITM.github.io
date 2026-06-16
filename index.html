@@ -820,7 +820,7 @@
     }
   </style>
 </head>
-<body>
+<body class="sde-mode">
 
 <div class="mode-flash" id="flash"></div>
 
@@ -1217,6 +1217,15 @@
         </div>
       </div>
 
+      <div class="cert-card featured" data-cat="ai">
+        <div class="cert-icon-wrap"><i class="fa-solid fa-code-branch"></i></div>
+        <div class="cert-body">
+          <div class="cert-issuer">CodePath &mdash; Summer 2026 &mdash; Active</div>
+          <div class="cert-name">AI301 AI Open Source Capstone</div>
+          <span class="cert-type-badge badge-ai">In Progress</span>
+        </div>
+      </div>
+
       <div class="cert-card" data-cat="sde">
         <div class="cert-icon-wrap"><i class="fa-solid fa-terminal"></i></div>
         <div class="cert-body">
@@ -1372,11 +1381,11 @@
       <div class="about-text">
         <h2>Let's build<br/>or break something.</h2>
         <p style="margin-top:14px;">
-          BU MSCS Jan 2026. Security engineer by training, distributed systems builder by instinct.
-          Shipped Kafka pipelines at 50K+ events/min, MITRE ATT&amp;CK mapped SOC tooling,
-          and Rust benchmark harnesses cutting p99 variance 30%.
-          IEEE published researcher. CodePath CYB102 certified.<br/><br/>
-          Open to full-time roles in security engineering, backend systems, and AI/ML.
+          BU MSCS Jan 2026. Software engineer targeting backend, distributed systems, and AI/ML roles.
+          Shipped Kafka pipelines at 50K+ events/min, Rust benchmark harnesses cutting p99 variance 30%,
+          and MITRE ATT&amp;CK mapped SOC tooling. IEEE published researcher.
+          Currently contributing to real open source AI projects via CodePath AI301 capstone.<br/><br/>
+          Open to full-time SWE roles in backend, data engineering, AI/ML, and security engineering.
           Post-OPT EAD authorized - no sponsorship required currently.<br/><br/>
           <a href="mailto:saleeq1269@gmail.com" style="color:var(--accent);text-decoration:none;font-weight:600;">saleeq1269@gmail.com</a>
         </p>
@@ -1482,7 +1491,7 @@
     }
   }
 
-  let accentColor = [0, 255, 153];
+  let accentColor = document.body.classList.contains('sde-mode') ? [124, 77, 255] : [0, 255, 153];
 
   function updateCanvas() {
     const isSDE = document.body.classList.contains('sde-mode');

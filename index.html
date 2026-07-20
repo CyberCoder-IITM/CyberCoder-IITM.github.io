@@ -2,1434 +2,673 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Adnan Syed | Software Engineer | Distributed Systems & AI/ML</title>
-  <meta name="description" content="Saleeq Adnan Syed - Software Engineer, MSCS Boston University Jan 2026. Distributed systems, AI/ML, backend engineering. 50K+ events/min Kafka pipelines. IEEE published. Post-OPT EAD, no sponsorship required." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;700;800;900&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adnan Syed | Distributed Systems & AI/ML Engineer</title>
+  <meta name="description" content="Saleeq Adnan Syed — Software Engineer, MSCS Boston University Jan 2026. Distributed systems, AI/ML, security engineering. 50,000+ events/min streaming pipelines, IEEE published. Post-OPT EAD, no sponsorship required currently." />
+
+  <!-- CHANGED: canonical + full Open Graph + Twitter Card for link-preview quality -->
+  <link rel="canonical" href="https://adnansyed.me/" />
+  <meta property="og:type" content="profile" />
+  <meta property="og:url" content="https://adnansyed.me/" />
+  <meta property="og:title" content="Adnan Syed | Distributed Systems & AI/ML Engineer" />
+  <meta property="og:description" content="MSCS Boston University Jan 2026. Streaming pipelines at 50,000+ events/min, Rust benchmark harnesses, MITRE ATT&CK detection tooling. IEEE published." />
+  <meta property="og:image" content="https://adnansyed.me/avatar.jpg" />
+  <meta property="profile:first_name" content="Saleeq Adnan" />
+  <meta property="profile:last_name" content="Syed" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Adnan Syed | Distributed Systems & AI/ML Engineer" />
+  <meta name="twitter:description" content="MSCS Boston University Jan 2026. Streaming pipelines at 50,000+ events/min, Rust benchmark harnesses, MITRE ATT&CK detection tooling. IEEE published." />
+  <meta name="twitter:image" content="https://adnansyed.me/avatar.jpg" />
+
+  <!-- CHANGED: font stack per spec — Bricolage Grotesque (display) / IBM Plex Sans (body) / IBM Plex Mono (data). Non-render-blocking via print-swap trick + display=swap, latin subset. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500&display=swap&subset=latin" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500&display=swap&subset=latin"
+    media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500&display=swap&subset=latin" />
+  </noscript>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
+  <!-- CHANGED: JSON-LD Person + ProfilePage. No aggregateRating/reviews (nothing to fabricate). -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "dateModified": "2026-07-19",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Saleeq Adnan Syed",
+      "alternateName": "Adnan Syed",
+      "url": "https://adnansyed.me/",
+      "email": "mailto:saleeq1269@gmail.com",
+      "jobTitle": "Software Engineer",
+      "description": "Distributed systems, AI/ML, and security engineering. MSCS, Boston University (Jan 2026).",
+      "alumniOf": [
+        { "@type": "CollegeOrUniversity", "name": "Boston University" },
+        { "@type": "CollegeOrUniversity", "name": "Lovely Professional University" }
+      ],
+      "knowsAbout": ["Distributed Systems", "Apache Kafka", "Apache Spark", "Rust", "Machine Learning", "Security Engineering", "MITRE ATT&CK"],
+      "sameAs": [
+        "https://github.com/CyberCoder-IITM",
+        "https://www.linkedin.com/in/syedsq/",
+        "https://ieeexplore.ieee.org/document/10838018"
+      ]
+    }
+  }
+  </script>
+
   <style>
+    /* ================================================================
+       CHANGED: full token system rebuilt per spec.
+       Type: Bricolage / Plex Sans / Plex Mono. Numbers always mono + tabular.
+       Color: one ink, one surface, one semantic red; primary changes
+       TEMPERATURE per mode (cyan / amber). Third accents, glows, glass — deleted.
+       Spacing: 8px scale.
+    ================================================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #050a0e;
-      --bg2: #0a1628;
-      --surface: rgba(10, 22, 40, 0.7);
-      --border: rgba(0, 255, 153, 0.12);
-      --text: #e8f4f8;
-      --muted: #4a6580;
-      --accent: #00ff99;
-      --accent2: #ff2d5b;
-      --accent3: #00d4ff;
-      --glow: 0 0 20px rgba(0,255,153,0.25);
-      --glow2: 0 0 20px rgba(255,45,91,0.25);
-      --font-display: 'Syne', sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-      --mode: 'cyber';
+      /* spacing scale (8px base; 4px micro allowed inside components only) */
+      --s1: 8px; --s2: 16px; --s3: 24px; --s4: 32px; --s5: 48px; --s6: 64px; --s7: 96px; --s8: 128px;
+
+      /* shared color */
+      --ink: #0B0E12;
+      --surface: #12161C;
+      --border: #1E242D;
+      --text: #E6EAEF;
+      --muted: #98A2B0;
+      --semantic: #F2495C;
+
+      /* CYBER mode default — cold / precision */
+      --primary: #58C7E0;
+      --primary-dim: rgba(88, 199, 224, 0.10);
+
+      /* type */
+      --f-display: 'Bricolage Grotesque', sans-serif;
+      --f-body: 'IBM Plex Sans', sans-serif;
+      --f-mono: 'IBM Plex Mono', monospace;
+
+      --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
     body.sde-mode {
-      --bg: #06050f;
-      --bg2: #0e0a1f;
-      --surface: rgba(14, 10, 31, 0.7);
-      --border: rgba(120, 80, 255, 0.15);
-      --text: #ede8ff;
-      --muted: #5a4a7a;
-      --accent: #7c4dff;
-      --accent2: #00d4ff;
-      --accent3: #ff6b9d;
-      --glow: 0 0 20px rgba(124,77,255,0.3);
-      --glow2: 0 0 20px rgba(0,212,255,0.25);
+      /* SDE mode — warm / systems */
+      --primary: #E8A33D;
+      --primary-dim: rgba(232, 163, 61, 0.10);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--bg);
+      background: var(--ink);
       color: var(--text);
-      font-family: var(--font-mono);
+      font-family: var(--f-body);
+      font-size: 0.9375rem;      /* 15px */
+      line-height: 1.65;
       overflow-x: hidden;
-      transition: background 0.6s ease, color 0.4s ease;
+      -webkit-font-smoothing: antialiased;
     }
 
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 1;
-      opacity: 0.6;
+    /* the "world re-tempers" — only color properties transition, never transform */
+    body, .stat, .metric, .eyebrow, .cs-label, .primary-ink,
+    .cta-primary, .cta-ghost, .tag, .pill, .card, .cs, .oss,
+    .social-link, .cert-card, .toggle, .toggle-thumb {
+      transition: background-color .4s var(--ease), border-color .4s var(--ease), color .4s var(--ease);
     }
 
-    #bg-canvas {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      opacity: 0.35;
-      transition: opacity 0.6s;
+    /* every number is mono + tabular */
+    .metric, .stat strong, .oss-stat, .cs-result strong { font-variant-numeric: tabular-nums; }
+
+    a { color: inherit; }
+
+    /* focus visibility (a11y) */
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 3px;
+      border-radius: 4px;
     }
 
-    .mode-switcher {
+    /* ---------- MODE TOGGLE: sliding thumb ---------- */
+    .toggle {
       position: fixed;
-      top: 24px;
-      right: 24px;
+      top: var(--s3); right: var(--s3);
       z-index: 1000;
       display: flex;
-      align-items: center;
-      gap: 0;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 50px;
-      padding: 5px;
-      backdrop-filter: blur(20px);
-      box-shadow: var(--glow);
-      transition: box-shadow 0.4s;
+      border-radius: 999px;
+      padding: 4px;
     }
-
-    .mode-btn {
-      padding: 8px 18px;
-      border-radius: 40px;
-      border: none;
-      cursor: pointer;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      transition: all 0.3s ease;
-      background: transparent;
-      color: var(--muted);
-    }
-
-    .mode-btn.active {
-      background: var(--accent);
-      color: var(--bg);
-    }
-
-    body.sde-mode .mode-btn.active { color: #fff; }
-
-    main {
-      position: relative;
-      z-index: 10;
-    }
-
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 24px 40px;
-      text-align: center;
-      position: relative;
-    }
-
-    .mode-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.72rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--accent);
-      border: 1px solid var(--border);
-      padding: 6px 16px;
-      border-radius: 40px;
-      margin-bottom: 32px;
-      background: rgba(0,0,0,0.3);
-      transition: all 0.4s ease;
-    }
-
-    .mode-badge .dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: var(--accent);
-      animation: blink 1.4s infinite;
-    }
-
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
-
-    .hero-name {
-      font-family: var(--font-display);
-      font-size: clamp(3.5rem, 10vw, 8rem);
-      font-weight: 900;
-      line-height: 0.9;
-      letter-spacing: -2px;
-      color: var(--text);
-      margin-bottom: 16px;
-      position: relative;
-    }
-
-    .hero-name .first { display: block; }
-    .hero-name .last {
-      display: block;
-      -webkit-text-stroke: 2px var(--accent);
-      color: transparent;
-      transition: -webkit-text-stroke-color 0.5s, color 0.5s;
-    }
-
-    .hero-roles {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
-
-    .role-pill {
-      font-size: 0.78rem;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 6px 16px;
-      border-radius: 4px;
-      transition: all 0.4s;
-    }
-
-    .pill-cyber { background: rgba(0,255,153,0.08); color: var(--accent); border: 1px solid rgba(0,255,153,0.2); }
-    .pill-sde   { background: rgba(0,212,255,0.08); color: var(--accent3); border: 1px solid rgba(0,212,255,0.2); }
-    .pill-ai    { background: rgba(255,45,91,0.08); color: var(--accent2); border: 1px solid rgba(255,45,91,0.2); }
-
-    body.sde-mode .pill-cyber { background: rgba(124,77,255,0.08); color: var(--accent); border-color: rgba(124,77,255,0.2); }
-    body.sde-mode .pill-sde   { background: rgba(0,212,255,0.08); color: var(--accent2); border-color: rgba(0,212,255,0.2); }
-    body.sde-mode .pill-ai    { background: rgba(255,107,157,0.08); color: var(--accent3); border-color: rgba(255,107,157,0.2); }
-
-    .role-divider { color: var(--muted); font-size: 0.7rem; }
-
-    .hero-bio {
-      max-width: 560px;
-      font-size: 0.88rem;
-      line-height: 1.8;
-      color: var(--muted);
-      margin-bottom: 48px;
-      transition: all 0.4s;
-    }
-
-    .hero-bio.cyber-bio { display: block; }
-    .hero-bio.sde-bio   { display: none; }
-    body.sde-mode .hero-bio.cyber-bio { display: none; }
-    body.sde-mode .hero-bio.sde-bio   { display: block; }
-
-    .cta-row {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 60px;
-    }
-
-    .cta-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 13px 28px;
-      border-radius: 6px;
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-decoration: none;
-      text-transform: uppercase;
-      border: 1px solid transparent;
-      transition: all 0.25s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-primary {
-      background: var(--accent);
-      color: var(--bg);
-      border-color: var(--accent);
-    }
-    .cta-primary:hover { box-shadow: var(--glow); transform: translateY(-2px); }
-
-    .cta-ghost {
-      background: transparent;
-      color: var(--text);
-      border-color: var(--border);
-    }
-    .cta-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-
-    .cta-ghost2 {
-      background: transparent;
-      color: var(--accent3);
-      border-color: rgba(0,212,255,0.2);
-    }
-    .cta-ghost2:hover { border-color: var(--accent3); box-shadow: var(--glow2); transform: translateY(-2px); }
-
-    body.sde-mode .cta-ghost2 { color: var(--accent2); border-color: rgba(0,212,255,0.2); }
-
-    .scroll-cue {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      color: var(--muted);
-      font-size: 0.65rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      animation: float 2.5s ease-in-out infinite;
-    }
-
-    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
-
-    .stat-bar {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 20px 0;
-      overflow: hidden;
-    }
-
-    .stat-track {
-      display: flex;
-      gap: 60px;
-      animation: scroll-track 28s linear infinite;
-      white-space: nowrap;
-      width: max-content;
-    }
-
-    @keyframes scroll-track { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-
-    .stat-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.72rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .stat-item strong { color: var(--accent); font-family: var(--font-display); font-size: 1.1rem; }
-    .stat-sep { color: var(--border); }
-
-    section {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 100px 24px;
-    }
-
-    .section-eyebrow {
-      font-size: 0.68rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .section-eyebrow::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-      max-width: 60px;
-    }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      font-weight: 800;
-      color: var(--text);
-      margin-bottom: 60px;
-      line-height: 1.1;
-    }
-
-    .projects-cyber { display: block; }
-    .projects-sde   { display: none; }
-    body.sde-mode .projects-cyber { display: none; }
-    body.sde-mode .projects-sde   { display: block; }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 20px;
-    }
-
-    .project-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px;
-      backdrop-filter: blur(15px);
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .project-card::before {
-      content: '';
+    .toggle-thumb {
       position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity: 0;
-      transition: opacity 0.3s;
+      top: 4px; left: 4px;
+      width: calc(50% - 4px);
+      height: calc(100% - 8px);
+      background: var(--primary-dim);
+      border: 1px solid var(--primary);
+      border-radius: 999px;
+      transition: transform .2s ease-out, background-color .4s var(--ease), border-color .4s var(--ease);
     }
-
-    .project-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--accent);
-      box-shadow: var(--glow);
-    }
-
-    .project-card:hover::before { opacity: 1; }
-
-    .card-number {
-      font-size: 0.65rem;
-      letter-spacing: 3px;
+    body.sde-mode .toggle-thumb { transform: translateX(100%); }
+    .toggle-btn {
+      position: relative; z-index: 1;
+      flex: 1;
+      padding: 7px 16px;
+      border: none; background: transparent; cursor: pointer;
+      font-family: var(--f-mono); font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 16px;
+      transition: color .25s var(--ease);
+      white-space: nowrap;
+    }
+    .toggle-btn[aria-pressed="true"] { color: var(--text); }
+
+    main { position: relative; z-index: 10; }
+
+    /* ---------- eyebrow / section furniture ---------- */
+    .eyebrow {
+      font-family: var(--f-mono); font-size: 0.75rem; font-weight: 400;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: var(--s1);
+    }
+    section {
+      max-width: 1040px; margin: 0 auto;
+      padding: var(--s7) var(--s3);
+    }
+    .section-title {
+      font-family: var(--f-display); font-weight: 600;
+      font-size: clamp(1.625rem, 3.5vw, 2.5rem);
+      line-height: 1.1;
+      margin-bottom: var(--s5);
     }
 
-    .card-icon {
-      font-size: 1.4rem;
-      margin-bottom: 14px;
-      color: var(--accent);
+    /* ---------- HERO ---------- */
+    .hero {
+      min-height: 92vh;
+      display: flex; flex-direction: column; justify-content: center;
+      max-width: 1040px; margin: 0 auto;
+      padding: var(--s7) var(--s3) var(--s6);
     }
-
-    .card-title {
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      font-weight: 700;
+    .hero-photo {
+      width: 68px; height: 68px; border-radius: 50%;
+      object-fit: cover; margin-bottom: var(--s4);
+      border: 1px solid var(--border);
+    }
+    .hero-caption {
+      font-family: var(--f-mono); font-size: 0.75rem;
+      letter-spacing: 0.04em; color: var(--muted);
+      margin-bottom: var(--s2);
+    }
+    .hero-name {
+      font-family: var(--f-display); font-weight: 800;
+      font-size: clamp(2.75rem, 7vw, 5.5rem);
+      line-height: 0.95; letter-spacing: -0.02em;
+      margin-bottom: var(--s4);
+    }
+    .hero-claim {
+      max-width: 46ch;
+      font-size: 1.0625rem; line-height: 1.55;
       color: var(--text);
-      margin-bottom: 10px;
+      margin-bottom: var(--s5);
+    }
+    .cta-row { display: flex; gap: var(--s2); flex-wrap: wrap; margin-bottom: var(--s6); }
+    .cta {
+      display: inline-flex; align-items: center; gap: var(--s1);
+      padding: 12px 22px; border-radius: 8px;
+      font-family: var(--f-mono); font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.02em; text-decoration: none;
+      border: 1px solid var(--border);
+      transition: border-color .25s var(--ease), background-color .25s var(--ease), color .25s var(--ease), transform .15s var(--ease);
+    }
+    .cta-primary { background: var(--primary); color: var(--ink); border-color: var(--primary); }
+    .cta-primary:hover { transform: translateY(-2px); }
+    .cta-ghost:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
+
+    /* static 4-stat strip (no ticker) */
+    .stat-strip {
+      display: flex; flex-wrap: wrap; gap: var(--s5);
+      padding-top: var(--s4);
+      border-top: 1px solid var(--border);
+    }
+    .stat { display: flex; flex-direction: column; gap: 4px; }
+    .stat strong {
+      font-family: var(--f-mono); font-weight: 600; font-size: 1.5rem;
+      color: var(--primary); line-height: 1;
+    }
+    .stat span {
+      font-family: var(--f-mono); font-size: 0.72rem;
+      letter-spacing: 0.04em; color: var(--muted); text-transform: uppercase;
     }
 
-    .card-desc {
-      font-size: 0.82rem;
-      line-height: 1.7;
-      color: var(--muted);
-      flex-grow: 1;
-      margin-bottom: 20px;
-    }
+    /* ---------- mode-swap containers ---------- */
+    .swap > .cyber-only { display: block; }
+    .swap > .sde-only { display: none; }
+    body.sde-mode .swap > .cyber-only { display: none; }
+    body.sde-mode .swap > .sde-only { display: block; }
+    /* crossfade applied by JS on switch */
+    .swapping-out { opacity: 0; transform: translateY(-4px); transition: opacity .15s var(--ease), transform .15s var(--ease); }
+    .swapping-in { animation: swapIn .2s var(--ease) 0.1s both; }
+    @keyframes swapIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
-    .card-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 20px;
+    /* ---------- CASE STUDIES ---------- */
+    .cs {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface);
+      padding: var(--s5);
+      margin-bottom: var(--s3);
     }
+    .cs-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: var(--s2); flex-wrap: wrap;
+      margin-bottom: var(--s4);
+    }
+    .cs-title { font-family: var(--f-display); font-weight: 600; font-size: 1.375rem; }
+    .cs-stack { font-family: var(--f-mono); font-size: 0.72rem; color: var(--muted); letter-spacing: 0.02em; }
+    .cs-row { margin-bottom: var(--s3); }
+    .cs-row:last-of-type { margin-bottom: 0; }
+    .cs-label {
+      font-family: var(--f-mono); font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--primary); display: block; margin-bottom: 4px;
+    }
+    .cs-row p { color: var(--text); max-width: 74ch; }
+    .cs-result { border-left: 2px solid var(--primary); padding-left: var(--s2); }
+    .cs-result strong { color: var(--primary); }
 
+    /* ---------- OPEN SOURCE credibility block ---------- */
+    .oss {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface);
+      padding: var(--s5);
+      display: flex; flex-direction: column; gap: var(--s2);
+    }
+    .oss-status {
+      display: inline-flex; align-items: center; gap: var(--s1);
+      font-family: var(--f-mono); font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--semantic);
+    }
+    .oss-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--semantic); }
+    .oss-title { font-family: var(--f-display); font-weight: 600; font-size: 1.25rem; }
+    .oss p { color: var(--text); max-width: 74ch; }
+    .oss-meta { font-family: var(--f-mono); font-size: 0.75rem; color: var(--muted); }
+    .oss-link {
+      align-self: flex-start;
+      display: inline-flex; align-items: center; gap: var(--s1);
+      font-family: var(--f-mono); font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.02em; text-decoration: none;
+      border: 1px solid var(--border); padding: 9px 16px; border-radius: 8px;
+      transition: border-color .25s var(--ease), color .25s var(--ease);
+    }
+    .oss-link:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* ---------- compact project grid (hover reveals Tradeoff) ---------- */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--s3); }
+    .card {
+      border: 1px solid var(--border); border-radius: 12px;
+      background: var(--surface); padding: var(--s3);
+      display: flex; flex-direction: column;
+      transition: border-color .25s var(--ease), transform .2s var(--ease);
+    }
+    .card:hover { border-color: var(--primary); transform: translateY(-2px); }
+    .card-title { font-family: var(--f-display); font-weight: 600; font-size: 1.125rem; margin-bottom: var(--s1); }
+    .card-desc { font-size: 0.875rem; color: var(--muted); flex-grow: 1; margin-bottom: var(--s2); }
+    .card-tradeoff {
+      max-height: 0; overflow: hidden; opacity: 0;
+      transition: max-height .3s var(--ease), opacity .3s var(--ease), margin .3s var(--ease);
+      font-size: 0.8125rem; color: var(--text);
+    }
+    .card:hover .card-tradeoff, .card:focus-within .card-tradeoff {
+      max-height: 120px; opacity: 1; margin-bottom: var(--s2);
+    }
+    .card-tradeoff b { color: var(--primary); font-weight: 600; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: var(--s2); }
     .tag {
-      font-size: 0.68rem;
-      letter-spacing: 0.5px;
-      padding: 4px 10px;
-      border-radius: 4px;
-      background: rgba(0,255,153,0.06);
-      color: var(--accent);
-      border: 1px solid rgba(0,255,153,0.15);
+      font-family: var(--f-mono); font-size: 0.7rem;
+      padding: 3px 9px; border-radius: 4px;
+      background: var(--primary-dim); color: var(--primary);
+      border: 1px solid var(--border);
     }
-
-    body.sde-mode .tag {
-      background: rgba(124,77,255,0.06);
-      color: var(--accent);
-      border-color: rgba(124,77,255,0.15);
-    }
-
     .card-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--accent);
-      text-decoration: none;
-      border: 1px solid var(--border);
-      padding: 9px 16px;
-      border-radius: 6px;
-      transition: all 0.25s;
-      width: fit-content;
+      align-self: flex-start;
+      font-family: var(--f-mono); font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.02em; text-decoration: none; color: var(--muted);
+      transition: color .2s var(--ease), transform .15s var(--ease);
+    }
+    .card-link:hover { color: var(--primary); transform: translateX(3px); }
+
+    /* ---------- stack ---------- */
+    .stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--s3); }
+    .stack-block { border: 1px solid var(--border); border-radius: 12px; background: var(--surface); padding: var(--s3); }
+    .stack-block h3 { font-family: var(--f-display); font-weight: 600; font-size: 1rem; margin-bottom: var(--s2); }
+    .pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .pill {
+      font-family: var(--f-mono); font-size: 0.72rem;
+      padding: 4px 10px; border-radius: 999px;
+      background: var(--primary-dim); color: var(--primary); border: 1px solid var(--border);
     }
 
-    .card-link:hover {
-      border-color: var(--accent);
-      background: rgba(0,255,153,0.06);
-      transform: translateX(4px);
+    /* ---------- credentials ---------- */
+    .certs { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--s2); }
+    .cert-card {
+      border: 1px solid var(--border); border-radius: 10px; background: var(--surface);
+      padding: var(--s3); display: flex; gap: var(--s2); align-items: flex-start;
+      transition: border-color .2s var(--ease);
     }
+    .cert-card:hover { border-color: var(--primary); }
+    .cert-card.featured { border-color: var(--primary); background: var(--primary-dim); }
+    .cert-ico { color: var(--primary); font-size: 1rem; margin-top: 2px; }
+    .cert-issuer { font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+    .cert-name { font-size: 0.875rem; font-weight: 500; line-height: 1.4; }
+    .cert-tag { font-family: var(--f-mono); font-size: 0.62rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--semantic); display: inline-block; margin-top: 6px; }
+    .also { margin-top: var(--s3); font-size: 0.8125rem; color: var(--muted); max-width: 74ch; }
 
-    body.sde-mode .card-link:hover { background: rgba(124,77,255,0.06); }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-
-    .skill-block {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px;
-      backdrop-filter: blur(15px);
-      transition: border-color 0.3s, box-shadow 0.3s;
-    }
-
-    .skill-block:hover {
-      border-color: var(--accent);
-      box-shadow: var(--glow);
-    }
-
-    .skill-block-icon {
-      font-size: 1.6rem;
-      color: var(--accent);
-      margin-bottom: 14px;
-    }
-
-    .skill-block h3 {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
-
-    .skill-block p {
-      font-size: 0.8rem;
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 16px;
-    }
-
-    .skill-pills { display: flex; flex-wrap: wrap; gap: 6px; }
-
-    .skill-pill {
-      font-size: 0.7rem;
-      padding: 4px 10px;
-      border-radius: 20px;
-      background: rgba(0,255,153,0.05);
-      color: var(--accent);
-      border: 1px solid rgba(0,255,153,0.15);
-    }
-
-    body.sde-mode .skill-pill {
-      background: rgba(124,77,255,0.05);
-      color: var(--accent);
-      border-color: rgba(124,77,255,0.15);
-    }
-
-    .about-strip {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 50px;
-      backdrop-filter: blur(15px);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      align-items: center;
-    }
-
-    @media (max-width: 640px) { .about-strip { grid-template-columns: 1fr; padding: 30px; gap: 30px; } }
-
-    .about-text h2 {
-      font-family: var(--font-display);
-      font-size: 1.8rem;
-      font-weight: 800;
-      margin-bottom: 16px;
-      color: var(--text);
-    }
-
-    .about-text p {
-      font-size: 0.83rem;
-      line-height: 1.8;
-      color: var(--muted);
-    }
-
-    .about-links { display: flex; flex-direction: column; gap: 14px; }
-
+    /* ---------- contact ---------- */
+    .connect-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s5); align-items: start; }
+    @media (max-width: 720px) { .connect-grid { grid-template-columns: 1fr; gap: var(--s4); } }
+    .connect-lead { font-family: var(--f-display); font-weight: 600; font-size: 1.75rem; line-height: 1.15; margin-bottom: var(--s3); }
+    .connect-copy { color: var(--muted); }
+    .links { display: flex; flex-direction: column; gap: var(--s1); }
     .social-link {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 16px 20px;
-      background: rgba(0,0,0,0.3);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      text-decoration: none;
-      color: var(--text);
-      font-size: 0.82rem;
-      transition: all 0.25s ease;
+      display: flex; align-items: center; gap: var(--s2);
+      padding: 14px 16px; border: 1px solid var(--border); border-radius: 10px;
+      text-decoration: none; font-size: 0.875rem;
+      transition: border-color .2s var(--ease), transform .15s var(--ease);
     }
-
-    .social-link:hover {
-      border-color: var(--accent);
-      background: rgba(0,255,153,0.04);
-      transform: translateX(5px);
-    }
-
-    body.sde-mode .social-link:hover { background: rgba(124,77,255,0.04); }
-
-    .social-link .s-icon {
-      width: 38px; height: 38px;
-      border-radius: 8px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem;
-      color: var(--accent);
-      flex-shrink: 0;
-    }
-
-    .social-link .s-info { display: flex; flex-direction: column; gap: 2px; }
-    .social-link .s-name { font-weight: 600; color: var(--text); }
-    .social-link .s-handle { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.5px; }
-    .social-link .s-arrow { margin-left: auto; color: var(--muted); font-size: 0.8rem; }
+    .social-link:hover { border-color: var(--primary); transform: translateX(3px); }
+    .social-link .ico { color: var(--primary); width: 22px; text-align: center; }
+    .social-link .handle { font-family: var(--f-mono); font-size: 0.72rem; color: var(--muted); }
+    .social-link .arrow { margin-left: auto; color: var(--muted); font-size: 0.75rem; }
 
     footer {
       border-top: 1px solid var(--border);
-      padding: 30px 24px;
-      text-align: center;
-      font-size: 0.72rem;
-      color: var(--muted);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      position: relative;
-      z-index: 10;
+      padding: var(--s4) var(--s3); text-align: center;
+      font-family: var(--f-mono); font-size: 0.72rem; color: var(--muted);
+      letter-spacing: 0.04em;
     }
+    footer .updated { color: var(--muted); opacity: 0.7; }
 
-    footer span { color: var(--accent); }
+    /* ---------- scroll reveal (staggered by hierarchy via inline delay) ---------- */
+    .reveal { opacity: 0; transform: translateY(12px); transition: opacity .35s var(--ease), transform .35s var(--ease); }
+    .reveal.in { opacity: 1; transform: translateY(0); }
 
+    /* ---------- responsive floor: no overflow < 380px ---------- */
     @media (max-width: 600px) {
-      .mode-switcher { top: 16px; right: 16px; }
-      .mode-btn { padding: 7px 14px; font-size: 0.65rem; }
-      .hero { padding: 80px 20px 40px; }
+      section { padding: var(--s6) var(--s3); }
+      .hero { padding: var(--s7) var(--s3) var(--s5); min-height: auto; }
+      .stat-strip { gap: var(--s4); }
+      .cs, .oss { padding: var(--s4); }
+      .toggle { top: var(--s2); right: var(--s2); }
+    }
+    @media (max-width: 380px) {
+      .stat-strip { gap: var(--s3); }
+      .stat strong { font-size: 1.25rem; }
       .cta-row { gap: 10px; }
-      .cta-btn { padding: 12px 20px; font-size: 0.72rem; }
-      section { padding: 70px 20px; }
     }
 
-    .mode-flash {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 9999;
-      background: var(--accent);
-      opacity: 0;
-      transition: opacity 0.15s;
-    }
-
-    .mode-flash.flash { opacity: 0.06; }
-
-    .cursor {
-      display: inline-block;
-      width: 3px;
-      height: 0.85em;
-      background: var(--accent);
-      margin-left: 4px;
-      vertical-align: middle;
-      animation: blink 1s infinite;
-    }
-
-    .avatar-wrap {
-      position: relative;
-      width: 120px;
-      height: 120px;
-      margin-bottom: 28px;
-    }
-
-    .avatar-ring {
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      background: conic-gradient(var(--accent), var(--accent3), var(--accent2), var(--accent));
-      animation: spin 4s linear infinite;
-      z-index: 0;
-    }
-
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .avatar-ring-mask {
-      position: absolute;
-      inset: 3px;
-      border-radius: 50%;
-      background: var(--bg);
-      z-index: 1;
-    }
-
-    .avatar-img {
-      position: absolute;
-      inset: 6px;
-      border-radius: 50%;
-      object-fit: cover;
-      width: calc(100% - 12px);
-      height: calc(100% - 12px);
-      z-index: 2;
-      filter: grayscale(20%);
-      transition: filter 0.3s;
-    }
-
-    .avatar-wrap:hover .avatar-img { filter: grayscale(0%); }
-
-    .avatar-status {
-      position: absolute;
-      bottom: 6px;
-      right: 6px;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: 2px solid var(--bg);
-      z-index: 3;
-      animation: blink 2s infinite;
-    }
-
-    .cert-filters {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 36px;
-    }
-
-    .cert-filter-btn {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 7px 16px;
-      border-radius: 40px;
-      border: 1px solid var(--border);
-      background: transparent;
-      color: var(--muted);
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .cert-filter-btn:hover,
-    .cert-filter-btn.active {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: rgba(0,255,153,0.05);
-    }
-
-    body.sde-mode .cert-filter-btn:hover,
-    body.sde-mode .cert-filter-btn.active {
-      background: rgba(124,77,255,0.05);
-    }
-
-    .certs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 16px;
-    }
-
-    .cert-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px 22px;
-      backdrop-filter: blur(15px);
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, opacity 0.3s ease;
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    .cert-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .cert-card.hidden {
-      display: none;
-    }
-
-    .cert-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent);
-      box-shadow: var(--glow);
-    }
-
-    .cert-icon-wrap {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      background: rgba(0,0,0,0.3);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      color: var(--accent);
-      flex-shrink: 0;
-      transition: background 0.3s;
-    }
-
-    .cert-card:hover .cert-icon-wrap {
-      background: rgba(0,255,153,0.08);
-    }
-
-    body.sde-mode .cert-card:hover .cert-icon-wrap {
-      background: rgba(124,77,255,0.08);
-    }
-
-    .cert-body { flex: 1; min-width: 0; }
-
-    .cert-issuer {
-      font-size: 0.62rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 4px;
-    }
-
-    .cert-name {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--text);
-      line-height: 1.4;
-    }
-
-    .cert-type-badge {
-      display: inline-block;
-      margin-top: 8px;
-      font-size: 0.6rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 3px 8px;
-      border-radius: 3px;
-    }
-
-    .badge-cyber { background: rgba(0,255,153,0.08); color: var(--accent); border: 1px solid rgba(0,255,153,0.2); }
-    .badge-sde   { background: rgba(0,212,255,0.08); color: #00d4ff; border: 1px solid rgba(0,212,255,0.2); }
-    .badge-ai    { background: rgba(255,107,157,0.08); color: #ff6b9d; border: 1px solid rgba(255,107,157,0.2); }
-    .badge-other { background: rgba(251,191,36,0.08); color: #fbbf24; border: 1px solid rgba(251,191,36,0.2); }
-
-    body.sde-mode .badge-cyber { background: rgba(124,77,255,0.08); color: var(--accent); border-color: rgba(124,77,255,0.2); }
-
-    /* Featured cert highlight */
-    .cert-card.featured {
-      border-color: rgba(0,255,153,0.35);
-      background: rgba(0,255,153,0.04);
-    }
-    body.sde-mode .cert-card.featured {
-      border-color: rgba(124,77,255,0.35);
-      background: rgba(124,77,255,0.04);
+    /* ---------- reduced motion: opacity-only, instant toggle ---------- */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; scroll-behavior: auto; }
+      .reveal { transform: none; }
+      .toggle-thumb { transition: none; }
     }
   </style>
 </head>
 <body class="sde-mode">
 
-<div class="mode-flash" id="flash"></div>
-
-<!-- MODE SWITCHER -->
-<div class="mode-switcher">
-  <button class="mode-btn" id="btn-cyber" onclick="setMode('cyber')">
-    <i class="fa-solid fa-shield-halved"></i>&nbsp; Cyber
-  </button>
-  <button class="mode-btn active" id="btn-sde" onclick="setMode('sde')">
-    <i class="fa-solid fa-code"></i>&nbsp; SDE
-  </button>
+<!-- CHANGED: toggle is now a real segmented control with sliding thumb + aria-pressed state. -->
+<div class="toggle" role="group" aria-label="Switch portfolio focus">
+  <span class="toggle-thumb" aria-hidden="true"></span>
+  <button class="toggle-btn" id="btn-cyber" aria-pressed="false" onclick="setMode('cyber')">Cyber</button>
+  <button class="toggle-btn" id="btn-sde" aria-pressed="true" onclick="setMode('sde')">SDE</button>
 </div>
-
-<canvas id="bg-canvas"></canvas>
 
 <main>
 
-  <!-- HERO -->
-  <div class="hero">
-
-    <div class="avatar-wrap">
-      <div class="avatar-ring"></div>
-      <div class="avatar-ring-mask"></div>
-      <img class="avatar-img" src="avatar.jpg" alt="Adnan Syed"
-           onerror="this.style.display='none'; this.parentElement.querySelector('.avatar-fallback').style.display='flex';" />
-      <div class="avatar-fallback" style="display:none; position:absolute; inset:6px; border-radius:50%; background:var(--surface); border:1px solid var(--border); z-index:2; align-items:center; justify-content:center; font-family:var(--font-display); font-size:2rem; font-weight:900; color:var(--accent);">AS</div>
-      <div class="avatar-status"></div>
+  <!-- CHANGED: hero rebuilt — decision-led claim, plain photo (no ring/dot/cursor), static 4-stat strip (no ticker), role-pill row deleted. -->
+  <header class="hero">
+    <img class="hero-photo" src="avatar.jpg" alt="Portrait of Saleeq Adnan Syed"
+         onerror="this.style.display='none'" />
+    <div class="swap">
+      <p class="hero-caption cyber-only">Security engineering · detection pipelines · BU MSCS Jan 2026</p>
+      <p class="hero-caption sde-only">Saleeq Adnan Syed — MSCS, Boston University · distributed systems &amp; AI/ML</p>
     </div>
-
-    <div class="mode-badge" id="mode-badge">
-      <span class="dot"></span>
-      <span id="badge-text">Distributed Systems / AI-ML Engineer</span>
+    <h1 class="hero-name">Adnan Syed</h1>
+    <div class="swap">
+      <p class="hero-claim cyber-only">My SOC platform runs statistics first and intelligence second: Z-score detection, per-IP baselines, threat-feed correlation, then a Gemini agent for ATT&amp;CK attribution — the analyst always gets the final call.</p>
+      <p class="hero-claim sde-only">Facing a shipping deadline, I put a rolling Z-score inside the stream instead of an ML detector — 50,000+ events/min, 96% anomaly accuracy, zero model drift to manage.</p>
     </div>
-
-    <h1 class="hero-name">
-      <span class="first">Adnan</span>
-      <span class="last">Syed<span class="cursor"></span></span>
-    </h1>
-
-    <div class="hero-roles">
-      <span class="role-pill pill-sde">Software Engineer</span>
-      <span class="role-divider">x</span>
-      <span class="role-pill pill-cyber">Security Researcher</span>
-      <span class="role-divider">x</span>
-      <span class="role-pill pill-sde">Distributed Systems</span>
-      <span class="role-divider">x</span>
-      <span class="role-pill pill-ai">AI / ML Engineer</span>
-    </div>
-
-    <p class="hero-bio cyber-bio">
-      I map attack surfaces before defenders notice them. Building MITRE ATT&amp;CK mapped SOC tooling,
-      surveillance pipelines at 50K+ events/min, and adversarial LLM harnesses in Rust.
-      BU MSCS Jan 2026. CodePath CYB102 certified. IEEE published.
-      Open to security engineering and red-team adjacent roles.
-    </p>
-    <p class="hero-bio sde-bio">
-      I build distributed systems that run hard and break clean.
-      Kafka pipelines at 50K+ events/min. Rust benchmark harnesses at p99 precision.
-      Full-stack platforms at 1K+ concurrent users. BU MSCS Jan 2026.
-      Post-OPT EAD - no sponsorship required. Available now.
-    </p>
 
     <div class="cta-row">
-      <a href="#projects" class="cta-btn cta-primary">
-        <i class="fa-solid fa-terminal"></i> View Projects
-      </a>
-      <a href="resume.pdf" target="_blank" class="cta-btn cta-ghost">
-        <i class="fa-solid fa-file-arrow-down"></i> Resume
-      </a>
-      <a href="mailto:saleeq1269@gmail.com" class="cta-btn cta-ghost2">
-        <i class="fa-solid fa-envelope"></i> Contact
-      </a>
+      <a href="#work" class="cta cta-primary"><i class="fa-solid fa-terminal" aria-hidden="true"></i> View work</a>
+      <a href="resume.pdf" target="_blank" rel="noopener" class="cta cta-ghost"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Resume</a>
+      <a href="mailto:saleeq1269@gmail.com" class="cta cta-ghost"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Contact</a>
     </div>
 
-    <div class="scroll-cue">
-      <i class="fa-solid fa-chevron-down"></i>
-      <span>Scroll</span>
+    <div class="stat-strip" aria-label="Key metrics">
+      <div class="stat"><strong>50K+</strong><span>Events / min</span></div>
+      <div class="stat"><strong>99.9%</strong><span>Pipeline uptime</span></div>
+      <div class="stat"><strong>30%</strong><span>p99 variance cut</span></div>
+      <div class="stat"><strong>IEEE</strong><span>Published 2024</span></div>
     </div>
-  </div>
+  </header>
 
-  <!-- STAT BAR -->
-  <div class="stat-bar">
-    <div class="stat-track">
-      <div class="stat-item"><strong>50K+</strong> <span>Events / Min</span></div>
-      <div class="stat-sep">///</div>
-      <div class="stat-item"><strong>99.9%</strong> <span>Pipeline Uptime</span></div>
-      <div class="stat-sep">///</div>
-      <div class="stat-item"><strong>1K+</strong> <span>Concurrent Users</span></div>
-      <div class="stat-sep">///</div>
-      <div class="stat-item"><strong>96%</strong> <span>ML Accuracy</span></div>
-      <div class="stat-sep">///</div>
-      <div class="stat-item"><strong>30%</strong> <span>p99 Latency Cut</span></div>
-      <div class="stat-sep">///</div>
-      <div class="stat-item"><strong>40%</strong> <span>API Latency Drop</span></div>
-      <div class="stat-sep">///</div>
-      <div class="stat-item"><strong>IEEE</strong> <span>Published 2024</span></div>
-      <div class="stat-sep">///</div>
-      <div class="stat-item"><strong>8+</strong> <span>Projects Shipped</span></div>
-      <div class="stat-sep">///</div>
-      <div class="stat-item"><strong>BU</strong> <span>MSCS 2026</span></div>
-      <div class="stat-sep">///</div>
-      <div class="stat-item"><strong>EAD</strong> <span>No Sponsorship Req.</span></div>
-      <div class="stat-sep">///</div>
-      <!-- duplicate for infinite scroll -->
-      <div class="stat-item"><strong>50K+</strong> <span>Events / Min</span></div>
-      <div class="stat-sep">///</div>
-      <div class="stat-item"><strong>99.9%</strong> <span>Pipeline Uptime</span></div>
-      <div class="stat-sep">///</div>
-      <div class="stat-item"><strong>1K+</strong> <span>Concurrent Users</span></div>
-      <div class="stat-sep">///</div>
-      <div class="stat-item"><strong>96%</strong> <span>ML Accuracy</span></div>
-      <div class="stat-sep">///</div>
-      <div class="stat-item"><strong>30%</strong> <span>p99 Latency Cut</span></div>
-      <div class="stat-sep">///</div>
-      <div class="stat-item"><strong>40%</strong> <span>API Latency Drop</span></div>
-      <div class="stat-sep">///</div>
-      <div class="stat-item"><strong>IEEE</strong> <span>Published 2024</span></div>
-      <div class="stat-sep">///</div>
-      <div class="stat-item"><strong>8+</strong> <span>Projects Shipped</span></div>
-      <div class="stat-sep">///</div>
-      <div class="stat-item"><strong>BU</strong> <span>MSCS 2026</span></div>
-      <div class="stat-sep">///</div>
-      <div class="stat-item"><strong>EAD</strong> <span>No Sponsorship Req.</span></div>
-      <div class="stat-sep">///</div>
-    </div>
-  </div>
+  <!-- CHANGED: case studies are now the page's center of gravity. Problem→Constraint→Decision→Tradeoff→Result. -->
+  <section id="work">
+    <p class="eyebrow reveal">Case studies</p>
+    <h2 class="section-title reveal" style="transition-delay:.09s">Two decisions worth explaining</h2>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-
-    <!-- CYBER PROJECTS -->
-    <div class="projects-cyber">
-      <div class="section-eyebrow">01 / Operations</div>
-      <h2 class="section-title">Cyber Projects</h2>
-      <div class="projects-grid">
-
-        <div class="project-card">
-          <div class="card-number">// 001</div>
-          <div class="card-icon"><i class="fa-solid fa-crosshairs"></i></div>
-          <div class="card-title">AegisView-SOC</div>
-          <p class="card-desc">Real-time SOC analyst platform ingesting live network telemetry, mapping events to the MITRE ATT&amp;CK kill chain, and running Z-score anomaly detection for autonomous APT attribution. Full TypeScript/React pipeline from raw packet data to configurable alert feeds.</p>
-          <div class="card-tags">
-            <span class="tag">TypeScript</span>
-            <span class="tag">React</span>
-            <span class="tag">Kafka</span>
-            <span class="tag">MITRE ATT&amp;CK</span>
-            <span class="tag">Z-score</span>
-          </div>
-          <a href="https://github.com/CyberCoder-IITM/AegisView-SOC" target="_blank" class="card-link">
-            <i class="fa-brands fa-github"></i> Repository
-          </a>
-        </div>
-
-        <div class="project-card">
-          <div class="card-number">// 002</div>
-          <div class="card-icon"><i class="fa-solid fa-biohazard"></i></div>
-          <div class="card-title">Epidemic Intelligence Platform</div>
-          <p class="card-desc">Cloud-native health surveillance pipeline at 50,000+ events/min. Real-time schema validation, rolling Z-score anomaly triggers, and outbreak forecasting deployed on OpenShift Kubernetes - 99.9% uptime. 87-test PyTest regression suite. Adversarial load tested across all ingestion stages.</p>
-          <div class="card-tags">
-            <span class="tag">Apache Kafka</span>
-            <span class="tag">Apache Spark</span>
-            <span class="tag">NiFi</span>
-            <span class="tag">Kubernetes</span>
-            <span class="tag">PostgreSQL</span>
-          </div>
-          <a href="https://github.com/CyberCoder-IITM/epidemic-surveillance-engine" target="_blank" class="card-link">
-            <i class="fa-brands fa-github"></i> Repository
-          </a>
-        </div>
-
-        <div class="project-card">
-          <div class="card-number">// 003</div>
-          <div class="card-icon"><i class="fa-solid fa-gauge-high"></i></div>
-          <div class="card-title">HaloSpec</div>
-          <p class="card-desc">Rust-based adversarial load testing harness for LLM speculative decoding. EMA-adaptive controller measures p99 latency variance reduction (30%) under CPU contention injection. SLO-aware scoring for stability-vs-throughput tradeoffs - directly applicable to AI red-teaming infrastructure.</p>
-          <div class="card-tags">
-            <span class="tag">Rust</span>
-            <span class="tag">Adaptive Control</span>
-            <span class="tag">Load Testing</span>
-            <span class="tag">HTTP API</span>
-          </div>
-          <a href="https://github.com/CyberCoder-IITM/HaloSpec" target="_blank" class="card-link">
-            <i class="fa-brands fa-github"></i> Repository
-          </a>
-        </div>
-
-        <div class="project-card">
-          <div class="card-number">// 004</div>
-          <div class="card-icon"><i class="fa-solid fa-satellite-dish"></i></div>
-          <div class="card-title">AetherFlow: Cyber-Physical Threat Sim</div>
-          <p class="card-desc">3D drone swarm logistics digital twin with A* multi-agent pathfinding and cyber-physical threat modeling via Three.js/WebGL. FastAPI backend handles simulation state, adversarial scenario replay, and parameterized attack injection across logistics corridors.</p>
-          <div class="card-tags">
-            <span class="tag">TypeScript</span>
-            <span class="tag">Three.js</span>
-            <span class="tag">WebGL</span>
-            <span class="tag">FastAPI</span>
-            <span class="tag">Threat Modeling</span>
-          </div>
-          <a href="https://github.com/CyberCoder-IITM/AetherFlow-2D-3D" target="_blank" class="card-link">
-            <i class="fa-brands fa-github"></i> Repository
-          </a>
-        </div>
-
+    <!-- Case study 1 — Epidemic (shown in BOTH modes) -->
+    <article class="cs reveal" style="transition-delay:.18s">
+      <div class="cs-head">
+        <span class="cs-title">Epidemic Intelligence Platform</span>
+        <span class="cs-stack">Python · Kafka · Spark · OpenShift · PostgreSQL</span>
       </div>
-    </div>
+      <div class="cs-row"><span class="cs-label">Problem</span><p>Outbreak signals had to surface from a raw health-event stream in real time, not in a nightly batch.</p></div>
+      <div class="cs-row"><span class="cs-label">Constraint</span><p>A hard delivery deadline: no time to build, train, and validate an ML detection layer, and no appetite for model-drift maintenance after ship.</p></div>
+      <div class="cs-row"><span class="cs-label">Key decision</span><p>Run a rolling Z-score inside the Spark stream instead of a trained model: O(1) per event, deterministic, and every anomaly carries an explainable numerical reason (deviation from the rolling mean).</p></div>
+      <div class="cs-row"><span class="cs-label">Tradeoff</span><p>Sacrificed multi-dimensional context and adaptive thresholds; a slow-building signal hovering near the mean can evade a static threshold, and false negatives run higher than a trained classifier would allow.</p></div>
+      <div class="cs-row cs-result"><span class="cs-label">Verified result</span><p><strong>50,000+ events/min</strong> at <strong>99.9%</strong> uptime on OpenShift Kubernetes, <strong>96%</strong> anomaly accuracy, guarded by an 87-test PyTest suite in CI.</p></div>
+    </article>
 
-    <!-- SDE PROJECTS -->
-    <div class="projects-sde">
-      <div class="section-eyebrow">01 / Builds</div>
-      <h2 class="section-title">Engineering Projects</h2>
-      <div class="projects-grid">
-
-        <div class="project-card">
-          <div class="card-number">// 001</div>
-          <div class="card-icon"><i class="fa-solid fa-database"></i></div>
-          <div class="card-title">Epidemic Intelligence Platform</div>
-          <p class="card-desc">End-to-end distributed health surveillance: event generator to NiFi routing to Kafka typed topics to Spark analytics to MongoDB/PostgreSQL to Grafana dashboards. 50,000+ events/min, 96% anomaly accuracy, 99.9% uptime on OpenShift Kubernetes. 87-test PyTest suite via GitHub Actions CI/CD.</p>
-          <div class="card-tags">
-            <span class="tag">Kafka</span>
-            <span class="tag">Spark</span>
-            <span class="tag">NiFi</span>
-            <span class="tag">Kubernetes</span>
-            <span class="tag">Python</span>
-            <span class="tag">Grafana</span>
-          </div>
-          <a href="https://github.com/CyberCoder-IITM/epidemic-surveillance-engine" target="_blank" class="card-link">
-            <i class="fa-brands fa-github"></i> Repository
-          </a>
+    <!-- Case study 2 — AegisView (Cyber) / HaloSpec (SDE) -->
+    <div class="swap">
+      <article class="cs cyber-only reveal" style="transition-delay:.18s">
+        <div class="cs-head">
+          <span class="cs-title">AegisView-SOC</span>
+          <span class="cs-stack">TypeScript · React · Kafka · MITRE ATT&amp;CK · Gemini 2.5 Flash</span>
         </div>
+        <div class="cs-row"><span class="cs-label">Problem</span><p>SOC analysts need every network event triaged and mapped to a MITRE ATT&amp;CK technique before they look at it.</p></div>
+        <div class="cs-row"><span class="cs-label">Constraint</span><p>The system supports analyst-in-the-loop investigation, not autonomous blocking — so the design favors high sensitivity and explainability over ML-grade precision.</p></div>
+        <div class="cs-row"><span class="cs-label">Key decision</span><p>Z-score statistical detection as the first pass, then recover recall in layers: per-IP behavioral baselines make thresholds adaptive per device, external threat feeds (Emerging Threats, Feodo, URLhaus) supply the context the statistics can't see, and a Gemini 2.5 Flash SOC agent re-analyzes each anomaly for a narrative and ATT&amp;CK attribution.</p></div>
+        <div class="cs-row"><span class="cs-label">Tradeoff</span><p>Pure statistical detection misses low-amplitude, distributed attacks that stay near the mean — accepted, because the analyst plus AI enrichment adjudicates true vs. false positives; for autonomous blocking or a tighter false-positive SLA, this design would be insufficient and would need ML.</p></div>
+        <div class="cs-row cs-result"><span class="cs-label">Verified result</span><p>Full TypeScript/React pipeline from raw telemetry to a configurable, ATT&amp;CK-attributed alert feed, with multi-signal confidence fusion (Z-score + compliance rules + protocol breakdown + forensic chain integrity).</p></div>
+      </article>
 
-        <div class="project-card">
-          <div class="card-number">// 002</div>
-          <div class="card-icon"><i class="fa-brands fa-rust"></i></div>
-          <div class="card-title">HaloSpec: Rust Benchmark Harness</div>
-          <p class="card-desc">Production-grade Rust web service for LLM speculative decoding benchmarking. HTTP API runtime metric ingestion, EMA-adaptive controller cutting p99 latency variance 30% under live CPU load injection. SLO-aware throughput-vs-stability scoring with full test coverage and clear module boundaries.</p>
-          <div class="card-tags">
-            <span class="tag">Rust</span>
-            <span class="tag">HTTP API</span>
-            <span class="tag">Adaptive Control</span>
-            <span class="tag">Performance Eng.</span>
-          </div>
-          <a href="https://github.com/CyberCoder-IITM/HaloSpec" target="_blank" class="card-link">
-            <i class="fa-brands fa-github"></i> Repository
-          </a>
+      <article class="cs sde-only reveal" style="transition-delay:.18s">
+        <div class="cs-head">
+          <span class="cs-title">HaloSpec</span>
+          <span class="cs-stack">Rust · Adaptive control · HTTP API</span>
         </div>
-
-        <div class="project-card">
-          <div class="card-number">// 003</div>
-          <div class="card-icon"><i class="fa-solid fa-users"></i></div>
-          <div class="card-title">PeerDorm: Scalable Education Platform</div>
-          <p class="card-desc">Event-driven MERN stack platform at 1,000+ concurrent users with sub-100ms real-time messaging via Socket.IO. Redux state management cut UI latency 25%. Containerized via Docker with GitHub Actions CI/CD. Oral presentation at IEEE Asian Conference 2024 - peer-reviewed and published.</p>
-          <div class="card-tags">
-            <span class="tag">React</span>
-            <span class="tag">Node.js</span>
-            <span class="tag">MongoDB</span>
-            <span class="tag">Socket.IO</span>
-            <span class="tag">Redux</span>
-            <span class="tag">IEEE 2024</span>
-          </div>
-          <a href="https://github.com/CyberCoder-IITM/Peerdorm-Social" target="_blank" class="card-link">
-            <i class="fa-brands fa-github"></i> Repository
-          </a>
-        </div>
-
-        <div class="project-card">
-          <div class="card-number">// 004</div>
-          <div class="card-icon"><i class="fa-solid fa-cube"></i></div>
-          <div class="card-title">AetherFlow: Drone Logistics Digital Twin</div>
-          <p class="card-desc">Real-time 3D simulation environment with Three.js/WebGL rendering, A* multi-agent pathfinding, and a TypeScript/FastAPI event-driven architecture. Parameterized workflow replay enables systematic performance regression testing across swarm logistics scenarios.</p>
-          <div class="card-tags">
-            <span class="tag">TypeScript</span>
-            <span class="tag">Three.js</span>
-            <span class="tag">WebGL</span>
-            <span class="tag">FastAPI</span>
-            <span class="tag">Python</span>
-          </div>
-          <a href="https://github.com/CyberCoder-IITM/AetherFlow-2D-3D" target="_blank" class="card-link">
-            <i class="fa-brands fa-github"></i> Repository
-          </a>
-        </div>
-
-        <div class="project-card">
-          <div class="card-number">// 005</div>
-          <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
-          <div class="card-title">Rental Price Predictor: Ensemble ML</div>
-          <p class="card-desc">6-model stacking ensemble (XGBoost, LightGBM, CatBoost, Random Forest) over 29,985 listings with 765 features. NLP sentiment analysis on reviews, PowerTransformer feature scaling. MSE 0.055 - 66% better than the 0.16 baseline. Top 5% leaderboard finish.</p>
-          <div class="card-tags">
-            <span class="tag">Python</span>
-            <span class="tag">XGBoost</span>
-            <span class="tag">LightGBM</span>
-            <span class="tag">NLP</span>
-            <span class="tag">Scikit-learn</span>
-          </div>
-          <a href="https://github.com/CyberCoder-IITM/Rental-Price-Predictor" target="_blank" class="card-link">
-            <i class="fa-brands fa-github"></i> Repository
-          </a>
-        </div>
-
-      </div>
-    </div>
-
-  </section>
-
-  <!-- ARSENAL -->
-  <section>
-    <div class="section-eyebrow">02 / Arsenal</div>
-    <h2 class="section-title">Technical Stack</h2>
-    <div class="skills-grid">
-
-      <div class="skill-block">
-        <div class="skill-block-icon"><i class="fa-solid fa-shield-halved"></i></div>
-        <h3>Security Engineering</h3>
-        <p>SOC tooling, threat intelligence pipelines, adversarial analysis, and vulnerability assessment across application and network layers.</p>
-        <div class="skill-pills">
-          <span class="skill-pill">MITRE ATT&amp;CK</span>
-          <span class="skill-pill">Burp Suite</span>
-          <span class="skill-pill">Nmap</span>
-          <span class="skill-pill">Wireshark</span>
-          <span class="skill-pill">VAPT</span>
-          <span class="skill-pill">OAuth 2.0 / JWT</span>
-        </div>
-      </div>
-
-      <div class="skill-block">
-        <div class="skill-block-icon"><i class="fa-solid fa-server"></i></div>
-        <h3>Systems and Backend</h3>
-        <p>High-concurrency microservices, performance profiling, async pipeline engineering, and production-grade API design.</p>
-        <div class="skill-pills">
-          <span class="skill-pill">Rust</span>
-          <span class="skill-pill">Java</span>
-          <span class="skill-pill">Python</span>
-          <span class="skill-pill">TypeScript</span>
-          <span class="skill-pill">Spring Boot</span>
-          <span class="skill-pill">FastAPI</span>
-          <span class="skill-pill">Node.js</span>
-        </div>
-      </div>
-
-      <div class="skill-block">
-        <div class="skill-block-icon"><i class="fa-solid fa-network-wired"></i></div>
-        <h3>Distributed Infrastructure</h3>
-        <p>Event-driven streaming pipelines, container orchestration, cloud-native deployments, and observability at scale.</p>
-        <div class="skill-pills">
-          <span class="skill-pill">Apache Kafka</span>
-          <span class="skill-pill">Apache Spark</span>
-          <span class="skill-pill">Kubernetes</span>
-          <span class="skill-pill">OpenShift</span>
-          <span class="skill-pill">AWS</span>
-          <span class="skill-pill">Docker</span>
-          <span class="skill-pill">Grafana</span>
-        </div>
-      </div>
-
-      <div class="skill-block">
-        <div class="skill-block-icon"><i class="fa-solid fa-brain"></i></div>
-        <h3>AI and ML Engineering</h3>
-        <p>End-to-end ML pipelines, LLM evaluation frameworks, ensemble modeling, and research-grade experimentation.</p>
-        <div class="skill-pills">
-          <span class="skill-pill">PyTorch</span>
-          <span class="skill-pill">TensorFlow</span>
-          <span class="skill-pill">XGBoost</span>
-          <span class="skill-pill">LangChain</span>
-          <span class="skill-pill">RAG</span>
-          <span class="skill-pill">Scikit-learn</span>
-          <span class="skill-pill">NLP</span>
-        </div>
-      </div>
-
+        <div class="cs-row"><span class="cs-label">Problem</span><p>Speculative-decoding throughput has to be measured against latency stability, but p99 latency swings hard under real runtime contention.</p></div>
+        <div class="cs-row"><span class="cs-label">Constraint</span><p><!-- NEEDS: the real HaloSpec constraint (e.g. single-machine benchmarking, no GPU, fixed eval window) — placeholder text below is deliberately generic until you confirm -->Benchmarking had to characterize behavior under injected CPU load rather than an idealized environment.</p></div>
+        <div class="cs-row"><span class="cs-label">Key decision</span><p>Drive draft-length convergence with an EMA-smoothed adaptive controller instead of a fixed threshold, deriving dynamic thresholds from smoothed latency percentiles under non-stationary runtime conditions.</p></div>
+        <div class="cs-row"><span class="cs-label">Tradeoff</span><p>EMA smoothing lags sudden load spikes by design — accepted, because that damping is exactly what cut p99 variance under contention.</p></div>
+        <div class="cs-row cs-result"><span class="cs-label">Verified result</span><p><strong>30%</strong> p99 latency variance reduction under CPU load injection, with an SLO-aware scoring model quantifying throughput-vs-stability tradeoffs.</p></div>
+      </article>
     </div>
   </section>
 
-  <!-- CERTIFICATIONS -->
-  <section>
-    <div class="section-eyebrow">03 / Credentials</div>
-    <h2 class="section-title">Certifications</h2>
-
-    <div class="cert-filters">
-      <button class="cert-filter-btn active" onclick="filterCerts('all', this)">All</button>
-      <button class="cert-filter-btn" onclick="filterCerts('cyber', this)">Cyber</button>
-      <button class="cert-filter-btn" onclick="filterCerts('sde', this)">Dev / Engineering</button>
-      <button class="cert-filter-btn" onclick="filterCerts('ai', this)">AI / ML</button>
-      <button class="cert-filter-btn" onclick="filterCerts('other', this)">Other</button>
+  <!-- CHANGED: NEW standalone open-source credibility block. Framed "Open — in review". Never merged/shipped. -->
+  <section aria-label="Open source">
+    <p class="eyebrow reveal">Open source</p>
+    <div class="oss reveal" style="transition-delay:.09s">
+      <span class="oss-status"><span class="oss-dot" aria-hidden="true"></span> Open — in review</span>
+      <span class="oss-title">Backstage · community-plugins PR #9703</span>
+      <p>Opened a pull request to Backstage (CNCF community-plugins) adding README auto-detection for the azure-devops plugin. Currently in review — addressed multiple rounds of maintainer feedback.</p>
+      <span class="oss-meta">32/32 tests passing · CI green</span>
+      <a class="oss-link" href="https://github.com/backstage/community-plugins/pull/9703" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i> View pull request</a>
     </div>
+  </section>
 
-    <div class="certs-grid" id="certs-grid">
+  <!-- CHANGED: remaining projects — compact grid, hover reveals a Tradeoff line. Numbered //001 markers removed. -->
+  <section aria-label="More projects">
+    <p class="eyebrow reveal">Also built</p>
+    <h2 class="section-title reveal" style="transition-delay:.09s">More projects</h2>
 
-      <!-- Featured: CodePath CYB102 - always first -->
-      <div class="cert-card featured" data-cat="cyber">
-        <div class="cert-icon-wrap"><i class="fa-solid fa-graduation-cap"></i></div>
-        <div class="cert-body">
-          <div class="cert-issuer">CodePath &mdash; May 2026</div>
+    <!-- CYBER grid: HaloSpec, AetherFlow -->
+    <div class="swap">
+      <div class="cyber-only">
+        <div class="grid">
+          <div class="card reveal" style="transition-delay:.18s">
+            <div class="card-title">HaloSpec</div>
+            <p class="card-desc">Rust harness for LLM speculative decoding. EMA-adaptive controller cutting p99 latency variance 30% under CPU contention; SLO-aware throughput-vs-stability scoring.</p>
+            <p class="card-tradeoff"><b>Tradeoff:</b> EMA smoothing lags sudden load spikes by design — accepted, because damping is exactly what cut p99 variance 30% under CPU contention.</p>
+            <div class="tags"><span class="tag">Rust</span><span class="tag">Adaptive Control</span><span class="tag">HTTP API</span></div>
+            <a class="card-link" href="https://github.com/CyberCoder-IITM/HaloSpec" target="_blank" rel="noopener">Repository →</a>
+          </div>
+          <div class="card reveal" style="transition-delay:.24s">
+            <div class="card-title">AetherFlow</div>
+            <p class="card-desc">3D drone-swarm logistics digital twin: A* multi-agent pathfinding and cyber-physical threat modeling via Three.js/WebGL, FastAPI simulation backend with parameterized scenario replay.</p>
+            <p class="card-tradeoff"><b>Tradeoff:</b> parameterized replay gives up live improvisation — accepted, because deterministic runs are what make swarm-scenario regression testing possible.</p>
+            <div class="tags"><span class="tag">TypeScript</span><span class="tag">Three.js</span><span class="tag">WebGL</span><span class="tag">FastAPI</span></div>
+            <a class="card-link" href="https://github.com/CyberCoder-IITM/AetherFlow-2D-3D" target="_blank" rel="noopener">Repository →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SDE grid: PeerDorm, AetherFlow, Rental -->
+      <div class="sde-only">
+        <div class="grid">
+          <div class="card reveal" style="transition-delay:.18s">
+            <div class="card-title">PeerDorm</div>
+            <p class="card-desc">Event-driven MERN platform at 1,000+ concurrent users with sub-100ms Socket.IO messaging; Redux state management cut UI latency 25%. Oral presentation, IEEE Asian Conference 2024.</p>
+            <p class="card-tradeoff"><b>Tradeoff:</b> a single Redux store adds boilerplate on every feature — accepted for predictable state flow, which cut UI latency 25% at 1K+ concurrent users.</p>
+            <div class="tags"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">Socket.IO</span><span class="tag">IEEE 2024</span></div>
+            <a class="card-link" href="https://github.com/CyberCoder-IITM/Peerdorm-Social" target="_blank" rel="noopener">Repository →</a>
+          </div>
+          <div class="card reveal" style="transition-delay:.24s">
+            <div class="card-title">AetherFlow</div>
+            <p class="card-desc">Real-time 3D simulation with Three.js/WebGL rendering, A* multi-agent pathfinding, and a TypeScript/FastAPI event-driven architecture with parameterized workflow replay.</p>
+            <p class="card-tradeoff"><b>Tradeoff:</b> parameterized replay gives up live improvisation — accepted, because deterministic runs are what make swarm-scenario regression testing possible.</p>
+            <div class="tags"><span class="tag">TypeScript</span><span class="tag">Three.js</span><span class="tag">WebGL</span><span class="tag">FastAPI</span></div>
+            <a class="card-link" href="https://github.com/CyberCoder-IITM/AetherFlow-2D-3D" target="_blank" rel="noopener">Repository →</a>
+          </div>
+          <div class="card reveal" style="transition-delay:.3s">
+            <div class="card-title">Rental Price Predictor</div>
+            <p class="card-desc">6-model stacking ensemble (XGBoost, LightGBM, CatBoost, Random Forest) over 29,985 listings; NLP sentiment analysis, PowerTransformer scaling. MSE 0.055 — 66% under the 0.16 baseline.</p>
+            <p class="card-tradeoff"><b>Tradeoff:</b> a 6-model stacking ensemble sacrifices interpretability and inference speed — accepted for accuracy: MSE 0.055, 66% under baseline.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">LightGBM</span><span class="tag">NLP</span></div>
+            <a class="card-link" href="https://github.com/CyberCoder-IITM/Rental-Price-Predictor" target="_blank" rel="noopener">Repository →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHANGED: stack reduced to category + pills (four filler sentences removed). -->
+  <section aria-label="Technical stack">
+    <p class="eyebrow reveal">Stack</p>
+    <h2 class="section-title reveal" style="transition-delay:.09s">Technical stack</h2>
+    <div class="stack-grid">
+      <div class="stack-block reveal" style="transition-delay:.18s">
+        <h3>Security engineering</h3>
+        <div class="pills"><span class="pill">MITRE ATT&amp;CK</span><span class="pill">Burp Suite</span><span class="pill">Nmap</span><span class="pill">Wireshark</span><span class="pill">VAPT</span><span class="pill">OAuth 2.0 / JWT</span></div>
+      </div>
+      <div class="stack-block reveal" style="transition-delay:.24s">
+        <h3>Systems &amp; backend</h3>
+        <div class="pills"><span class="pill">Rust</span><span class="pill">Java</span><span class="pill">Python</span><span class="pill">TypeScript</span><span class="pill">Spring Boot</span><span class="pill">FastAPI</span><span class="pill">Node.js</span></div>
+      </div>
+      <div class="stack-block reveal" style="transition-delay:.3s">
+        <h3>Distributed infrastructure</h3>
+        <div class="pills"><span class="pill">Apache Kafka</span><span class="pill">Apache Spark</span><span class="pill">Kubernetes</span><span class="pill">OpenShift</span><span class="pill">AWS</span><span class="pill">Docker</span><span class="pill">Grafana</span></div>
+      </div>
+      <div class="stack-block reveal" style="transition-delay:.36s">
+        <h3>AI &amp; ML engineering</h3>
+        <div class="pills"><span class="pill">PyTorch</span><span class="pill">TensorFlow</span><span class="pill">XGBoost</span><span class="pill">LangChain</span><span class="pill">RAG</span><span class="pill">Scikit-learn</span><span class="pill">NLP</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHANGED: cert wall cut to 4 primary entries + one "Also completed" line. Filter buttons deleted. -->
+  <section aria-label="Certifications">
+    <p class="eyebrow reveal">Credentials</p>
+    <h2 class="section-title reveal" style="transition-delay:.09s">Certifications</h2>
+    <div class="certs">
+      <div class="cert-card featured reveal" style="transition-delay:.18s">
+        <i class="fa-solid fa-graduation-cap cert-ico" aria-hidden="true"></i>
+        <div>
+          <div class="cert-issuer">CodePath · May 2026</div>
           <div class="cert-name">CYB102 Intermediate Cybersecurity</div>
-          <span class="cert-type-badge badge-cyber">Cyber</span>
         </div>
       </div>
-
-      <div class="cert-card featured" data-cat="ai">
-        <div class="cert-icon-wrap"><i class="fa-solid fa-code-branch"></i></div>
-        <div class="cert-body">
-          <div class="cert-issuer">CodePath &mdash; Summer 2026 &mdash; Active</div>
+      <div class="cert-card reveal" style="transition-delay:.22s">
+        <i class="fa-solid fa-code-branch cert-ico" aria-hidden="true"></i>
+        <div>
+          <div class="cert-issuer">CodePath · Summer 2026</div>
           <div class="cert-name">AI301 AI Open Source Capstone</div>
-          <span class="cert-type-badge badge-ai">In Progress</span>
+          <span class="cert-tag">In progress · Expected Aug 2026</span>
         </div>
       </div>
-
-      <div class="cert-card" data-cat="sde">
-        <div class="cert-icon-wrap"><i class="fa-solid fa-terminal"></i></div>
-        <div class="cert-body">
-          <div class="cert-issuer">Red Hat &mdash; May 2023</div>
+      <div class="cert-card reveal" style="transition-delay:.26s">
+        <i class="fa-solid fa-terminal cert-ico" aria-hidden="true"></i>
+        <div>
+          <div class="cert-issuer">Red Hat · May 2023</div>
           <div class="cert-name">RH134 System Administration II (Certificate of Attendance)</div>
-          <span class="cert-type-badge badge-sde">Dev</span>
         </div>
       </div>
-
-      <div class="cert-card" data-cat="cyber">
-        <div class="cert-icon-wrap"><i class="fa-solid fa-bug"></i></div>
-        <div class="cert-body">
-          <div class="cert-issuer">Internshala &mdash; Nov 2022</div>
-          <div class="cert-name">Ethical Hacking and VAPT (Vulnerability Assessment &amp; Penetration Testing)</div>
-          <span class="cert-type-badge badge-cyber">Cyber</span>
+      <div class="cert-card reveal" style="transition-delay:.3s">
+        <i class="fa-solid fa-bug cert-ico" aria-hidden="true"></i>
+        <div>
+          <div class="cert-issuer">Internshala · Nov 2022</div>
+          <div class="cert-name">Ethical Hacking &amp; VAPT</div>
         </div>
       </div>
-
-      <div class="cert-card" data-cat="cyber">
-        <div class="cert-icon-wrap"><i class="fa-solid fa-user-secret"></i></div>
-        <div class="cert-body">
-          <div class="cert-issuer">Cybrary</div>
-          <div class="cert-name">Penetration Testing &amp; Ethical Hacking</div>
-          <span class="cert-type-badge badge-cyber">Cyber</span>
-        </div>
-      </div>
-
-      <div class="cert-card" data-cat="cyber">
-        <div class="cert-icon-wrap"><i class="fa-solid fa-magnifying-glass"></i></div>
-        <div class="cert-body">
-          <div class="cert-issuer">Cybrary</div>
-          <div class="cert-name">Computer Hacking &amp; Forensics</div>
-          <span class="cert-type-badge badge-cyber">Cyber</span>
-        </div>
-      </div>
-
-      <div class="cert-card" data-cat="cyber">
-        <div class="cert-icon-wrap"><i class="fa-solid fa-shield-halved"></i></div>
-        <div class="cert-body">
-          <div class="cert-issuer">Cybrary</div>
-          <div class="cert-name">CompTIA Security+ Prep</div>
-          <span class="cert-type-badge badge-cyber">Cyber</span>
-        </div>
-      </div>
-
-      <div class="cert-card" data-cat="cyber">
-        <div class="cert-icon-wrap"><i class="fa-solid fa-lock"></i></div>
-        <div class="cert-body">
-          <div class="cert-issuer">Coursera</div>
-          <div class="cert-name">Ethical Hacking Essentials</div>
-          <span class="cert-type-badge badge-cyber">Cyber</span>
-        </div>
-      </div>
-
-      <div class="cert-card" data-cat="cyber">
-        <div class="cert-icon-wrap"><i class="fa-solid fa-building-columns"></i></div>
-        <div class="cert-body">
-          <div class="cert-issuer">Deloitte Australia x Forage</div>
-          <div class="cert-name">Cyber Job Simulation</div>
-          <span class="cert-type-badge badge-cyber">Cyber</span>
-        </div>
-      </div>
-
-      <div class="cert-card" data-cat="cyber">
-        <div class="cert-icon-wrap"><i class="fa-solid fa-id-card"></i></div>
-        <div class="cert-body">
-          <div class="cert-issuer">MasterCard x Forage</div>
-          <div class="cert-name">Cybersecurity Job Simulation</div>
-          <span class="cert-type-badge badge-cyber">Cyber</span>
-        </div>
-      </div>
-
-      <div class="cert-card" data-cat="cyber">
-        <div class="cert-icon-wrap"><i class="fa-solid fa-flag"></i></div>
-        <div class="cert-body">
-          <div class="cert-issuer">Snyk</div>
-          <div class="cert-name">CTF Hackathon Completion</div>
-          <span class="cert-type-badge badge-cyber">Cyber</span>
-        </div>
-      </div>
-
-      <div class="cert-card" data-cat="sde">
-        <div class="cert-icon-wrap"><i class="fa-brands fa-java"></i></div>
-        <div class="cert-body">
-          <div class="cert-issuer">HackerRank</div>
-          <div class="cert-name">Java Basic Certificate</div>
-          <span class="cert-type-badge badge-sde">Dev</span>
-        </div>
-      </div>
-
-      <div class="cert-card" data-cat="sde">
-        <div class="cert-icon-wrap"><i class="fa-solid fa-mug-hot"></i></div>
-        <div class="cert-body">
-          <div class="cert-issuer">Short-Term Training</div>
-          <div class="cert-name">Java Programming</div>
-          <span class="cert-type-badge badge-sde">Dev</span>
-        </div>
-      </div>
-
-      <div class="cert-card" data-cat="sde">
-        <div class="cert-icon-wrap"><i class="fa-solid fa-database"></i></div>
-        <div class="cert-body">
-          <div class="cert-issuer">Infosys Springboard</div>
-          <div class="cert-name">Database Management Systems</div>
-          <span class="cert-type-badge badge-sde">Dev</span>
-        </div>
-      </div>
-
-      <div class="cert-card" data-cat="ai">
-        <div class="cert-icon-wrap"><i class="fa-brands fa-microsoft"></i></div>
-        <div class="cert-body">
-          <div class="cert-issuer">Microsoft x LinkedIn</div>
-          <div class="cert-name">Career Essentials in Generative AI</div>
-          <span class="cert-type-badge badge-ai">AI / ML</span>
-        </div>
-      </div>
-
-      <div class="cert-card" data-cat="other">
-        <div class="cert-icon-wrap"><i class="fa-solid fa-award"></i></div>
-        <div class="cert-body">
-          <div class="cert-issuer">Devtown</div>
-          <div class="cert-name">Certificate of Appreciation</div>
-          <span class="cert-type-badge badge-other">Achievement</span>
-        </div>
-      </div>
-
-      <div class="cert-card" data-cat="other">
-        <div class="cert-icon-wrap"><i class="fa-solid fa-circle-check"></i></div>
-        <div class="cert-body">
-          <div class="cert-issuer">Devtown</div>
-          <div class="cert-name">Certificate of Completion</div>
-          <span class="cert-type-badge badge-other">Achievement</span>
-        </div>
-      </div>
-
-      <div class="cert-card" data-cat="other">
-        <div class="cert-icon-wrap"><i class="fa-solid fa-store"></i></div>
-        <div class="cert-body">
-          <div class="cert-issuer">Rakuten</div>
-          <div class="cert-name">Product Conference 2024</div>
-          <span class="cert-type-badge badge-other">Conference</span>
-        </div>
-      </div>
-
     </div>
+    <p class="also reveal" style="transition-delay:.34s">Also completed: coursework and job simulations via Cybrary, Coursera, Forage (Deloitte, MasterCard), Snyk CTF, HackerRank, Infosys Springboard, and Microsoft x LinkedIn (Generative AI Essentials).</p>
   </section>
 
-  <!-- ABOUT / CONNECT -->
-  <section>
-    <div class="section-eyebrow">04 / Identity</div>
-    <h2 class="section-title">Connect</h2>
-    <div class="about-strip">
-      <div class="about-text">
-        <h2>Let's build<br/>or break something.</h2>
-        <p style="margin-top:14px;">
-          BU MSCS Jan 2026. Software engineer targeting backend, distributed systems, and AI/ML roles.
-          Shipped Kafka pipelines at 50K+ events/min, Rust benchmark harnesses cutting p99 variance 30%,
-          and MITRE ATT&amp;CK mapped SOC tooling. IEEE published researcher.
-          Currently contributing to real open source AI projects via CodePath AI301 capstone.<br/><br/>
-          Open to full-time SWE roles in backend, data engineering, AI/ML, and security engineering.
-          Post-OPT EAD authorized - no sponsorship required currently.<br/><br/>
-          <a href="mailto:saleeq1269@gmail.com" style="color:var(--accent);text-decoration:none;font-weight:600;">saleeq1269@gmail.com</a>
-        </p>
+  <!-- CHANGED: contact copy rewritten to closing-CTA tone (Option C). -->
+  <section aria-label="Contact">
+    <p class="eyebrow reveal">Connect</p>
+    <div class="connect-grid">
+      <div class="reveal" style="transition-delay:.09s">
+        <p class="connect-lead">I like problems where the interesting part is the tradeoff.</p>
+        <p class="connect-copy">An EMA-adaptive controller in Rust cut p99 latency variance 30% under CPU contention. Open to full-time roles in backend, distributed systems, AI/ML, and security engineering. Post-OPT EAD — no sponsorship required currently.</p>
       </div>
-      <div class="about-links">
-        <a href="https://github.com/CyberCoder-IITM" target="_blank" class="social-link">
-          <span class="s-icon"><i class="fa-brands fa-github"></i></span>
-          <span class="s-info">
-            <span class="s-name">GitHub</span>
-            <span class="s-handle">@CyberCoder-IITM</span>
-          </span>
-          <span class="s-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
+      <div class="links reveal" style="transition-delay:.18s">
+        <a class="social-link" href="https://github.com/CyberCoder-IITM" target="_blank" rel="noopener">
+          <span class="ico"><i class="fa-brands fa-github" aria-hidden="true"></i></span>
+          <span>GitHub<br /><span class="handle">@CyberCoder-IITM</span></span>
+          <span class="arrow"><i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i></span>
         </a>
-        <a href="https://www.linkedin.com/in/syedsq/" target="_blank" class="social-link">
-          <span class="s-icon"><i class="fa-brands fa-linkedin"></i></span>
-          <span class="s-info">
-            <span class="s-name">LinkedIn</span>
-            <span class="s-handle">syedsq</span>
-          </span>
-          <span class="s-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
+        <a class="social-link" href="https://www.linkedin.com/in/syedsq/" target="_blank" rel="noopener">
+          <span class="ico"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></span>
+          <span>LinkedIn<br /><span class="handle">syedsq</span></span>
+          <span class="arrow"><i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i></span>
         </a>
-        <a href="https://ieeexplore.ieee.org/document/10838018" target="_blank" class="social-link">
-          <span class="s-icon"><i class="fa-solid fa-book-open"></i></span>
-          <span class="s-info">
-            <span class="s-name">IEEE Publication</span>
-            <span class="s-handle">Asian Conference 2024 (Oral)</span>
-          </span>
-          <span class="s-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
+        <a class="social-link" href="https://ieeexplore.ieee.org/document/10838018" target="_blank" rel="noopener">
+          <span class="ico"><i class="fa-solid fa-book-open" aria-hidden="true"></i></span>
+          <span>IEEE Publication<br /><span class="handle">Asian Conference 2024 (Oral)</span></span>
+          <span class="arrow"><i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i></span>
         </a>
-        <a href="mailto:saleeq1269@gmail.com" class="social-link">
-          <span class="s-icon"><i class="fa-solid fa-envelope"></i></span>
-          <span class="s-info">
-            <span class="s-name">Email</span>
-            <span class="s-handle">saleeq1269@gmail.com</span>
-          </span>
-          <span class="s-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
+        <a class="social-link" href="mailto:saleeq1269@gmail.com">
+          <span class="ico"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
+          <span>Email<br /><span class="handle">saleeq1269@gmail.com</span></span>
+          <span class="arrow"><i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i></span>
         </a>
-        <a href="resume.pdf" target="_blank" class="social-link">
-          <span class="s-icon"><i class="fa-solid fa-file"></i></span>
-          <span class="s-info">
-            <span class="s-name">Resume</span>
-            <span class="s-handle">Download PDF</span>
-          </span>
-          <span class="s-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
+        <a class="social-link" href="resume.pdf" target="_blank" rel="noopener">
+          <span class="ico"><i class="fa-solid fa-file" aria-hidden="true"></i></span>
+          <span>Resume<br /><span class="handle">Download PDF</span></span>
+          <span class="arrow"><i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i></span>
         </a>
       </div>
     </div>
@@ -1438,140 +677,47 @@
 </main>
 
 <footer>
-  <span>Adnan Syed</span> &nbsp;///&nbsp; BU MSCS 2026 &nbsp;///&nbsp; adnansyed.me
+  Adnan Syed /// BU MSCS 2026 /// adnansyed.me <span class="updated">/// Updated Jul 2026</span>
 </footer>
 
 <script>
-  // MODE SWITCHING
+  /* CHANGED: mode switch = thumb slide + CSS-var re-temper + in-place crossfade of mode-specific text.
+     Canvas waves / noise / flash / cursor / scroll-cue all deleted. */
   function setMode(mode) {
-    const flash = document.getElementById('flash');
     const body = document.body;
-    const badge = document.getElementById('badge-text');
-    const btnCyber = document.getElementById('btn-cyber');
-    const btnSde = document.getElementById('btn-sde');
+    const isSde = mode === 'sde';
+    if (isSde === body.classList.contains('sde-mode')) return; // no-op if unchanged
 
-    flash.classList.add('flash');
-    setTimeout(() => flash.classList.remove('flash'), 200);
-
-    if (mode === 'sde') {
-      body.classList.add('sde-mode');
-      badge.textContent = 'Distributed Systems / AI-ML Engineer';
-      btnSde.classList.add('active');
-      btnCyber.classList.remove('active');
-    } else {
-      body.classList.remove('sde-mode');
-      badge.textContent = 'Security Researcher / SOC Analyst';
-      btnCyber.classList.add('active');
-      btnSde.classList.remove('active');
-    }
-
-    updateCanvas();
-  }
-
-  // CANVAS WAVES
-  const canvas = document.getElementById('bg-canvas');
-  const ctx = canvas.getContext('2d');
-  let W, H, lines = [];
-
-  function resize() {
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-    initLines();
-  }
-
-  function initLines() {
-    lines = [];
-    const gap = 22;
-    for (let y = 0; y < H; y += gap) {
-      lines.push({
-        y, amp: Math.random() * 22 + 8,
-        speed: Math.random() * 0.0015 + 0.0005,
-        phase: Math.random() * Math.PI * 2
-      });
-    }
-  }
-
-  let accentColor = document.body.classList.contains('sde-mode') ? [124, 77, 255] : [0, 255, 153];
-
-  function updateCanvas() {
-    const isSDE = document.body.classList.contains('sde-mode');
-    accentColor = isSDE ? [124, 77, 255] : [0, 255, 153];
-  }
-
-  function animate(t) {
-    ctx.clearRect(0, 0, W, H);
-    const [r, g, b] = accentColor;
-
-    lines.forEach(line => {
-      const dist = Math.abs((line.y - H / 2) / (H / 2));
-      ctx.beginPath();
-      ctx.lineWidth = 1;
-
-      if (dist < 0.4) {
-        ctx.strokeStyle = `rgba(${r},${g},${b},${0.3 - dist * 0.6})`;
-      } else {
-        ctx.strokeStyle = `rgba(30,41,59,0.15)`;
+    // crossfade only the nodes that differ between modes
+    document.querySelectorAll('.swap').forEach(swap => {
+      const outgoing = swap.querySelector(isSde ? '.cyber-only' : '.sde-only');
+      if (outgoing && getComputedStyle(outgoing).display !== 'none') {
+        outgoing.classList.add('swapping-out');
+        setTimeout(() => outgoing.classList.remove('swapping-out'), 200);
       }
-
-      for (let x = 0; x <= W; x += 14) {
-        const y = line.y + Math.sin(x * 0.0025 + t * line.speed + line.phase) * line.amp;
-        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-      }
-      ctx.stroke();
     });
 
-    requestAnimationFrame(animate);
-  }
+    body.classList.toggle('sde-mode', isSde);
+    document.getElementById('btn-sde').setAttribute('aria-pressed', String(isSde));
+    document.getElementById('btn-cyber').setAttribute('aria-pressed', String(!isSde));
 
-  window.addEventListener('resize', resize);
-  resize();
-  animate(0);
-
-  // CERT FILTER
-  function filterCerts(cat, btn) {
-    document.querySelectorAll('.cert-filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-
-    document.querySelectorAll('.cert-card').forEach(card => {
-      if (cat === 'all' || card.dataset.cat === cat) {
-        card.classList.remove('hidden');
-        card.classList.remove('visible');
-        void card.offsetWidth;
-        setTimeout(() => card.classList.add('visible'), 30);
-      } else {
-        card.classList.add('hidden');
-        card.classList.remove('visible');
+    document.querySelectorAll('.swap').forEach(swap => {
+      const incoming = swap.querySelector(isSde ? '.sde-only' : '.cyber-only');
+      if (incoming) {
+        incoming.classList.remove('swapping-in');
+        void incoming.offsetWidth;
+        incoming.classList.add('swapping-in');
       }
     });
   }
 
-  // CERT CARDS INTERSECTION OBSERVER
-  const certObserver = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 50);
-      }
-    });
-  }, { threshold: 0.05 });
-
-  document.querySelectorAll('.cert-card').forEach(el => certObserver.observe(el));
-
-  // PROJECT + SKILL CARD SCROLL REVEAL
-  const observer = new IntersectionObserver((entries) => {
+  /* CHANGED: scroll reveal honors inline transition-delay for hierarchy stagger; reveals once. */
+  const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
     });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.project-card, .skill-block').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease, border-color 0.3s, box-shadow 0.3s';
-    observer.observe(el);
-  });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 </body>
 </html>
